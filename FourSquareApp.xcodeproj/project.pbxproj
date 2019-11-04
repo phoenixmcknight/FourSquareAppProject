@@ -17,6 +17,12 @@
 		69FAAD9F2370AEDD007919AC /* FourSquareAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAAD9E2370AEDD007919AC /* FourSquareAppUITests.swift */; };
 		69FAADAD2370AFD5007919AC /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADAC2370AFD5007919AC /* FirstVC.swift */; };
 		69FAADB02370AFEA007919AC /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADAF2370AFEA007919AC /* SecondVC.swift */; };
+		69FAADB32370B57A007919AC /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADB22370B57A007919AC /* MapModel.swift */; };
+		69FAADC52370B619007919AC /* cardAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADC12370B619007919AC /* cardAPIClient.swift */; };
+		69FAADC62370B619007919AC /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADC22370B619007919AC /* NetworkHelper.swift */; };
+		69FAADC72370B619007919AC /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADC32370B619007919AC /* AppError.swift */; };
+		69FAADC82370B619007919AC /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADC42370B619007919AC /* ImageHelper.swift */; };
+		69FAADCE2370B7F8007919AC /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADCD2370B7F8007919AC /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		69FAADA02370AEDD007919AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69FAADAC2370AFD5007919AC /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
 		69FAADAF2370AFEA007919AC /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		69FAADB22370B57A007919AC /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		69FAADC12370B619007919AC /* cardAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cardAPIClient.swift; sourceTree = "<group>"; };
+		69FAADC22370B619007919AC /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		69FAADC32370B619007919AC /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		69FAADC42370B619007919AC /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		69FAADCD2370B7F8007919AC /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,9 @@
 		69FAAD7B2370AEDB007919AC /* FourSquareApp */ = {
 			isa = PBXGroup;
 			children = (
+				69FAADCC2370B7ED007919AC /* Secrets */,
+				69FAADC02370B619007919AC /* Networking */,
+				69FAADB12370B572007919AC /* Models */,
 				69FAADAE2370AFDC007919AC /* View Controllers */,
 				69FAAD7C2370AEDB007919AC /* AppDelegate.swift */,
 				69FAAD7E2370AEDB007919AC /* SceneDelegate.swift */,
@@ -140,6 +155,33 @@
 				69FAADAF2370AFEA007919AC /* SecondVC.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		69FAADB12370B572007919AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				69FAADB22370B57A007919AC /* MapModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		69FAADC02370B619007919AC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				69FAADC12370B619007919AC /* cardAPIClient.swift */,
+				69FAADC22370B619007919AC /* NetworkHelper.swift */,
+				69FAADC32370B619007919AC /* AppError.swift */,
+				69FAADC42370B619007919AC /* ImageHelper.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		69FAADCC2370B7ED007919AC /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				69FAADCD2370B7F8007919AC /* Secrets.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,11 +315,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69FAADC62370B619007919AC /* NetworkHelper.swift in Sources */,
+				69FAADC82370B619007919AC /* ImageHelper.swift in Sources */,
 				69FAAD812370AEDB007919AC /* ViewController.swift in Sources */,
+				69FAADC72370B619007919AC /* AppError.swift in Sources */,
 				69FAADAD2370AFD5007919AC /* FirstVC.swift in Sources */,
 				69FAADB02370AFEA007919AC /* SecondVC.swift in Sources */,
 				69FAAD7D2370AEDB007919AC /* AppDelegate.swift in Sources */,
+				69FAADB32370B57A007919AC /* MapModel.swift in Sources */,
+				69FAADC52370B619007919AC /* cardAPIClient.swift in Sources */,
 				69FAAD7F2370AEDB007919AC /* SceneDelegate.swift in Sources */,
+				69FAADCE2370B7F8007919AC /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
