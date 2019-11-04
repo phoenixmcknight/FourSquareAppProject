@@ -1,0 +1,1174 @@
+{
+    "meta": {
+        "code": 200,
+        "requestId": "5dc07d87d9a6e6002b793096"
+    },
+    "response": {
+        "venues": [
+            {
+                "id": "4e57fa1062e126c911a72eea",
+                "name": "St.Robert Bellarmine school",
+                "location": {
+                    "address": "56-10 214th St",
+                    "lat": 40.749772224341996,
+                    "lng": -73.76502589195395,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.749772224341996,
+                            "lng": -73.76502589195395
+                        }
+                    ],
+                    "distance": 400,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Bayside Hills",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "56-10 214th St",
+                        "Bayside Hills, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "53643896498e3a92137fc4e9",
+                "name": "Danny & Denny Auto Repair",
+                "location": {
+                    "address": "21508 215th Street",
+                    "lat": 40.7627406038339,
+                    "lng": -73.76818016230237,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7627406038339,
+                            "lng": -73.76818016230237
+                        }
+                    ],
+                    "distance": 1599,
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "21508 215th Street",
+                        "Bayside, NY",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d124951735",
+                        "name": "Automotive Shop",
+                        "pluralName": "Automotive Shops",
+                        "shortName": "Automotive",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/automotive_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4b9d660af964a520d1a936e3",
+                "name": "Armenian Church of the Holy Martyrs",
+                "location": {
+                    "address": "20915 Horace Harding Expy",
+                    "lat": 40.74621409811497,
+                    "lng": -73.76788004739949,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74621409811497,
+                            "lng": -73.76788004739949
+                        }
+                    ],
+                    "distance": 275,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Flushing",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "20915 Horace Harding Expy",
+                        "Flushing, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d132941735",
+                        "name": "Church",
+                        "pluralName": "Churches",
+                        "shortName": "Church",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/religious_church_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "51f41787498ee0227a5c4038",
+                "name": "Fresh Meadows Dental Care",
+                "location": {
+                    "address": "58-47 Francis Lewis Blvd",
+                    "lat": 40.74420071727882,
+                    "lng": -73.77581119537352,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74420071727882,
+                            "lng": -73.77581119537352
+                        }
+                    ],
+                    "distance": 713,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "58-47 Francis Lewis Blvd",
+                        "Bayside, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d178941735",
+                        "name": "Dentist's Office",
+                        "pluralName": "Dentist's Offices",
+                        "shortName": "Dentist's Office",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_dentist_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "venuePage": {
+                    "id": "149651226"
+                },
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4bc88304af07a593fbf7802d",
+                "name": "North Queens Orthopaedics",
+                "location": {
+                    "address": "56-50 Francis Lewis Blvd",
+                    "crossStreet": "58th ave",
+                    "lat": 40.743819,
+                    "lng": -73.775943,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.743819,
+                            "lng": -73.775943
+                        }
+                    ],
+                    "distance": 750,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "56-50 Francis Lewis Blvd (58th ave)",
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d177941735",
+                        "name": "Doctor's Office",
+                        "pluralName": "Doctor's Offices",
+                        "shortName": "Doctor's Office",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_doctorsoffice_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4b858c91f964a520e06431e3",
+                "name": "petland",
+                "location": {
+                    "address": "17133 Hillside Ave",
+                    "lat": 40.749160307370396,
+                    "lng": -73.76212373686553,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.749160307370396,
+                            "lng": -73.76212373686553
+                        }
+                    ],
+                    "distance": 620,
+                    "postalCode": "11432",
+                    "cc": "US",
+                    "city": "Jamaica",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "17133 Hillside Ave",
+                        "Jamaica, NY 11432",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4dee0ebcd164f9a5c686687e",
+                "name": "I-295 / I-495 Interchange",
+                "location": {
+                    "address": "Interstate 295 (Clearview Expy)",
+                    "crossStreet": "at Interstate 495 (LI Expy)",
+                    "lat": 40.744156010517464,
+                    "lng": -73.7715397775173,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.744156010517464,
+                            "lng": -73.7715397775173
+                        }
+                    ],
+                    "distance": 505,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Interstate 295 (Clearview Expy) (at Interstate 495 (LI Expy))",
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "52f2ab2ebcbc57f1066b8b4c",
+                        "name": "Intersection",
+                        "pluralName": "Intersections",
+                        "shortName": "Intersection",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/default_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4dd3dab245dd98b61e75ce55",
+                "name": "MTA - Q30 Bus Stop",
+                "location": {
+                    "address": "Oceania St",
+                    "lat": 40.745916,
+                    "lng": -73.76821955644417,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.745916,
+                            "lng": -73.76821955644417
+                        }
+                    ],
+                    "distance": 294,
+                    "cc": "US",
+                    "state": "New York",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Oceania St",
+                        "New York",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1fe931735",
+                        "name": "Bus Station",
+                        "pluralName": "Bus Stations",
+                        "shortName": "Bus Station",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/busstation_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4dcd6a28d164679b8ce5a786",
+                "name": "NYHQ",
+                "location": {
+                    "address": "booth memorial ave",
+                    "lat": 40.7466732204118,
+                    "lng": -73.77304074385913,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7466732204118,
+                            "lng": -73.77304074385913
+                        }
+                    ],
+                    "distance": 361,
+                    "postalCode": "11355",
+                    "cc": "US",
+                    "city": "Flushing",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "booth memorial ave",
+                        "Flushing, NY 11355",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d104941735",
+                        "name": "Medical Center",
+                        "pluralName": "Medical Centers",
+                        "shortName": "Medical",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4ca26687554b236ad4ca1d48",
+                "name": "MTA Q26 (Hollis Court/Francis Lewis)",
+                "location": {
+                    "address": "Hollis Court Blvd",
+                    "crossStreet": "Francis Lewis Blvd",
+                    "lat": 40.745370158868305,
+                    "lng": -73.7771849331323,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.745370158868305,
+                            "lng": -73.7771849331323
+                        }
+                    ],
+                    "distance": 736,
+                    "cc": "US",
+                    "city": "Queens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Hollis Court Blvd (Francis Lewis Blvd)",
+                        "Queens, NY",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1fe931735",
+                        "name": "Bus Station",
+                        "pluralName": "Bus Stations",
+                        "shortName": "Bus Station",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/busstation_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "51910fea498ee54747e7bfb6",
+                "name": "HiTea",
+                "location": {
+                    "lat": 40.74785225792604,
+                    "lng": -73.76750219946275,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74785225792604,
+                            "lng": -73.76750219946275
+                        }
+                    ],
+                    "distance": 172,
+                    "cc": "US",
+                    "city": "Queens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Queens, NY",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16d941735",
+                        "name": "Café",
+                        "pluralName": "Cafés",
+                        "shortName": "Café",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/cafe_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4d03979be350b60c72f87d42",
+                "name": "Cho Dae Church",
+                "location": {
+                    "address": "210-10 Horace Harding Expy",
+                    "lat": 40.74511274259405,
+                    "lng": -73.76462945008885,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74511274259405,
+                            "lng": -73.76462945008885
+                        }
+                    ],
+                    "distance": 544,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "210-10 Horace Harding Expy",
+                        "Bayside, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d132941735",
+                        "name": "Church",
+                        "pluralName": "Churches",
+                        "shortName": "Church",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/religious_church_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4cb243b2eb65b1f73a477bcd",
+                "name": "Schneiderman's Ice Rink",
+                "location": {
+                    "address": "5815 oceania dt.",
+                    "lat": 40.747262,
+                    "lng": -73.76825,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.747262,
+                            "lng": -73.76825
+                        }
+                    ],
+                    "distance": 160,
+                    "cc": "US",
+                    "state": "New York",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "5815 oceania dt.",
+                        "New York",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4d1f95a216cfb60c7e555261",
+                "name": "Schneiderman's Non-Kosher Meat Factory",
+                "location": {
+                    "address": "Oceania St.",
+                    "lat": 40.747346,
+                    "lng": -73.76834,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.747346,
+                            "lng": -73.76834
+                        }
+                    ],
+                    "distance": 148,
+                    "cc": "US",
+                    "state": "New York",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Oceania St.",
+                        "New York",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4bc09b1dabf49521a877bf93",
+                "name": "Luncheonette",
+                "location": {
+                    "address": "254-57 Horace Harding Expwy",
+                    "lat": 40.749325,
+                    "lng": -73.763011,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.749325,
+                            "lng": -73.763011
+                        }
+                    ],
+                    "distance": 549,
+                    "cc": "US",
+                    "city": "Little Neck",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "254-57 Horace Harding Expwy",
+                        "Little Neck, NY",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1e0931735",
+                        "name": "Coffee Shop",
+                        "pluralName": "Coffee Shops",
+                        "shortName": "Coffee Shop",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4fd15f59e4b0f61ad9769270",
+                "name": "ern媽媽's car",
+                "location": {
+                    "lat": 40.750795,
+                    "lng": -73.765815,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.750795,
+                            "lng": -73.765815
+                        }
+                    ],
+                    "distance": 404,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4f2a23984b9023bd5841ed2c",
+                        "name": "Moving Target",
+                        "pluralName": "Moving Targets",
+                        "shortName": "Moving Target",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/movingtarget_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "50340db0e4b0cc400955ec22",
+                "name": "Moy Yat Ving Tsun",
+                "location": {
+                    "address": "201-02 Northern Blvd",
+                    "lat": 40.74926176702346,
+                    "lng": -73.77771736209401,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74926176702346,
+                            "lng": -73.77771736209401
+                        }
+                    ],
+                    "distance": 706,
+                    "postalCode": "11361",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "201-02 Northern Blvd",
+                        "Bayside, NY 11361",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d101941735",
+                        "name": "Martial Arts Dojo",
+                        "pluralName": "Martial Arts Dojos",
+                        "shortName": "Martial Arts",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/gym_martialarts_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "5122a8b7e4b027b3b4f1798f",
+                "name": "MTA Q27 (Jamaica)",
+                "location": {
+                    "lat": 40.75561334145599,
+                    "lng": -73.76754241766137,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.75561334145599,
+                            "lng": -73.76754241766137
+                        }
+                    ],
+                    "distance": 818,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4f2a23984b9023bd5841ed2c",
+                        "name": "Moving Target",
+                        "pluralName": "Moving Targets",
+                        "shortName": "Moving Target",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/movingtarget_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4ca903a576d3a09321ca1b6b",
+                "name": "Gym",
+                "location": {
+                    "lat": 40.75488602,
+                    "lng": -73.77200603,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.75488602,
+                            "lng": -73.77200603
+                        }
+                    ],
+                    "distance": 754,
+                    "postalCode": "11361",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Bayside, NY 11361",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d176941735",
+                        "name": "Gym",
+                        "pluralName": "Gyms",
+                        "shortName": "Gym",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/gym_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4fae83c2e4b0f4503a46a9a6",
+                "name": "196-26 67th Ave",
+                "location": {
+                    "address": "196-26 67th Ave",
+                    "crossStreet": "1 Bedroom CoOp in Meadowlark Garden $160k",
+                    "lat": 40.75110861584338,
+                    "lng": -73.77586166549838,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.75110861584338,
+                            "lng": -73.77586166549838
+                        }
+                    ],
+                    "distance": 621,
+                    "postalCode": "11365",
+                    "cc": "US",
+                    "city": "Fresh Meadows",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "196-26 67th Ave (1 Bedroom CoOp in Meadowlark Garden $160k)",
+                        "Fresh Meadows, NY 11365",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4d954b06a243a5684965b473",
+                        "name": "Residential Building (Apartment / Condo)",
+                        "pluralName": "Residential Buildings (Apartments / Condos)",
+                        "shortName": "Residential",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/apartment_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4db05afb0cb6442b2eb70561",
+                "name": "Southern Wine Of NY",
+                "location": {
+                    "address": "underhill blvd",
+                    "lat": 40.7432473,
+                    "lng": -73.777193,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7432473,
+                            "lng": -73.777193
+                        }
+                    ],
+                    "distance": 871,
+                    "postalCode": "11365",
+                    "cc": "US",
+                    "city": "New York",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "underhill blvd",
+                        "New York, NY 11365",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4d8c8c6f1716a143698e01f7",
+                "name": "E006",
+                "location": {
+                    "address": "6100 Francis Lewis Blvd",
+                    "lat": 40.744637,
+                    "lng": -73.770553,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.744637,
+                            "lng": -73.770553
+                        }
+                    ],
+                    "distance": 429,
+                    "cc": "US",
+                    "city": "Francis Lewis",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "6100 Francis Lewis Blvd",
+                        "Francis Lewis, NY",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4d28fac1849f370404c27941",
+                "name": "Dazzling Affairs",
+                "location": {
+                    "lat": 40.744236,
+                    "lng": -73.771475,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.744236,
+                            "lng": -73.771475
+                        }
+                    ],
+                    "distance": 494,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "5c141980a0215b002cebcd14",
+                "name": "Starbucks",
+                "location": {
+                    "address": "23-98 Bell Blvd",
+                    "lat": 40.74709440008955,
+                    "lng": -73.76390218734741,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74709440008955,
+                            "lng": -73.76390218734741
+                        }
+                    ],
+                    "distance": 487,
+                    "postalCode": "11360",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "23-98 Bell Blvd",
+                        "Bayside, NY 11360",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1e0931735",
+                        "name": "Coffee Shop",
+                        "pluralName": "Coffee Shops",
+                        "shortName": "Coffee Shop",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "50f91a16e4b0692260c28d67",
+                "name": "Hot Bagels",
+                "location": {
+                    "lat": 40.74632985506164,
+                    "lng": -73.76688743456359,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74632985506164,
+                            "lng": -73.76688743456359
+                        }
+                    ],
+                    "distance": 314,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d179941735",
+                        "name": "Bagel Shop",
+                        "pluralName": "Bagel Shops",
+                        "shortName": "Bagels",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bagels_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4e5e5fa6aeb78833bb8b5dc8",
+                "name": "덕향",
+                "location": {
+                    "address": "221-34 Horace Harding Expwy.",
+                    "lat": 40.746698,
+                    "lng": -73.761465,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.746698,
+                            "lng": -73.761465
+                        }
+                    ],
+                    "distance": 696,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Oakland Gardens",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "221-34 Horace Harding Expwy.",
+                        "Oakland Gardens, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d145941735",
+                        "name": "Chinese Restaurant",
+                        "pluralName": "Chinese Restaurants",
+                        "shortName": "Chinese",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "500eeb096de406feaec6a29c",
+                "name": "7-Eleven",
+                "location": {
+                    "address": "58-20 Francis Lewis Blvd",
+                    "lat": 40.7449732589267,
+                    "lng": -73.7769958376893,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7449732589267,
+                            "lng": -73.7769958376893
+                        }
+                    ],
+                    "distance": 744,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "58-20 Francis Lewis Blvd",
+                        "Bayside, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4d954b0ea243a5684a65b473",
+                        "name": "Convenience Store",
+                        "pluralName": "Convenience Stores",
+                        "shortName": "Convenience Store",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/conveniencestore_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4ecaa46f0e6158ba023c2b2b",
+                "name": "Family Dental of Bayside",
+                "location": {
+                    "address": "58 - 47 Francis Lewis Blvd, #106",
+                    "lat": 40.7443707,
+                    "lng": -73.7756279,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7443707,
+                            "lng": -73.7756279
+                        }
+                    ],
+                    "distance": 689,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Flushing",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "58 - 47 Francis Lewis Blvd, #106",
+                        "Flushing, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d178941735",
+                        "name": "Dentist's Office",
+                        "pluralName": "Dentist's Offices",
+                        "shortName": "Dentist's Office",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_dentist_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "venuePage": {
+                    "id": "499175212"
+                },
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "578d4c73498e2228d036480a",
+                "name": "Ultimate Fitness Zone",
+                "location": {
+                    "address": "215-11 Horace Harding Expy",
+                    "lat": 40.7476913788483,
+                    "lng": -73.76203200096157,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7476913788483,
+                            "lng": -73.76203200096157
+                        }
+                    ],
+                    "distance": 627,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "New York",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "215-11 Horace Harding Expy",
+                        "New York, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d176941735",
+                        "name": "Gym",
+                        "pluralName": "Gyms",
+                        "shortName": "Gym",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/gym_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            },
+            {
+                "id": "4f3217ea19836c91c7b5218d",
+                "name": "Constant Compliments",
+                "location": {
+                    "address": "4820 206th St",
+                    "lat": 40.75309,
+                    "lng": -73.77424,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.75309,
+                            "lng": -73.77424
+                        }
+                    ],
+                    "distance": 661,
+                    "postalCode": "11364",
+                    "cc": "US",
+                    "city": "Flushing",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "4820 206th St",
+                        "Flushing, NY 11364",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4d4b7105d754a06374d81259",
+                        "name": "Food",
+                        "pluralName": "Food",
+                        "shortName": "Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572896135",
+                "hasPerk": false
+            }
+        ],
+        "confident": false
+    }
+}

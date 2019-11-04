@@ -23,12 +23,27 @@ class FourSquareAppTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    private func getMap() -> Data? {
+                 let bundle = Bundle(for: type(of: self))
+                 guard let pathToData = bundle.path(forResource: "testFourSquareAPI", ofType: ".json")  else {
+                     XCTFail("couldn't find Json")
+                     return nil
+                 }
+                 let url = URL(fileURLWithPath: pathToData)
+                 do {
+                     let data = try Data(contentsOf: url)
+                     return data
+                 } catch let error {
+                     fatalError("couldn't find data \(error)")
+                 }
+             }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+     func testMap() {
+          
+                 let data = getMap() ?? Data()
+        let mapData = Foursquare.getTestData(from: data) ?? []
+              print(mapData)
+                XCTAssertTrue(mapData.count > 0, "No genre data was loaded")
+         }
 
 }

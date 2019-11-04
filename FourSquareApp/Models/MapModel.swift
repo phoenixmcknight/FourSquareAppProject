@@ -11,6 +11,16 @@ import Foundation
 struct Foursquare: Codable {
     let meta: Meta
     let response: Response
+    
+    static func getTestData(from data:Data) -> [Venue]? {
+           do {
+               let newMap = try JSONDecoder().decode(Foursquare.self, from: data)
+            return newMap.response.venues
+           } catch let error {
+               print(error)
+               return nil
+           }
+       }
 }
 
 // MARK: - Meta
