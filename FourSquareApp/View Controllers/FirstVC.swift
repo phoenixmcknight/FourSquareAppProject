@@ -29,6 +29,7 @@ class LibraryViewController: UIViewController {
        }()
     lazy var map:MKMapView = {
         let map = MKMapView()
+        map.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
         return map
     }()
     
@@ -59,10 +60,12 @@ class LibraryViewController: UIViewController {
     
     private let locationManager = CLLocationManager()
     
-    let searchRadius: CLLocationDistance = 200
+    let searchRadius: CLLocationDistance = 2000
     
-    var latLong:String = "40.742054,-73.769417" {
+    var latLong:(Double,Double) = (40.742054,-73.769417) {
         didSet {
+            let coordinateRegion = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: self.latLong.0, longitude: self.latLong.1), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
+            map.setRegion(coordinateRegion, animated: true)
             loadVenueData(query: searchStringQuery)
         }
     }
@@ -83,19 +86,29 @@ class LibraryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        
         locationManager.delegate = self
         map.delegate = self
         searchBarOne.delegate = self
         searchBarTwo.delegate = self
-        map.userTrackingMode = .follow
+        //map.userTrackingMode = .follow
         locationAuthorization()
-        
+        constriants()
         
     }
 
     
     private func constriants() {
         
+        view.addSubview(searchBarOne)
+        view.addSubview(searchBarTwo)
+        view.addSubview(map)
+        view.addSubview(mapCollectionView)
+        searchBarOne.translatesAutoresizingMaskIntoConstraints = false
+        searchBarTwo.translatesAutoresizingMaskIntoConstraints = false
+        map.translatesAutoresizingMaskIntoConstraints = false
+        mapCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             searchBarOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
@@ -139,14 +152,17 @@ class LibraryViewController: UIViewController {
             switch results {
                 
             case .success(let lat, let long):
-                self?.latLong = "\(lat),\(long)"
+                self?.latLong.0 = lat
+                self?.latLong.1 = long
+              
+                print("good input")
             case .failure(_):
                 print("bad input")
             }
         }
     }
     private func loadVenueData(query:String) {
-        MapAPIClient.client.getMapData(query: query, latLong: latLong) { (result) in
+        MapAPIClient.client.getMapData(query: query, latLong: "\(latLong.0),\(latLong.1)") { (result) in
             switch result {
                 
             case .success(let data):
@@ -243,8 +259,7 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
 
 
                          
-            //                let coordinateRegion = MKCoordinateRegion.init(center: newAnnotation.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
-            //                self.mapView.setRegion(coordinateRegion, animated: true)
+                        
         case 1:
             searchStringLatLong = searchBarTwo.text
         default:

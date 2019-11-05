@@ -26,10 +26,13 @@ class MapAPIClient {
                 completionHandler(.failure(error))
             case .success(let data):
                 do {
-                    let mapData = try JSONDecoder().decode(Foursquare.self, from: data)
-                    
-                    completionHandler(.success(mapData.response.venues))
+                    let mapData = try
+                        JSONDecoder().decode(Foursquare.self, from: data)
+                    if let map = mapData.response?.venues{
+                    completionHandler(.success(map))
+                    }
                 } catch let error {
+                   print(error)
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                 }
             }

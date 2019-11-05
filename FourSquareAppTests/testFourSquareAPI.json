@@ -1,1174 +1,1627 @@
 {
     "meta": {
         "code": 200,
-        "requestId": "5dc07d87d9a6e6002b793096"
+        "requestId": "5dc0ee0889b06a002c700759"
     },
     "response": {
         "venues": [
             {
-                "id": "4e57fa1062e126c911a72eea",
-                "name": "St.Robert Bellarmine school",
+                "id": "5c1830c2f8cbd4002cf15018",
+                "name": "Taco Bell Cantina",
                 "location": {
-                    "address": "56-10 214th St",
-                    "lat": 40.749772224341996,
-                    "lng": -73.76502589195395,
+                    "address": "224 7th Ave",
+                    "crossStreet": "W 23rd St",
+                    "lat": 40.7441815604068,
+                    "lng": -73.99581978413043,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.749772224341996,
-                            "lng": -73.76502589195395
+                            "lat": 40.7441815604068,
+                            "lng": -73.99581978413043
                         }
                     ],
-                    "distance": 400,
-                    "postalCode": "11364",
+                    "distance": 19099,
+                    "postalCode": "10011",
                     "cc": "US",
-                    "city": "Bayside Hills",
+                    "city": "New York",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "56-10 214th St",
-                        "Bayside Hills, NY 11364",
-                        "United States"
-                    ]
-                },
-                "categories": [],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "53643896498e3a92137fc4e9",
-                "name": "Danny & Denny Auto Repair",
-                "location": {
-                    "address": "21508 215th Street",
-                    "lat": 40.7627406038339,
-                    "lng": -73.76818016230237,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.7627406038339,
-                            "lng": -73.76818016230237
-                        }
-                    ],
-                    "distance": 1599,
-                    "cc": "US",
-                    "city": "Bayside",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "21508 215th Street",
-                        "Bayside, NY",
+                        "224 7th Ave (W 23rd St)",
+                        "New York, NY 10011",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d124951735",
-                        "name": "Automotive Shop",
-                        "pluralName": "Automotive Shops",
-                        "shortName": "Automotive",
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/automotive_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
+                "delivery": {
+                    "id": "1037701",
+                    "url": "https://www.seamless.com/menu/taco-bell-224-7th-ave-new-york/1037701?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=1037701",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4b9d660af964a520d1a936e3",
-                "name": "Armenian Church of the Holy Martyrs",
+                "id": "4bbe14cea0a0c9b63c721c0f",
+                "name": "Taco Palace",
                 "location": {
-                    "address": "20915 Horace Harding Expy",
-                    "lat": 40.74621409811497,
-                    "lng": -73.76788004739949,
+                    "address": "4216 Bell Blvd",
+                    "lat": 40.76214764312538,
+                    "lng": -73.77034670301926,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.74621409811497,
-                            "lng": -73.76788004739949
+                            "lat": 40.76214764312538,
+                            "lng": -73.77034670301926
                         }
                     ],
-                    "distance": 275,
-                    "postalCode": "11364",
+                    "distance": 1532,
+                    "postalCode": "11361",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "4216 Bell Blvd",
+                        "Bayside, NY 11361",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1c1941735",
+                        "name": "Mexican Restaurant",
+                        "pluralName": "Mexican Restaurants",
+                        "shortName": "Mexican",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/mexican_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4a2d48adf964a5209e971fe3",
+                "name": "Taco Bell / Pizza Hut Express",
+                "location": {
+                    "address": "18 E. 14th Street",
+                    "crossStreet": "btwn 5th & University",
+                    "lat": 40.735371,
+                    "lng": -73.992804,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.735371,
+                            "lng": -73.992804
+                        }
+                    ],
+                    "distance": 18896,
+                    "postalCode": "10003",
+                    "cc": "US",
+                    "city": "New York",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "18 E. 14th Street (btwn 5th & University)",
+                        "New York, NY 10003",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1ca941735",
+                        "name": "Pizza Place",
+                        "pluralName": "Pizza Places",
+                        "shortName": "Pizza",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/pizza_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "925463",
+                    "url": "https://www.seamless.com/menu/taco-bell-18-e-14th-st-new-york/925463?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=925463",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4b833571f964a5207cfd30e3",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "60-12 Northern Blvd",
+                    "crossStreet": "btwn 60th & 61st St.",
+                    "lat": 40.753658136700636,
+                    "lng": -73.90188831209319,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.753658136700636,
+                            "lng": -73.90188831209319
+                        }
+                    ],
+                    "distance": 11186,
+                    "postalCode": "11377",
+                    "cc": "US",
+                    "city": "Woodside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "60-12 Northern Blvd (btwn 60th & 61st St.)",
+                        "Woodside, NY 11377",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "927008",
+                    "url": "https://www.seamless.com/menu/taco-bell-60-12-northern-blvd-woodside/927008?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=927008",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4b592c1bf964a5200f8028e3",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "172-12 Northern Blvd",
+                    "crossStreet": "btwn Utopia Pkwy & 172nd St",
+                    "lat": 40.75745695911708,
+                    "lng": -73.79344351847786,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.75745695911708,
+                            "lng": -73.79344351847786
+                        }
+                    ],
+                    "distance": 2263,
+                    "postalCode": "11358",
                     "cc": "US",
                     "city": "Flushing",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "20915 Horace Harding Expy",
-                        "Flushing, NY 11364",
+                        "172-12 Northern Blvd (btwn Utopia Pkwy & 172nd St)",
+                        "Flushing, NY 11358",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d132941735",
-                        "name": "Church",
-                        "pluralName": "Churches",
-                        "shortName": "Church",
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/religious_church_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
+                "delivery": {
+                    "id": "973408",
+                    "url": "https://www.seamless.com/menu/taco-bell-172-12-northern-blvd-flushing/973408?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=973408",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "51f41787498ee0227a5c4038",
-                "name": "Fresh Meadows Dental Care",
+                "id": "4b5161c2f964a520274c27e3",
+                "name": "Taco Bell",
                 "location": {
-                    "address": "58-47 Francis Lewis Blvd",
-                    "lat": 40.74420071727882,
-                    "lng": -73.77581119537352,
+                    "address": "1650 Jericho Tpke",
+                    "crossStreet": "btwn S 16th & S 17th St.",
+                    "lat": 40.73380712940896,
+                    "lng": -73.67898591269312,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.74420071727882,
-                            "lng": -73.77581119537352
+                            "lat": 40.73380712940896,
+                            "lng": -73.67898591269312
                         }
                     ],
-                    "distance": 713,
-                    "postalCode": "11364",
+                    "distance": 7798,
+                    "postalCode": "11040",
                     "cc": "US",
-                    "city": "Bayside",
+                    "city": "New Hyde Park",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "58-47 Francis Lewis Blvd",
-                        "Bayside, NY 11364",
+                        "1650 Jericho Tpke (btwn S 16th & S 17th St.)",
+                        "New Hyde Park, NY 11040",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d178941735",
-                        "name": "Dentist's Office",
-                        "pluralName": "Dentist's Offices",
-                        "shortName": "Dentist's Office",
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_dentist_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
+                "delivery": {
+                    "id": "918388",
+                    "url": "https://www.seamless.com/menu/taco-bell-1650-jericho-tpke-new-hyde-park/918388?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=918388",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4f0ca745e4b0497598d0e061",
+                "name": "Bogart Taco Truck",
+                "location": {
+                    "address": "Bogart St",
+                    "crossStreet": "Harisson St",
+                    "lat": 40.71435335004121,
+                    "lng": -73.94565756050707,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.71435335004121,
+                            "lng": -73.94565756050707
+                        }
+                    ],
+                    "distance": 15342,
+                    "postalCode": "11206",
+                    "cc": "US",
+                    "city": "New York",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Bogart St (Harisson St)",
+                        "New York, NY 11206",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1cb941735",
+                        "name": "Food Truck",
+                        "pluralName": "Food Trucks",
+                        "shortName": "Food Truck",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/streetfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4a843ecef964a52001fc1fe3",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "83-01 37th Ave",
+                    "crossStreet": "83rd Street",
+                    "lat": 40.74988516910031,
+                    "lng": -73.88332801605574,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.74988516910031,
+                            "lng": -73.88332801605574
+                        }
+                    ],
+                    "distance": 9607,
+                    "postalCode": "11372",
+                    "cc": "US",
+                    "city": "Jackson Heights",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "83-01 37th Ave (83rd Street)",
+                        "Jackson Heights, NY 11372",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "924716",
+                    "url": "https://www.seamless.com/menu/taco-bell-8301-37th-ave-jackson-heights/924716?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=924716",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4c658cf1e75ac9288911f5da",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "1625 Hempstead Turnpike",
+                    "crossStreet": "btwn Jacob St & Franklin St",
+                    "lat": 40.707107,
+                    "lng": -73.700639,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.707107,
+                            "lng": -73.700639
+                        }
+                    ],
+                    "distance": 7402,
+                    "postalCode": "11003",
+                    "cc": "US",
+                    "city": "Elmont",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "1625 Hempstead Turnpike (btwn Jacob St & Franklin St)",
+                        "Elmont, NY 11003",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "925090",
+                    "url": "https://www.seamless.com/menu/taco-bell-1625-hempstead-tpke-elmont/925090?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=925090",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4c2f8dfba0ced13abec1106e",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "785 Flushing Ave",
+                    "lat": 40.70082949578311,
+                    "lng": -73.94160408543988,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.70082949578311,
+                            "lng": -73.94160408543988
+                        }
+                    ],
+                    "distance": 15461,
+                    "postalCode": "11206",
+                    "cc": "US",
+                    "city": "Brooklyn",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "785 Flushing Ave",
+                        "Brooklyn, NY 11206",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "927111",
+                    "url": "https://www.seamless.com/menu/taco-bell-785-flushing-ave-brooklyn/927111?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=927111",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "430d0a00f964a5203d271fe3",
+                "name": "Taco Chulo",
+                "location": {
+                    "address": "318 Grand St",
+                    "crossStreet": "btwn Havemeyer St & Marcy Ave",
+                    "lat": 40.712602073145376,
+                    "lng": -73.95645036816178,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.712602073145376,
+                            "lng": -73.95645036816178
+                        }
+                    ],
+                    "distance": 16272,
+                    "postalCode": "11211",
+                    "cc": "US",
+                    "city": "Brooklyn",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "318 Grand St (btwn Havemeyer St & Marcy Ave)",
+                        "Brooklyn, NY 11211",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1c1941735",
+                        "name": "Mexican Restaurant",
+                        "pluralName": "Mexican Restaurants",
+                        "shortName": "Mexican",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/mexican_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "284462",
+                    "url": "https://www.seamless.com/menu/taco-chulo-318-grand-st-brooklyn/284462?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=284462",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
                 "venuePage": {
-                    "id": "149651226"
+                    "id": "71546371"
                 },
-                "referralId": "v-1572896135",
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4bc88304af07a593fbf7802d",
-                "name": "North Queens Orthopaedics",
+                "id": "4b1dc639f964a520221524e3",
+                "name": "Taco Bell",
                 "location": {
-                    "address": "56-50 Francis Lewis Blvd",
-                    "crossStreet": "58th ave",
-                    "lat": 40.743819,
-                    "lng": -73.775943,
+                    "address": "3078 Steinway St",
+                    "crossStreet": "btwn 30th & 31st Ave",
+                    "lat": 40.76192701079036,
+                    "lng": -73.91662464727173,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.743819,
-                            "lng": -73.775943
+                            "lat": 40.76192701079036,
+                            "lng": -73.91662464727173
                         }
                     ],
-                    "distance": 750,
-                    "postalCode": "11364",
+                    "distance": 12504,
+                    "postalCode": "11103",
                     "cc": "US",
-                    "city": "Oakland Gardens",
+                    "city": "Astoria",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "56-50 Francis Lewis Blvd (58th ave)",
-                        "Oakland Gardens, NY 11364",
+                        "3078 Steinway St (btwn 30th & 31st Ave)",
+                        "Astoria, NY 11103",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d177941735",
-                        "name": "Doctor's Office",
-                        "pluralName": "Doctor's Offices",
-                        "shortName": "Doctor's Office",
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_doctorsoffice_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4b858c91f964a520e06431e3",
-                "name": "petland",
+                "id": "4b76dd6ef964a52053652ee3",
+                "name": "Taco Bell",
                 "location": {
-                    "address": "17133 Hillside Ave",
-                    "lat": 40.749160307370396,
-                    "lng": -73.76212373686553,
+                    "address": "996 Hempstead Tpke",
+                    "crossStreet": "btwn Franklin Ave. & Pacific St.",
+                    "lat": 40.70775628437559,
+                    "lng": -73.67715450111046,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.749160307370396,
-                            "lng": -73.76212373686553
+                            "lat": 40.70775628437559,
+                            "lng": -73.67715450111046
                         }
                     ],
-                    "distance": 620,
+                    "distance": 9002,
+                    "postalCode": "11010",
+                    "cc": "US",
+                    "city": "Franklin Square",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "996 Hempstead Tpke (btwn Franklin Ave. & Pacific St.)",
+                        "Franklin Square, NY 11010",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "918385",
+                    "url": "https://www.seamless.com/menu/taco-bell-996-hempstead-tpke-franklin-square/918385?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=918385",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4ca7d5e68882199c6b2744d4",
+                "name": "Taco Bell / Pizza Hut",
+                "location": {
+                    "address": "16001 Jamaica Avenue,",
+                    "lat": 40.703926,
+                    "lng": -73.799166,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.703926,
+                            "lng": -73.799166
+                        }
+                    ],
+                    "distance": 5550,
                     "postalCode": "11432",
                     "cc": "US",
                     "city": "Jamaica",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "17133 Hillside Ave",
+                        "16001 Jamaica Avenue,",
                         "Jamaica, NY 11432",
                         "United States"
                     ]
                 },
-                "categories": [],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4dee0ebcd164f9a5c686687e",
-                "name": "I-295 / I-495 Interchange",
-                "location": {
-                    "address": "Interstate 295 (Clearview Expy)",
-                    "crossStreet": "at Interstate 495 (LI Expy)",
-                    "lat": 40.744156010517464,
-                    "lng": -73.7715397775173,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.744156010517464,
-                            "lng": -73.7715397775173
-                        }
-                    ],
-                    "distance": 505,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Oakland Gardens",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Interstate 295 (Clearview Expy) (at Interstate 495 (LI Expy))",
-                        "Oakland Gardens, NY 11364",
-                        "United States"
-                    ]
-                },
                 "categories": [
                     {
-                        "id": "52f2ab2ebcbc57f1066b8b4c",
-                        "name": "Intersection",
-                        "pluralName": "Intersections",
-                        "shortName": "Intersection",
+                        "id": "4bf58dd8d48988d1ca941735",
+                        "name": "Pizza Place",
+                        "pluralName": "Pizza Places",
+                        "shortName": "Pizza",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/default_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/pizza_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4dd3dab245dd98b61e75ce55",
-                "name": "MTA - Q30 Bus Stop",
-                "location": {
-                    "address": "Oceania St",
-                    "lat": 40.745916,
-                    "lng": -73.76821955644417,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.745916,
-                            "lng": -73.76821955644417
-                        }
-                    ],
-                    "distance": 294,
-                    "cc": "US",
-                    "state": "New York",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Oceania St",
-                        "New York",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d1fe931735",
-                        "name": "Bus Station",
-                        "pluralName": "Bus Stations",
-                        "shortName": "Bus Station",
+                "delivery": {
+                    "id": "1016867",
+                    "url": "https://www.seamless.com/menu/taco-bell-16001-jamaica-ave-jamaica/1016867?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=1016867",
+                    "provider": {
+                        "name": "seamless",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/busstation_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
                     }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4dcd6a28d164679b8ce5a786",
-                "name": "NYHQ",
-                "location": {
-                    "address": "booth memorial ave",
-                    "lat": 40.7466732204118,
-                    "lng": -73.77304074385913,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.7466732204118,
-                            "lng": -73.77304074385913
-                        }
-                    ],
-                    "distance": 361,
-                    "postalCode": "11355",
-                    "cc": "US",
-                    "city": "Flushing",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "booth memorial ave",
-                        "Flushing, NY 11355",
-                        "United States"
-                    ]
                 },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d104941735",
-                        "name": "Medical Center",
-                        "pluralName": "Medical Centers",
-                        "shortName": "Medical",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4ca26687554b236ad4ca1d48",
-                "name": "MTA Q26 (Hollis Court/Francis Lewis)",
+                "id": "5d72db85e9ec0900070f10d2",
+                "name": "Taco Dumbo",
                 "location": {
-                    "address": "Hollis Court Blvd",
-                    "crossStreet": "Francis Lewis Blvd",
-                    "lat": 40.745370158868305,
-                    "lng": -73.7771849331323,
+                    "address": "114 W 47th St",
+                    "lat": 40.758244,
+                    "lng": -73.982624,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.745370158868305,
-                            "lng": -73.7771849331323
+                            "lat": 40.758244,
+                            "lng": -73.982624
                         }
                     ],
-                    "distance": 736,
-                    "cc": "US",
-                    "city": "Queens",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Hollis Court Blvd (Francis Lewis Blvd)",
-                        "Queens, NY",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d1fe931735",
-                        "name": "Bus Station",
-                        "pluralName": "Bus Stations",
-                        "shortName": "Bus Station",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/busstation_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "51910fea498ee54747e7bfb6",
-                "name": "HiTea",
-                "location": {
-                    "lat": 40.74785225792604,
-                    "lng": -73.76750219946275,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.74785225792604,
-                            "lng": -73.76750219946275
-                        }
-                    ],
-                    "distance": 172,
-                    "cc": "US",
-                    "city": "Queens",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Queens, NY",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d16d941735",
-                        "name": "Café",
-                        "pluralName": "Cafés",
-                        "shortName": "Café",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/cafe_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4d03979be350b60c72f87d42",
-                "name": "Cho Dae Church",
-                "location": {
-                    "address": "210-10 Horace Harding Expy",
-                    "lat": 40.74511274259405,
-                    "lng": -73.76462945008885,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.74511274259405,
-                            "lng": -73.76462945008885
-                        }
-                    ],
-                    "distance": 544,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Bayside",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "210-10 Horace Harding Expy",
-                        "Bayside, NY 11364",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d132941735",
-                        "name": "Church",
-                        "pluralName": "Churches",
-                        "shortName": "Church",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/religious_church_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4cb243b2eb65b1f73a477bcd",
-                "name": "Schneiderman's Ice Rink",
-                "location": {
-                    "address": "5815 oceania dt.",
-                    "lat": 40.747262,
-                    "lng": -73.76825,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.747262,
-                            "lng": -73.76825
-                        }
-                    ],
-                    "distance": 160,
-                    "cc": "US",
-                    "state": "New York",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "5815 oceania dt.",
-                        "New York",
-                        "United States"
-                    ]
-                },
-                "categories": [],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4d1f95a216cfb60c7e555261",
-                "name": "Schneiderman's Non-Kosher Meat Factory",
-                "location": {
-                    "address": "Oceania St.",
-                    "lat": 40.747346,
-                    "lng": -73.76834,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.747346,
-                            "lng": -73.76834
-                        }
-                    ],
-                    "distance": 148,
-                    "cc": "US",
-                    "state": "New York",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Oceania St.",
-                        "New York",
-                        "United States"
-                    ]
-                },
-                "categories": [],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4bc09b1dabf49521a877bf93",
-                "name": "Luncheonette",
-                "location": {
-                    "address": "254-57 Horace Harding Expwy",
-                    "lat": 40.749325,
-                    "lng": -73.763011,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.749325,
-                            "lng": -73.763011
-                        }
-                    ],
-                    "distance": 549,
-                    "cc": "US",
-                    "city": "Little Neck",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "254-57 Horace Harding Expwy",
-                        "Little Neck, NY",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d1e0931735",
-                        "name": "Coffee Shop",
-                        "pluralName": "Coffee Shops",
-                        "shortName": "Coffee Shop",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4fd15f59e4b0f61ad9769270",
-                "name": "ern媽媽's car",
-                "location": {
-                    "lat": 40.750795,
-                    "lng": -73.765815,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.750795,
-                            "lng": -73.765815
-                        }
-                    ],
-                    "distance": 404,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Oakland Gardens",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Oakland Gardens, NY 11364",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4f2a23984b9023bd5841ed2c",
-                        "name": "Moving Target",
-                        "pluralName": "Moving Targets",
-                        "shortName": "Moving Target",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/movingtarget_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "50340db0e4b0cc400955ec22",
-                "name": "Moy Yat Ving Tsun",
-                "location": {
-                    "address": "201-02 Northern Blvd",
-                    "lat": 40.74926176702346,
-                    "lng": -73.77771736209401,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.74926176702346,
-                            "lng": -73.77771736209401
-                        }
-                    ],
-                    "distance": 706,
-                    "postalCode": "11361",
-                    "cc": "US",
-                    "city": "Bayside",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "201-02 Northern Blvd",
-                        "Bayside, NY 11361",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d101941735",
-                        "name": "Martial Arts Dojo",
-                        "pluralName": "Martial Arts Dojos",
-                        "shortName": "Martial Arts",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/gym_martialarts_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "5122a8b7e4b027b3b4f1798f",
-                "name": "MTA Q27 (Jamaica)",
-                "location": {
-                    "lat": 40.75561334145599,
-                    "lng": -73.76754241766137,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.75561334145599,
-                            "lng": -73.76754241766137
-                        }
-                    ],
-                    "distance": 818,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Oakland Gardens",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Oakland Gardens, NY 11364",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4f2a23984b9023bd5841ed2c",
-                        "name": "Moving Target",
-                        "pluralName": "Moving Targets",
-                        "shortName": "Moving Target",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/travel/movingtarget_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4ca903a576d3a09321ca1b6b",
-                "name": "Gym",
-                "location": {
-                    "lat": 40.75488602,
-                    "lng": -73.77200603,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.75488602,
-                            "lng": -73.77200603
-                        }
-                    ],
-                    "distance": 754,
-                    "postalCode": "11361",
-                    "cc": "US",
-                    "city": "Bayside",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "Bayside, NY 11361",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d176941735",
-                        "name": "Gym",
-                        "pluralName": "Gyms",
-                        "shortName": "Gym",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/gym_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4fae83c2e4b0f4503a46a9a6",
-                "name": "196-26 67th Ave",
-                "location": {
-                    "address": "196-26 67th Ave",
-                    "crossStreet": "1 Bedroom CoOp in Meadowlark Garden $160k",
-                    "lat": 40.75110861584338,
-                    "lng": -73.77586166549838,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.75110861584338,
-                            "lng": -73.77586166549838
-                        }
-                    ],
-                    "distance": 621,
-                    "postalCode": "11365",
-                    "cc": "US",
-                    "city": "Fresh Meadows",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "196-26 67th Ave (1 Bedroom CoOp in Meadowlark Garden $160k)",
-                        "Fresh Meadows, NY 11365",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4d954b06a243a5684965b473",
-                        "name": "Residential Building (Apartment / Condo)",
-                        "pluralName": "Residential Buildings (Apartments / Condos)",
-                        "shortName": "Residential",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/apartment_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4db05afb0cb6442b2eb70561",
-                "name": "Southern Wine Of NY",
-                "location": {
-                    "address": "underhill blvd",
-                    "lat": 40.7432473,
-                    "lng": -73.777193,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.7432473,
-                            "lng": -73.777193
-                        }
-                    ],
-                    "distance": 871,
-                    "postalCode": "11365",
+                    "distance": 18012,
+                    "postalCode": "10036",
                     "cc": "US",
                     "city": "New York",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "underhill blvd",
-                        "New York, NY 11365",
+                        "114 W 47th St",
+                        "New York, NY 10036",
                         "United States"
                     ]
                 },
-                "categories": [],
-                "referralId": "v-1572896135",
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "1279894",
+                    "url": "https://www.seamless.com/menu/taco-dumbo-114-w-47th-st-new-york/1279894?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=1279894",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4d8c8c6f1716a143698e01f7",
-                "name": "E006",
+                "id": "5a5023d251950e051a8388c0",
+                "name": "Taco Bell Cantina",
                 "location": {
-                    "address": "6100 Francis Lewis Blvd",
-                    "lat": 40.744637,
-                    "lng": -73.770553,
+                    "address": "1032 Flatbush Ave",
+                    "crossStreet": "btwn Beverly Rd & Regent Pl",
+                    "lat": 40.64586539975443,
+                    "lng": -73.95809913483876,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.744637,
-                            "lng": -73.770553
+                            "lat": 40.64586539975443,
+                            "lng": -73.95809913483876
                         }
                     ],
-                    "distance": 429,
+                    "distance": 19592,
+                    "postalCode": "11226",
                     "cc": "US",
-                    "city": "Francis Lewis",
+                    "city": "Brooklyn",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "6100 Francis Lewis Blvd",
-                        "Francis Lewis, NY",
+                        "1032 Flatbush Ave (btwn Beverly Rd & Regent Pl)",
+                        "Brooklyn, NY 11226",
                         "United States"
                     ]
                 },
-                "categories": [],
-                "referralId": "v-1572896135",
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "923413",
+                    "url": "https://www.seamless.com/menu/taco-bell-1034-flatbush-ave-brooklyn/923413?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=923413",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4d28fac1849f370404c27941",
-                "name": "Dazzling Affairs",
+                "id": "4f18c538e4b09594f839d493",
+                "name": "Taco Bell / Pizza Hut",
                 "location": {
-                    "lat": 40.744236,
-                    "lng": -73.771475,
+                    "address": "390 8th Avenue",
+                    "lat": 40.749272,
+                    "lng": -73.995269,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.744236,
-                            "lng": -73.771475
+                            "lat": 40.749272,
+                            "lng": -73.995269
                         }
                     ],
-                    "distance": 494,
+                    "distance": 19046,
+                    "postalCode": "10001",
+                    "cc": "US",
+                    "city": "New York",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "390 8th Avenue",
+                        "New York, NY 10001",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "931858",
+                    "url": "https://www.seamless.com/menu/taco-bell-390-8th-ave-new-york/931858?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=931858",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4ad7c48ef964a520840e21e3",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "208 McGuinness Blvd",
+                    "crossStreet": "btwn Calyer St. & Greenpoint Ave.",
+                    "lat": 40.72949978496394,
+                    "lng": -73.95082023371431,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.72949978496394,
+                            "lng": -73.95082023371431
+                        }
+                    ],
+                    "distance": 15444,
+                    "postalCode": "11222",
+                    "cc": "US",
+                    "city": "Brooklyn",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "208 McGuinness Blvd (btwn Calyer St. & Greenpoint Ave.)",
+                        "Brooklyn, NY 11222",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4cca2ba51ce5236a7bc3bd65",
+                "name": "El Rey Del Taco II",
+                "location": {
+                    "address": "Ditmars Ave. & 31st St.",
+                    "crossStreet": "31st Street",
+                    "lat": 40.776089604563985,
+                    "lng": -73.9105285501661,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.776089604563985,
+                            "lng": -73.9105285501661
+                        }
+                    ],
+                    "distance": 12290,
+                    "postalCode": "11105",
+                    "cc": "US",
+                    "city": "Astoria",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Ditmars Ave. & 31st St. (31st Street)",
+                        "Astoria, NY 11105",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4b788ee7f964a520a7d62ee3",
+                "name": "Taco King",
+                "location": {
+                    "address": "73-06 Bell Blvd",
+                    "crossStreet": "at 73rd Ave",
+                    "lat": 40.740563367951445,
+                    "lng": -73.75824572515143,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.740563367951445,
+                            "lng": -73.75824572515143
+                        }
+                    ],
+                    "distance": 1284,
                     "postalCode": "11364",
                     "cc": "US",
                     "city": "Oakland Gardens",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "Oakland Gardens, NY 11364",
-                        "United States"
-                    ]
-                },
-                "categories": [],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "5c141980a0215b002cebcd14",
-                "name": "Starbucks",
-                "location": {
-                    "address": "23-98 Bell Blvd",
-                    "lat": 40.74709440008955,
-                    "lng": -73.76390218734741,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.74709440008955,
-                            "lng": -73.76390218734741
-                        }
-                    ],
-                    "distance": 487,
-                    "postalCode": "11360",
-                    "cc": "US",
-                    "city": "Bayside",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "23-98 Bell Blvd",
-                        "Bayside, NY 11360",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d1e0931735",
-                        "name": "Coffee Shop",
-                        "pluralName": "Coffee Shops",
-                        "shortName": "Coffee Shop",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "50f91a16e4b0692260c28d67",
-                "name": "Hot Bagels",
-                "location": {
-                    "lat": 40.74632985506164,
-                    "lng": -73.76688743456359,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.74632985506164,
-                            "lng": -73.76688743456359
-                        }
-                    ],
-                    "distance": 314,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Oakland Gardens",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
+                        "73-06 Bell Blvd (at 73rd Ave)",
                         "Oakland Gardens, NY 11364",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d179941735",
-                        "name": "Bagel Shop",
-                        "pluralName": "Bagel Shops",
-                        "shortName": "Bagels",
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bagels_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
+                "delivery": {
+                    "id": "312964",
+                    "url": "https://www.seamless.com/menu/taco-king-7306-bell-blvd-oakland-gardens/312964?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=312964",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4e5e5fa6aeb78833bb8b5dc8",
-                "name": "덕향",
+                "id": "4fa32864e4b09d4d43e7fd7e",
+                "name": "The Taco Shop",
                 "location": {
-                    "address": "221-34 Horace Harding Expwy.",
-                    "lat": 40.746698,
-                    "lng": -73.761465,
+                    "address": "166 W 4th St",
+                    "crossStreet": "btwn Cornelia & Jones St",
+                    "lat": 40.73196898142531,
+                    "lng": -74.00139423939265,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.746698,
-                            "lng": -73.761465
+                            "lat": 40.73196898142531,
+                            "lng": -74.00139423939265
                         }
                     ],
-                    "distance": 696,
-                    "postalCode": "11364",
+                    "distance": 19651,
+                    "postalCode": "10014",
                     "cc": "US",
-                    "city": "Oakland Gardens",
+                    "city": "New York",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "221-34 Horace Harding Expwy.",
-                        "Oakland Gardens, NY 11364",
+                        "166 W 4th St (btwn Cornelia & Jones St)",
+                        "New York, NY 10014",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d145941735",
-                        "name": "Chinese Restaurant",
-                        "pluralName": "Chinese Restaurants",
-                        "shortName": "Chinese",
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "500eeb096de406feaec6a29c",
-                "name": "7-Eleven",
-                "location": {
-                    "address": "58-20 Francis Lewis Blvd",
-                    "lat": 40.7449732589267,
-                    "lng": -73.7769958376893,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.7449732589267,
-                            "lng": -73.7769958376893
+                "delivery": {
+                    "id": "297386",
+                    "url": "https://www.seamless.com/menu/the-taco-shop--166-w-4th-st-new-york/297386?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=297386",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
                         }
-                    ],
-                    "distance": 744,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Bayside",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "58-20 Francis Lewis Blvd",
-                        "Bayside, NY 11364",
-                        "United States"
-                    ]
-                },
-                "categories": [
-                    {
-                        "id": "4d954b0ea243a5684a65b473",
-                        "name": "Convenience Store",
-                        "pluralName": "Convenience Stores",
-                        "shortName": "Convenience Store",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/conveniencestore_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
                     }
-                ],
-                "referralId": "v-1572896135",
-                "hasPerk": false
-            },
-            {
-                "id": "4ecaa46f0e6158ba023c2b2b",
-                "name": "Family Dental of Bayside",
-                "location": {
-                    "address": "58 - 47 Francis Lewis Blvd, #106",
-                    "lat": 40.7443707,
-                    "lng": -73.7756279,
-                    "labeledLatLngs": [
-                        {
-                            "label": "display",
-                            "lat": 40.7443707,
-                            "lng": -73.7756279
-                        }
-                    ],
-                    "distance": 689,
-                    "postalCode": "11364",
-                    "cc": "US",
-                    "city": "Flushing",
-                    "state": "NY",
-                    "country": "United States",
-                    "formattedAddress": [
-                        "58 - 47 Francis Lewis Blvd, #106",
-                        "Flushing, NY 11364",
-                        "United States"
-                    ]
                 },
-                "categories": [
-                    {
-                        "id": "4bf58dd8d48988d178941735",
-                        "name": "Dentist's Office",
-                        "pluralName": "Dentist's Offices",
-                        "shortName": "Dentist's Office",
-                        "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/medical_dentist_",
-                            "suffix": ".png"
-                        },
-                        "primary": true
-                    }
-                ],
                 "venuePage": {
-                    "id": "499175212"
+                    "id": "131763113"
                 },
-                "referralId": "v-1572896135",
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "578d4c73498e2228d036480a",
-                "name": "Ultimate Fitness Zone",
+                "id": "4b957099f964a520afa234e3",
+                "name": "Taco Bell",
                 "location": {
-                    "address": "215-11 Horace Harding Expy",
-                    "lat": 40.7476913788483,
-                    "lng": -73.76203200096157,
+                    "address": "490 Peninsula Blvd",
+                    "crossStreet": "at Whiston St",
+                    "lat": 40.700424,
+                    "lng": -73.628303,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.7476913788483,
-                            "lng": -73.76203200096157
+                            "lat": 40.700424,
+                            "lng": -73.628303
                         }
                     ],
-                    "distance": 627,
-                    "postalCode": "11364",
+                    "distance": 13047,
+                    "postalCode": "11550",
                     "cc": "US",
-                    "city": "New York",
+                    "city": "Hempstead",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "215-11 Horace Harding Expy",
-                        "New York, NY 11364",
+                        "490 Peninsula Blvd (at Whiston St)",
+                        "Hempstead, NY 11550",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4bf58dd8d48988d176941735",
-                        "name": "Gym",
-                        "pluralName": "Gyms",
-                        "shortName": "Gym",
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/gym_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
+                "delivery": {
+                    "id": "925046",
+                    "url": "https://www.seamless.com/menu/taco-bell-490-peninsula-blvd-hempstead/925046?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=925046",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
                 "hasPerk": false
             },
             {
-                "id": "4f3217ea19836c91c7b5218d",
-                "name": "Constant Compliments",
+                "id": "4b70826bf964a520e41e2de3",
+                "name": "Taco Bell",
                 "location": {
-                    "address": "4820 206th St",
-                    "lat": 40.75309,
-                    "lng": -73.77424,
+                    "address": "511 Old Country Rd",
+                    "crossStreet": "Albany Ave",
+                    "lat": 40.747147302186825,
+                    "lng": -73.5945098755438,
                     "labeledLatLngs": [
                         {
                             "label": "display",
-                            "lat": 40.75309,
-                            "lng": -73.77424
+                            "lat": 40.747147302186825,
+                            "lng": -73.5945098755438
                         }
                     ],
-                    "distance": 661,
-                    "postalCode": "11364",
+                    "distance": 14751,
+                    "postalCode": "11590",
                     "cc": "US",
-                    "city": "Flushing",
+                    "city": "Westbury",
                     "state": "NY",
                     "country": "United States",
                     "formattedAddress": [
-                        "4820 206th St",
-                        "Flushing, NY 11364",
+                        "511 Old Country Rd (Albany Ave)",
+                        "Westbury, NY 11590",
                         "United States"
                     ]
                 },
                 "categories": [
                     {
-                        "id": "4d4b7105d754a06374d81259",
-                        "name": "Food",
-                        "pluralName": "Food",
-                        "shortName": "Food",
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
                         "icon": {
-                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
                             "suffix": ".png"
                         },
                         "primary": true
                     }
                 ],
-                "referralId": "v-1572896135",
+                "delivery": {
+                    "id": "927012",
+                    "url": "https://www.seamless.com/menu/taco-bell-511-old-country-rd-westbury/927012?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=927012",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4b59ed98f964a5209ca128e3",
+                "name": "Taco King",
+                "location": {
+                    "address": "480 Hempstead Tpke",
+                    "lat": 40.70602847764687,
+                    "lng": -73.65655964248593,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.70602847764687,
+                            "lng": -73.65655964248593
+                        }
+                    ],
+                    "distance": 10625,
+                    "postalCode": "11552",
+                    "cc": "US",
+                    "city": "West Hempstead",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "480 Hempstead Tpke",
+                        "West Hempstead, NY 11552",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d151941735",
+                        "name": "Taco Place",
+                        "pluralName": "Taco Places",
+                        "shortName": "Tacos",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/taco_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "1113485",
+                    "url": "https://www.seamless.com/menu/taco-king-480-hempstead-tpke-west-hempstead/1113485?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=1113485",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4b8eac06f964a520ff2f33e3",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "5729 Myrtle Ave",
+                    "lat": 40.7005887240479,
+                    "lng": -73.90255919040794,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.7005887240479,
+                            "lng": -73.90255919040794
+                        }
+                    ],
+                    "distance": 12429,
+                    "postalCode": "11385",
+                    "cc": "US",
+                    "city": "Ridgewood",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "5729 Myrtle Ave",
+                        "Ridgewood, NY 11385",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "1017541",
+                    "url": "https://www.seamless.com/menu/taco-bell-5729-myrtle-ave-glendale/1017541?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=1017541",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4b6b10f0f964a5206ef02be3",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "30 Mall Dr W",
+                    "lat": 40.72702100514301,
+                    "lng": -74.0383275534457,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.72702100514301,
+                            "lng": -74.0383275534457
+                        }
+                    ],
+                    "distance": 22806,
+                    "postalCode": "07310",
+                    "cc": "US",
+                    "city": "Jersey City",
+                    "state": "NJ",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "30 Mall Dr W",
+                        "Jersey City, NJ 07310",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "1075288",
+                    "url": "https://www.grubhub.com/restaurant/taco-bell-30-mall-dr-w-jersey-city/1075288?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=1075288",
+                    "provider": {
+                        "name": "grubhub",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_grubhub_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4c38c68e3849c9286718c0b1",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "56 Glen Cove Rd",
+                    "lat": 40.812962860543735,
+                    "lng": -73.62714097802181,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.812962860543735,
+                            "lng": -73.62714097802181
+                        }
+                    ],
+                    "distance": 13981,
+                    "postalCode": "11548",
+                    "cc": "US",
+                    "city": "Greenvale",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "56 Glen Cove Rd",
+                        "Greenvale, NY 11548",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "5608a8c6498e414d87a83ead",
+                "name": "Taco Han",
+                "location": {
+                    "address": "42-17 Bell Blvd",
+                    "crossStreet": "42nd Ave",
+                    "lat": 40.76239291770832,
+                    "lng": -73.76920859307288,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.76239291770832,
+                            "lng": -73.76920859307288
+                        }
+                    ],
+                    "distance": 1557,
+                    "postalCode": "11361",
+                    "cc": "US",
+                    "city": "Bayside",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "42-17 Bell Blvd (42nd Ave)",
+                        "Bayside, NY 11361",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1c1941735",
+                        "name": "Mexican Restaurant",
+                        "pluralName": "Mexican Restaurants",
+                        "shortName": "Mexican",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/mexican_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "delivery": {
+                    "id": "798422",
+                    "url": "https://www.seamless.com/menu/taco-han-4216-bell-blvd-bayside/798422?affiliate=1131&utm_source=foursquare-affiliate-network&utm_medium=affiliate&utm_campaign=1131&utm_content=798422",
+                    "provider": {
+                        "name": "seamless",
+                        "icon": {
+                            "prefix": "https://fastly.4sqi.net/img/general/cap/",
+                            "sizes": [
+                                40,
+                                50
+                            ],
+                            "name": "/delivery_provider_seamless_20180129.png"
+                        }
+                    }
+                },
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4cb69be7e262b60cbc6370e0",
+                "name": "Taco Bell",
+                "location": {
+                    "address": "1731 Webster Ave",
+                    "crossStreet": "Cross Bronx Service Ro. And 174",
+                    "lat": 40.84392351646395,
+                    "lng": -73.90332043028171,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.84392351646395,
+                            "lng": -73.90332043028171
+                        }
+                    ],
+                    "distance": 15505,
+                    "postalCode": "10457",
+                    "cc": "US",
+                    "city": "Bronx",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "1731 Webster Ave (Cross Bronx Service Ro. And 174)",
+                        "Bronx, NY 10457",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d16e941735",
+                        "name": "Fast Food Restaurant",
+                        "pluralName": "Fast Food Restaurants",
+                        "shortName": "Fast Food",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
+                "hasPerk": false
+            },
+            {
+                "id": "4de12e28fa76425c542ba279",
+                "name": "El Changarro Taco Cart",
+                "location": {
+                    "address": "Continental Avenue",
+                    "crossStreet": "at Austin Street",
+                    "lat": 40.72024504033688,
+                    "lng": -73.84595245891025,
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 40.72024504033688,
+                            "lng": -73.84595245891025
+                        }
+                    ],
+                    "distance": 7176,
+                    "postalCode": "11375",
+                    "cc": "US",
+                    "city": "Forest Hills",
+                    "state": "NY",
+                    "country": "United States",
+                    "formattedAddress": [
+                        "Continental Avenue (at Austin Street)",
+                        "Forest Hills, NY 11375",
+                        "United States"
+                    ]
+                },
+                "categories": [
+                    {
+                        "id": "4bf58dd8d48988d1cb941735",
+                        "name": "Food Truck",
+                        "pluralName": "Food Trucks",
+                        "shortName": "Food Truck",
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/streetfood_",
+                            "suffix": ".png"
+                        },
+                        "primary": true
+                    }
+                ],
+                "referralId": "v-1572924936",
                 "hasPerk": false
             }
-        ],
-        "confident": false
+        ]
     }
 }

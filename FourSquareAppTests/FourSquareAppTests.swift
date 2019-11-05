@@ -43,7 +43,7 @@ class FourSquareAppTests: XCTestCase {
                  let data = getMap() ?? Data()
         let mapData = Foursquare.getTestData(from: data) ?? []
               print(mapData)
-                XCTAssertTrue(mapData.count > 0, "No genre data was loaded")
+                XCTAssertTrue(mapData.count > 0, "No map data was loaded")
          }
 
 }
