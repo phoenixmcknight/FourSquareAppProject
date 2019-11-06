@@ -13,7 +13,7 @@ class MapAPIClient {
     
     func getMapData(query:String,latLong:String,completionHandler:@escaping(Result<[Venue],AppError>)-> Void) {
         
-        let url = "https://api.foursquare.com/v2/venues/search?client_id=\(Secrets.client_id)&client_secret=\(Secrets.client_secret)&ll=\(latLong)&query=\(query.lowercased())&v=20191104"
+        let url = "https://api.foursquare.com/v2/venues/search?client_id=\(Secrets.client_id)&client_secret=\(Secrets.client_secret)&ll=\(latLong)&query=\(query.lowercased())&v=20191104&limit=15"
         
         guard let urlStr = URL(string: url) else {
             completionHandler(.failure(.badURL))

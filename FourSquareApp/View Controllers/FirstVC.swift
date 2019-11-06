@@ -33,40 +33,65 @@ class LibraryViewController: UIViewController {
         return map
     }()
     
+    lazy var activityIndic:UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView()
+        ai.hidesWhenStopped = true
+        ai.stopAnimating()
+        
+        return ai
+        
+    }()
+    
+    var arrayOfImages = [UIImage]() {
+        didSet {
+            print(self.arrayOfImages)
+        }
+    }
+    
+    
     var venueData = [Venue]() {
         didSet {
             for i in self.venueData {
     let annotation = MKPointAnnotation()
     annotation.title = i.name
-    annotation.coordinate = CLLocationCoordinate2D(latitude: i.location.lat, longitude: i.location.lng)
+                if let data = i.location {
+    annotation.coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.lng)
         self.map.addAnnotation(annotation)
+                    activityIndic.stopAnimating()
         }
+            }
+            mapCollectionView.reloadData()
     }
+        
     }
+   
     
+      
     lazy var mapCollectionView:UICollectionView = {
                var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
                let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
                layout.scrollDirection = .horizontal
-               layout.itemSize = CGSize(width: 250, height: 250)
+               layout.itemSize = CGSize(width: 125, height: 125)
         colletionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue)
         
-               colletionView.dataSource = self
-               colletionView.delegate = self
+               
                colletionView.backgroundColor = .clear
                layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        layout.minimumInteritemSpacing = 10
+        
                return colletionView
            }()
     
     private let locationManager = CLLocationManager()
     
-    let searchRadius: CLLocationDistance = 2000
+    let searchRadius: CLLocationDistance = 1000
     
     var latLong:(Double,Double) = (40.742054,-73.769417) {
         didSet {
             let coordinateRegion = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: self.latLong.0, longitude: self.latLong.1), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
             map.setRegion(coordinateRegion, animated: true)
             loadVenueData(query: searchStringQuery)
+            activityIndic.stopAnimating()
         }
     }
        
@@ -76,7 +101,7 @@ class LibraryViewController: UIViewController {
             loadLatLongData(cityNameOrZipCode: search)
      }
     }
-    var searchStringQuery:String = "Pizza" {
+    var searchStringQuery:String = "" {
         didSet  {
             guard self.searchStringQuery != "" else {return}
             loadVenueData(query: self.searchStringQuery)
@@ -90,11 +115,18 @@ class LibraryViewController: UIViewController {
         
         locationManager.delegate = self
         map.delegate = self
+        mapCollectionView.delegate = self
+        mapCollectionView.dataSource = self
         searchBarOne.delegate = self
         searchBarTwo.delegate = self
         //map.userTrackingMode = .follow
         locationAuthorization()
         constriants()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
+        
+    }
+    
+    @objc private func showTableView() {
         
     }
 
@@ -105,10 +137,13 @@ class LibraryViewController: UIViewController {
         view.addSubview(searchBarTwo)
         view.addSubview(map)
         view.addSubview(mapCollectionView)
+        view.addSubview(activityIndic)
         searchBarOne.translatesAutoresizingMaskIntoConstraints = false
         searchBarTwo.translatesAutoresizingMaskIntoConstraints = false
         map.translatesAutoresizingMaskIntoConstraints = false
         mapCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        activityIndic.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             searchBarOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
@@ -124,7 +159,15 @@ class LibraryViewController: UIViewController {
             map.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             mapCollectionView.topAnchor.constraint(equalTo: view.bottomAnchor,constant: -250),
             mapCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
-            mapCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -20)
+            mapCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -20),
+            
+            mapCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            activityIndic.centerXAnchor.constraint(equalTo: mapCollectionView.centerXAnchor),
+            activityIndic.centerYAnchor.constraint(equalTo: mapCollectionView.centerYAnchor),
+            activityIndic.heightAnchor.constraint(equalToConstant: 200),
+            activityIndic.widthAnchor.constraint(equalToConstant: 200)
+            
             
         ])
     }
@@ -172,15 +215,74 @@ class LibraryViewController: UIViewController {
             }
         }
     }
+    private func loadVenuePictures(currentItem:Int) -> UIImage{
+        var image = UIImage()
+        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venueData[currentItem].id ) { (results) in
+            switch results {
+            case .failure(let error):
+                print(error)
+
+            case .success(let item):
+                ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) { (results) in
+                    switch results {
+                    case .failure(let error):
+                        print("picture error \(error)")
+
+                        image = UIImage(systemName: "image")!
+
+                    case .success(let imageData):
+                      print("got image")
+                        image = imageData
+                    }
+                }
+            }
+        }
+        return image
+    }
 }
     
 extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return venueData.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        let venue = venueData[indexPath.item]
+        let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
+        
+        cell.fourSquareImageView.image = UIImage(systemName: "photo")
+        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venue.id ) { (results) in
+                  switch results {
+                  case .failure(let error):
+                      print(error)
+                      
+                  case .success(let item):
+                   // print("got something from pictureAPI")
+                    
+                    ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) { [weak self] (results) in
+                       
+                        DispatchQueue.main.async {
+                            print(item[0].returnPictureURL())
+                       // print("got something")
+                          switch results {
+                          case .failure(let error):
+                              print("picture error \(error)")
+                          case .success(let imageData):
+                           // print("got image")
+                            cell.fourSquareImageView.image = imageData
+                            self?.arrayOfImages.append(imageData)
+                            print(imageData)
+                          }
+                        }
+                      }
+                  }
+              }
+          
+        
+        return cell
+        
     }
     
     
@@ -233,7 +335,8 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         switch searchBar.tag {
         case 0:
-            
+            activityIndic.startAnimating()
+
             let annotations = self.map.annotations
                                      self.map.removeAnnotations(annotations)
             guard let search = searchBarOne.text else {return}
@@ -262,6 +365,8 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
                         
         case 1:
             searchStringLatLong = searchBarTwo.text
+            activityIndic.startAnimating()
+            resignFirstResponder()
         default:
             break
         }

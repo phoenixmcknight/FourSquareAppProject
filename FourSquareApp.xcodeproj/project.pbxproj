@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */; };
+		696D5D7A2371EB0F00C020CD /* mapPicutreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D792371EB0F00C020CD /* mapPicutreModel.swift */; };
 		6975A4DC2370BA42000BB014 /* testFourSquareAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = 6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */; };
 		6975A4DE2370BBE9000BB014 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADB22370B57A007919AC /* MapModel.swift */; };
 		6975A4E02370C019000BB014 /* ZipCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6975A4DF2370C019000BB014 /* ZipCodeHelper.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPictureAPIClient.swift; sourceTree = "<group>"; };
+		696D5D792371EB0F00C020CD /* mapPicutreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapPicutreModel.swift; sourceTree = "<group>"; };
 		6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testFourSquareAPI.json; sourceTree = "<group>"; };
 		6975A4DF2370C019000BB014 /* ZipCodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeHelper.swift; sourceTree = "<group>"; };
 		6975A4E22370C2C0000BB014 /* mapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			children = (
 				69FAADB22370B57A007919AC /* MapModel.swift */,
 				6975A4DF2370C019000BB014 /* ZipCodeHelper.swift */,
+				696D5D792371EB0F00C020CD /* mapPicutreModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				69FAADC22370B619007919AC /* NetworkHelper.swift */,
 				69FAADC32370B619007919AC /* AppError.swift */,
 				69FAADC42370B619007919AC /* ImageHelper.swift */,
+				696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -333,7 +339,9 @@
 				6975A4E02370C019000BB014 /* ZipCodeHelper.swift in Sources */,
 				69FAADC62370B619007919AC /* NetworkHelper.swift in Sources */,
 				69FAADC82370B619007919AC /* ImageHelper.swift in Sources */,
+				696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */,
 				69FAAD812370AEDB007919AC /* ViewController.swift in Sources */,
+				696D5D7A2371EB0F00C020CD /* mapPicutreModel.swift in Sources */,
 				69FAADC72370B619007919AC /* AppError.swift in Sources */,
 				69FAADAD2370AFD5007919AC /* FirstVC.swift in Sources */,
 				69FAADB02370AFEA007919AC /* SecondVC.swift in Sources */,

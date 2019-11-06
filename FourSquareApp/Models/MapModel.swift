@@ -78,7 +78,7 @@ struct Delivery: Codable {
 
 // MARK: - Provider
 struct Provider: Codable {
-    let name: ProviderName
+    let name: String?
     let icon: ProviderIcon
 }
 
@@ -86,7 +86,7 @@ struct Provider: Codable {
 struct ProviderIcon: Codable {
     let iconPrefix: String
     let sizes: [Int]
-    let name: IconName
+    let name: String
 
     enum CodingKeys: String, CodingKey {
         case iconPrefix = "prefix"
@@ -94,15 +94,9 @@ struct ProviderIcon: Codable {
     }
 }
 
-enum IconName: String, Codable {
-    case deliveryProviderGrubhub20180129PNG = "/delivery_provider_grubhub_20180129.png"
-    case deliveryProviderSeamless20180129PNG = "/delivery_provider_seamless_20180129.png"
-}
 
-enum ProviderName: String, Codable {
-    case grubhub = "grubhub"
-    case seamless = "seamless"
-}
+
+
 
 // MARK: - Location
 struct Location: Codable {
@@ -110,41 +104,28 @@ struct Location: Codable {
     let crossStreet: String?
     let lat, lng: Double
     let labeledLatLngs: [LabeledLatLng]
-    let distance: Int
-    let postalCode: String
-    let cc: Cc
-    let city: String
-    let state: State
-    let country: Country
+    let distance: Int?
+    let postalCode: String?
+    let cc: String?
+    let city: String?
+    let state: String?
+    let country: String?
     let formattedAddress: [String]
 }
 
-enum Cc: String, Codable {
-    case us = "US"
-}
 
-enum Country: String, Codable {
-    case unitedStates = "United States"
-}
+
+
 
 // MARK: - LabeledLatLng
 struct LabeledLatLng: Codable {
-    let label: Label
+    let label: String
     let lat, lng: Double
 }
 
-enum Label: String, Codable {
-    case display = "display"
-}
 
-enum State: String, Codable {
-    case nj = "NJ"
-    case ny = "NY"
-}
 
-enum ReferralID: String, Codable {
-    case v1572900521 = "v-1572900521"
-}
+
 
 // MARK: - VenuePage
 struct VenuePage: Codable {

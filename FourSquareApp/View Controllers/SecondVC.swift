@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import UIKit
+
+class VenueTableViewController:UIViewController {
+  
+    var venue = [Venue]() {
+        didSet {
+            
+        }
+    }
+    
+    var image = [UIImage]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

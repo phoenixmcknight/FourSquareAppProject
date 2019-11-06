@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
              
                                window = UIWindow(windowScene: scene)
-                 window?.rootViewController = createMainTabBarController()
+        let navController = UINavigationController(rootViewController: createMainTabBarController())
+                 window?.rootViewController = navController
                window?.makeKeyAndVisible()
     }
 
@@ -62,6 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        
        
         let tabVC = UITabBarController()
+        
         tabVC.setViewControllers([firstvc,secondvc], animated: false)
         return tabVC
     }
