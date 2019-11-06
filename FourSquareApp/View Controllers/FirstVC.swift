@@ -29,7 +29,7 @@ class LibraryViewController: UIViewController {
        }()
     lazy var map:MKMapView = {
         let map = MKMapView()
-        map.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+       
         return map
     }()
     
@@ -45,6 +45,7 @@ class LibraryViewController: UIViewController {
     var arrayOfImages = [UIImage]() {
         didSet {
             print(self.arrayOfImages)
+            print(self.arrayOfImages.count)
         }
     }
     
@@ -86,7 +87,7 @@ class LibraryViewController: UIViewController {
     
     let searchRadius: CLLocationDistance = 1000
     
-    var latLong:(Double,Double) = (40.742054,-73.769417) {
+    var latLong:(Double,Double) = (0,0) {
         didSet {
             let coordinateRegion = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: self.latLong.0, longitude: self.latLong.1), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
             map.setRegion(coordinateRegion, animated: true)
@@ -119,8 +120,9 @@ class LibraryViewController: UIViewController {
         mapCollectionView.dataSource = self
         searchBarOne.delegate = self
         searchBarTwo.delegate = self
-        //map.userTrackingMode = .follow
+        
         locationAuthorization()
+        map.userTrackingMode = .follow
         constriants()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
         
@@ -239,6 +241,11 @@ class LibraryViewController: UIViewController {
         }
         return image
     }
+    private func enterLocationAlert(title:String,message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+    }
 }
     
 extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSource {
@@ -253,15 +260,15 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
         cell.fourSquareImageView.image = UIImage(systemName: "photo")
-        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venue.id ) { (results) in
+        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venue.id ) { [weak self](results) in
                   switch results {
                   case .failure(let error):
                       print(error)
                       
                   case .success(let item):
                    // print("got something from pictureAPI")
-                    
-                    ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) { [weak self] (results) in
+                    if item.count > 0 {
+                    ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) {   (results) in
                        
                         DispatchQueue.main.async {
                             print(item[0].returnPictureURL())
@@ -275,6 +282,7 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
                             self?.arrayOfImages.append(imageData)
                             print(imageData)
                           }
+                        }
                         }
                       }
                   }
@@ -293,16 +301,24 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("New Location: \(locations)")
     }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("Authorization status changed to \(status.rawValue)")
         switch status {
         case .authorizedAlways,.authorizedWhenInUse:
             locationManager.requestLocation()
+            latLong = (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double)
+            print("testLATLONG \(latLong)")
+        case .denied:
+          enterLocationAlert(title: "Please Enter a Location", message: "")
+          print(CLAuthorizationStatus.denied)
             
             default:
             break
             }
         }
+    
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
