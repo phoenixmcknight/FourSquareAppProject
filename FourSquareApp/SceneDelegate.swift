@@ -58,6 +58,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     private func createMainTabBarController() -> UITabBarController {
         let navController = UINavigationController(rootViewController: LibraryViewController())
+        
+        let collectionVC = 
         navController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
         
        

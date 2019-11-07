@@ -10,6 +10,9 @@
 		6951061B23737CEA007AB772 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061A23737CE9007AB772 /* ListTableViewCell.swift */; };
 		6951061D23748433007AB772 /* DetailVenueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061C23748433007AB772 /* DetailVenueVC.swift */; };
 		69510620237484F3007AB772 /* OutletExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061F237484F3007AB772 /* OutletExtensions.swift */; };
+		695106222374CB3C007AB772 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106212374CB3C007AB772 /* CollectionVC.swift */; };
+		695106262374D736007AB772 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106242374D736007AB772 /* PersistenceHelper.swift */; };
+		695106272374D736007AB772 /* CardPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106252374D736007AB772 /* CardPersistenceManager.swift */; };
 		696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */; };
 		696D5D7A2371EB0F00C020CD /* mapPicutreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D792371EB0F00C020CD /* mapPicutreModel.swift */; };
 		6975A4DC2370BA42000BB014 /* testFourSquareAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = 6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */; };
@@ -53,6 +56,9 @@
 		6951061A23737CE9007AB772 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		6951061C23748433007AB772 /* DetailVenueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVenueVC.swift; sourceTree = "<group>"; };
 		6951061F237484F3007AB772 /* OutletExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletExtensions.swift; sourceTree = "<group>"; };
+		695106212374CB3C007AB772 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		695106242374D736007AB772 /* PersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		695106252374D736007AB772 /* CardPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPersistenceManager.swift; sourceTree = "<group>"; };
 		696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPictureAPIClient.swift; sourceTree = "<group>"; };
 		696D5D792371EB0F00C020CD /* mapPicutreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapPicutreModel.swift; sourceTree = "<group>"; };
 		6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testFourSquareAPI.json; sourceTree = "<group>"; };
@@ -113,6 +119,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		695106232374D736007AB772 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				695106242374D736007AB772 /* PersistenceHelper.swift */,
+				695106252374D736007AB772 /* CardPersistenceManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		6975A4E12370C293000BB014 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +160,7 @@
 		69FAAD7B2370AEDB007919AC /* FourSquareApp */ = {
 			isa = PBXGroup;
 			children = (
+				695106232374D736007AB772 /* Persistence */,
 				6951061E237484E0007AB772 /* Extensions */,
 				6975A4E12370C293000BB014 /* Views */,
 				69FAADCC2370B7ED007919AC /* Secrets */,
@@ -185,6 +201,7 @@
 				69FAADAC2370AFD5007919AC /* FirstVC.swift */,
 				69FAADAF2370AFEA007919AC /* SecondVC.swift */,
 				6951061C23748433007AB772 /* DetailVenueVC.swift */,
+				695106212374CB3C007AB772 /* CollectionVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -359,8 +376,11 @@
 				69FAADC72370B619007919AC /* AppError.swift in Sources */,
 				69FAADAD2370AFD5007919AC /* FirstVC.swift in Sources */,
 				69510620237484F3007AB772 /* OutletExtensions.swift in Sources */,
+				695106272374D736007AB772 /* CardPersistenceManager.swift in Sources */,
 				69FAADB02370AFEA007919AC /* SecondVC.swift in Sources */,
+				695106222374CB3C007AB772 /* CollectionVC.swift in Sources */,
 				69FAAD7D2370AEDB007919AC /* AppDelegate.swift in Sources */,
+				695106262374D736007AB772 /* PersistenceHelper.swift in Sources */,
 				69FAADB32370B57A007919AC /* MapModel.swift in Sources */,
 				69FAADC52370B619007919AC /* MapAPIClient.swift in Sources */,
 				6975A4E32370C2C0000BB014 /* mapCollectionViewCell.swift in Sources */,

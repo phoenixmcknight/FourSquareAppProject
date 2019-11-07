@@ -22,65 +22,75 @@ class LibraryViewController: UIViewController {
         let sbo = UISearchBar()
         sbo.tag = 0
         sbo.placeholder = "Enter Type of Venue Here"
+        sbo.backgroundColor = .lightGray
+        sbo.barTintColor = .clear
         return sbo
     }()
     lazy var searchBarTwo:UISearchBar = {
-           let sbo = UISearchBar()
+        let sbo = UISearchBar()
         sbo.tag = 1
         sbo.placeholder = "Enter Location Here"
-           return sbo
-       }()
+        sbo.backgroundColor = .lightGray
+        sbo.barTintColor = .clear
+        return sbo
+    }()
     lazy var map:MKMapView = {
         let map = MKMapView()
-       
+        
         return map
     }()
     
     lazy var activityIndic:UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView()
         ai.hidesWhenStopped = true
-        ai.stopAnimating()
-        
+        ai.style = .large
+        ai.startAnimating()
         return ai
         
     }()
     
     var venueData = [Venue]() {
         didSet {
+            loadImageData(venue: self.venueData)
+
             var count = 0
             for i in self.venueData {
-    let annotation = MKPointAnnotation()
-    annotation.title = i.name
+                let annotation = MKPointAnnotation()
+                annotation.title = i.name
                 if let data = i.location {
-    annotation.coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.lng)
+                    annotation.coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.lng)
                     
                     annotation.subtitle = String(count)
-        self.map.addAnnotation(annotation)
+                    self.map.addAnnotation(annotation)
                     count += 1
-                    activityIndic.stopAnimating()
-        }
+                }
             }
-            mapCollectionView.reloadData()
-    }
+        }
         
     }
-   
     
-      
+    var imageArray:[UIImage] = [] {
+        didSet {
+            if self.imageArray.count == venueData.count {
+            mapCollectionView.reloadData()
+            }
+        }
+    }
+    
     lazy var mapCollectionView:UICollectionView = {
-               var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-               let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
-               layout.scrollDirection = .horizontal
-               layout.itemSize = CGSize(width: 125, height: 125)
+        var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+        let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 125, height: 125)
         colletionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue)
         
-               
-               colletionView.backgroundColor = .clear
-               layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        
+        colletionView.backgroundColor = .clear
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 10
         
-               return colletionView
-           }()
+        return colletionView
+    }()
     
     private let locationManager = CLLocationManager()
     
@@ -91,17 +101,16 @@ class LibraryViewController: UIViewController {
             let coordinateRegion = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: self.latLong.0, longitude: self.latLong.1), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
             map.setRegion(coordinateRegion, animated: true)
             loadVenueData(query: searchStringQuery)
-            activityIndic.stopAnimating()
             print(self.latLong)
         }
         
     }
-       
+    
     var searchStringLatLong:String? = nil {
         didSet {
             guard let search = self.searchStringLatLong else {return}
             loadLatLongData(cityNameOrZipCode: search)
-     }
+        }
     }
     var searchStringQuery:String = "pizza" {
         didSet  {
@@ -109,11 +118,11 @@ class LibraryViewController: UIViewController {
             loadVenueData(query: self.searchStringQuery)
         }
     }
-   
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .darkGray
         
         locationManager.delegate = self
         map.delegate = self
@@ -123,18 +132,18 @@ class LibraryViewController: UIViewController {
         searchBarTwo.delegate = self
         
         locationAuthorization()
-        map.userTrackingMode = .follow
+        //map.userTrackingMode = .follow
         configureOutletConstraints()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
-       
+        
     }
     
     @objc private func showTableView() {
-       let tableview = VenueTableViewController()
-       tableview.venueTableViewData = venueData
+        let tableview = VenueTableViewController()
+        tableview.venueTableViewData = venueData
         navigationController?.pushViewController(tableview, animated: true)
     }
-
+    
     
     private func configureOutletConstraints() {
         
@@ -169,9 +178,8 @@ class LibraryViewController: UIViewController {
             mapCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             activityIndic.centerXAnchor.constraint(equalTo: mapCollectionView.centerXAnchor),
-            activityIndic.centerYAnchor.constraint(equalTo: mapCollectionView.centerYAnchor),
-            activityIndic.heightAnchor.constraint(equalToConstant: 500),
-            activityIndic.widthAnchor.constraint(equalToConstant: 500)
+            activityIndic.centerYAnchor.constraint(equalTo: mapCollectionView.centerYAnchor,constant:  -100),
+            
             
             
         ])
@@ -189,11 +197,11 @@ class LibraryViewController: UIViewController {
             if latLong != (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double) {
                 latLong = (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double)
             }
-             genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
-       
+            genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
+            
         case .denied:
             genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
-         default:
+        default:
             locationManager.requestWhenInUseAuthorization()
         }
     }
@@ -205,7 +213,7 @@ class LibraryViewController: UIViewController {
             case .success(let lat, let long):
                 self?.latLong.0 = lat
                 self?.latLong.1 = long
-              
+                
                 print("good input")
             case .failure(_):
                 print("bad input")
@@ -218,40 +226,53 @@ class LibraryViewController: UIViewController {
                 
             case .success(let data):
                 self.venueData = data
-                
+                self.activityIndic.stopAnimating()
             case .failure(let error):
                 print(error)
             }
         }
     }
-    private func loadVenuePictures(currentItem:Int) -> UIImage{
-        var image = UIImage()
-        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venueData[currentItem].id ) { (results) in
-            switch results {
-            case .failure(let error):
-                print(error)
-
-            case .success(let item):
-                ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) { (results) in
-                    switch results {
-                    case .failure(let error):
-                        print("picture error \(error)")
-
-                        image = UIImage(systemName: "image")!
-
-                    case .success(let imageData):
-                        image = imageData
-                    }
-                }
-            }
-        }
-        return image
-    }
+   
     private func genericAlertFunction(title:String,message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
         alert.addAction(cancel)
         present(alert,animated: true)
+    }
+    
+    private func loadImageData(venue:[Venue]) {
+        for i in venue {
+            MapPictureAPIClient.manager.getFourSquarePictureData(venueID:i.id ) { (results) in
+                switch results {
+                case .failure(let error):
+                    print(error)
+                    self.imageArray.append(UIImage(systemName: "photo")!)
+                case .success(let item):
+                    // print("got something from pictureAPI")
+                        if item.count > 0 {
+                            ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) {   (results) in
+                                
+                                
+                                print(item[0].returnPictureURL())
+                                // print("got something")
+                                switch results {
+                                case .failure(let error):
+                                    print("picture error \(error)")
+                                    self.imageArray.append(UIImage(systemName: "photo")!)
+                                    print("test Load PHoto function")
+                                case .success(let imageData):
+                                    // print("got image")
+                                self.imageArray.append(imageData)
+                                    print("test Load PHoto function")
+                                }
+                            }
+                        } else {
+                            self.imageArray.append(UIImage(systemName: "photo")!)
+                            print("test Load PHoto function")
+                        }
+                }
+            }
+        }
     }
 }
     
@@ -263,39 +284,23 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let venue = venueData[indexPath.item]
+        
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
-       
-        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venue.id ) { (results) in
-                  switch results {
-                  case .failure(let error):
-                     print(error)
-                  case .success(let item):
-                   // print("got something from pictureAPI")
-                    if item.count > 0 {
-                    ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) {   (results) in
-                       
-                        DispatchQueue.main.async {
-                            print(item[0].returnPictureURL())
-                       // print("got something")
-                          switch results {
-                          case .failure(let error):
-                              print("picture error \(error)")
-                          case .success(let imageData):
-                           // print("got image")
-                            cell.fourSquareImageView.image = imageData
-                                      }
-                        }
-                        }
-                    } else {
-                         cell.fourSquareImageView.image = UIImage(systemName: "photo")
-                    }
-                  }
-              }
-          
+        cell.fourSquareImageView.image = imageArray[indexPath.item]
+        
+              
         
         return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        map.showAnnotations(map.annotations.filter({$0.title == venueData[indexPath.item].name}), animated: true)
+    
+        
+        
         
     }
     
@@ -304,10 +309,25 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
 //
 extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     
+    
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        view.isHighlighted = true
         if let annotation = view.annotation?.subtitle {
-            print(venueData[Int(annotation!)!])
-        }
+            let currentVenueTag = Int(annotation!)!
+            
+            let detailVC = DetailVenueVC()
+           
+          
+            
+            detailVC.holdImage = imageArray[currentVenueTag]
+            
+            detailVC.holdTitle = venueData[currentVenueTag].name
+            detailVC.holdTypeOfResturant = "\(searchStringQuery.capitalized) Resturant"
+            
+            navigationController?.pushViewController(detailVC, animated: true)
+            }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -365,19 +385,18 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
  let annotations = self.map.annotations
-                switch searchBar.tag {
+        activityIndic.startAnimating()
+        switch searchBar.tag {
         case 0:
-            activityIndic.startAnimating()
 
                                      self.map.removeAnnotations(annotations)
             guard let search = searchBarOne.text else {return}
             guard search != "" else {return}
-            searchStringQuery = search
+            searchStringQuery = search.capitalized
             searchBar.resignFirstResponder()
 
         case 1:
             searchStringLatLong = searchBarTwo.text
-            activityIndic.startAnimating()
             self.map.removeAnnotations(annotations)
             resignFirstResponder()
         default:
