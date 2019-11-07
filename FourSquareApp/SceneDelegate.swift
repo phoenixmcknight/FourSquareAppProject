@@ -24,8 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
              
                                window = UIWindow(windowScene: scene)
-        let navController = UINavigationController(rootViewController: createMainTabBarController())
-                 window?.rootViewController = navController
+        
+                 window?.rootViewController = createMainTabBarController()
                window?.makeKeyAndVisible()
     }
 
@@ -57,14 +57,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     private func createMainTabBarController() -> UITabBarController {
-        let firstvc = LibraryViewController(),secondvc = UIViewController()
-        firstvc.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
+        let navController = UINavigationController(rootViewController: LibraryViewController())
+        navController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
         
        
        
         let tabVC = UITabBarController()
         
-        tabVC.setViewControllers([firstvc,secondvc], animated: false)
+        tabVC.setViewControllers([navController], animated: false)
         return tabVC
     }
 

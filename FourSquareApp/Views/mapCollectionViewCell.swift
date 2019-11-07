@@ -15,7 +15,7 @@ class MapCollectionViewCell: UICollectionViewCell {
         
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        
+        iv.image = UIImage(systemName: "photo")
         
         return iv
     }()
@@ -38,10 +38,11 @@ class MapCollectionViewCell: UICollectionViewCell {
     private func configureConstraints() {
         fourSquareImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            fourSquareImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            fourSquareImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            fourSquareImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            fourSquareImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            fourSquareImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            fourSquareImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            fourSquareImageView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.8),
+            
+            fourSquareImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.8)
         ])
     }
     

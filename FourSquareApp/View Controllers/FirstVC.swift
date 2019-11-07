@@ -12,6 +12,7 @@ import CoreLocation
 
 enum RegisterCells:String {
     case mapCollectionViewCell
+    case listTableViewCell
 }
 
 class LibraryViewController: UIViewController {
@@ -20,11 +21,13 @@ class LibraryViewController: UIViewController {
     lazy var searchBarOne:UISearchBar = {
         let sbo = UISearchBar()
         sbo.tag = 0
+        sbo.placeholder = "Enter Type of Venue Here"
         return sbo
     }()
     lazy var searchBarTwo:UISearchBar = {
            let sbo = UISearchBar()
         sbo.tag = 1
+        sbo.placeholder = "Enter Location Here"
            return sbo
        }()
     lazy var map:MKMapView = {
@@ -42,22 +45,18 @@ class LibraryViewController: UIViewController {
         
     }()
     
-    var arrayOfImages = [UIImage]() {
-        didSet {
-            print(self.arrayOfImages)
-            print(self.arrayOfImages.count)
-        }
-    }
-    
-    
     var venueData = [Venue]() {
         didSet {
+            var count = 0
             for i in self.venueData {
     let annotation = MKPointAnnotation()
     annotation.title = i.name
                 if let data = i.location {
     annotation.coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.lng)
+                    
+                    annotation.subtitle = String(count)
         self.map.addAnnotation(annotation)
+                    count += 1
                     activityIndic.stopAnimating()
         }
             }
@@ -93,7 +92,9 @@ class LibraryViewController: UIViewController {
             map.setRegion(coordinateRegion, animated: true)
             loadVenueData(query: searchStringQuery)
             activityIndic.stopAnimating()
+            print(self.latLong)
         }
+        
     }
        
     var searchStringLatLong:String? = nil {
@@ -102,7 +103,7 @@ class LibraryViewController: UIViewController {
             loadLatLongData(cityNameOrZipCode: search)
      }
     }
-    var searchStringQuery:String = "" {
+    var searchStringQuery:String = "pizza" {
         didSet  {
             guard self.searchStringQuery != "" else {return}
             loadVenueData(query: self.searchStringQuery)
@@ -123,17 +124,19 @@ class LibraryViewController: UIViewController {
         
         locationAuthorization()
         map.userTrackingMode = .follow
-        constriants()
+        configureOutletConstraints()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
-        
+       
     }
     
     @objc private func showTableView() {
-        
+       let tableview = VenueTableViewController()
+       tableview.venueTableViewData = venueData
+        navigationController?.pushViewController(tableview, animated: true)
     }
 
     
-    private func constriants() {
+    private func configureOutletConstraints() {
         
         view.addSubview(searchBarOne)
         view.addSubview(searchBarTwo)
@@ -167,8 +170,8 @@ class LibraryViewController: UIViewController {
             
             activityIndic.centerXAnchor.constraint(equalTo: mapCollectionView.centerXAnchor),
             activityIndic.centerYAnchor.constraint(equalTo: mapCollectionView.centerYAnchor),
-            activityIndic.heightAnchor.constraint(equalToConstant: 200),
-            activityIndic.widthAnchor.constraint(equalToConstant: 200)
+            activityIndic.heightAnchor.constraint(equalToConstant: 500),
+            activityIndic.widthAnchor.constraint(equalToConstant: 500)
             
             
         ])
@@ -178,15 +181,18 @@ class LibraryViewController: UIViewController {
         let status = CLLocationManager.authorizationStatus()
         switch status {
             
-       
-        
-            
         case .authorizedAlways,.authorizedWhenInUse:
             map.showsUserLocation = true
             locationManager.requestLocation()
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            if latLong != (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double) {
+                latLong = (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double)
+            }
+             genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
        
+        case .denied:
+            genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
          default:
             locationManager.requestWhenInUseAuthorization()
         }
@@ -212,6 +218,7 @@ class LibraryViewController: UIViewController {
                 
             case .success(let data):
                 self.venueData = data
+                
             case .failure(let error):
                 print(error)
             }
@@ -233,7 +240,6 @@ class LibraryViewController: UIViewController {
                         image = UIImage(systemName: "image")!
 
                     case .success(let imageData):
-                      print("got image")
                         image = imageData
                     }
                 }
@@ -241,10 +247,11 @@ class LibraryViewController: UIViewController {
         }
         return image
     }
-    private func enterLocationAlert(title:String,message:String) {
+    private func genericAlertFunction(title:String,message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
         alert.addAction(cancel)
+        present(alert,animated: true)
     }
 }
     
@@ -259,12 +266,11 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
         let venue = venueData[indexPath.item]
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
-        cell.fourSquareImageView.image = UIImage(systemName: "photo")
-        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venue.id ) { [weak self](results) in
+       
+        MapPictureAPIClient.manager.getFourSquarePictureData(venueID:venue.id ) { (results) in
                   switch results {
                   case .failure(let error):
-                      print(error)
-                      
+                     print(error)
                   case .success(let item):
                    // print("got something from pictureAPI")
                     if item.count > 0 {
@@ -279,12 +285,12 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
                           case .success(let imageData):
                            // print("got image")
                             cell.fourSquareImageView.image = imageData
-                            self?.arrayOfImages.append(imageData)
-                            print(imageData)
-                          }
+                                      }
                         }
                         }
-                      }
+                    } else {
+                         cell.fourSquareImageView.image = UIImage(systemName: "photo")
+                    }
                   }
               }
           
@@ -298,8 +304,17 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
 //
 extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotation = view.annotation?.subtitle {
+            print(venueData[Int(annotation!)!])
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("New Location: \(locations)")
+       var count = 0
+        count += 1
+        // print("New Location: \(locations)")
+        print(count)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -308,9 +323,9 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
         case .authorizedAlways,.authorizedWhenInUse:
             locationManager.requestLocation()
             latLong = (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double)
-            print("testLATLONG \(latLong)")
+             genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
         case .denied:
-          enterLocationAlert(title: "Please Enter a Location", message: "")
+          genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
           print(CLAuthorizationStatus.denied)
             
             default:
@@ -349,39 +364,21 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
         
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        switch searchBar.tag {
+ let annotations = self.map.annotations
+                switch searchBar.tag {
         case 0:
             activityIndic.startAnimating()
 
-            let annotations = self.map.annotations
                                      self.map.removeAnnotations(annotations)
             guard let search = searchBarOne.text else {return}
             guard search != "" else {return}
             searchStringQuery = search
             searchBar.resignFirstResponder()
-                    
-            //        let searchRequest = MKLocalSearch.Request()
-            //        searchRequest.naturalLanguageQuery = searchBar.text
-            //        let activeSearch = MKLocalSearch(request: searchRequest)
-            //        activeSearch.start { (response,error) in
-            //            activityIndictator.stopAnimating()
-            //            if response == nil {
-            //                print(error)
-            //            } else {
-                         
-                           
-                   
-                      
-                    
-                    
-                            
 
-
-                         
-                        
         case 1:
             searchStringLatLong = searchBarTwo.text
             activityIndic.startAnimating()
+            self.map.removeAnnotations(annotations)
             resignFirstResponder()
         default:
             break
