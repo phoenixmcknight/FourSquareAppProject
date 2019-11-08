@@ -21,4 +21,13 @@ public convenience init(font:UIFont){
 
 }
 
-
+extension UICollectionViewFlowLayout {
+    public convenience init(placeHolder:String) {
+    self.init()
+        self.scrollDirection = .vertical
+    self.itemSize = CGSize(width: 250, height:250)
+        self.minimumInteritemSpacing = 20
+        self.minimumLineSpacing = 20
+        self.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+}
+}

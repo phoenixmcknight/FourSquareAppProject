@@ -41,7 +41,9 @@ struct Venue: Codable {
     let hasPerk: Bool
     let venuePage: VenuePage?
 
-    
+    func returnCategory(searchString:String) -> String {
+        return "\(categories?[0].shortName ?? searchString.capitalized) Resturant" 
+    }
 }
 
 // MARK: - Category

@@ -36,18 +36,11 @@ class DetailVenueVC:UIViewController {
         return vIv
     }()
     
-    var holdImage:UIImage!
-    
-    var holdTitle:String!
-    
-    var holdTypeOfResturant:String!
-    
-    var tip:String = ""
-    
+    var currentVenue:SavedVenues!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubviews()
     configureConstraints()
         view.backgroundColor = .white
     }
@@ -62,7 +55,9 @@ class DetailVenueVC:UIViewController {
         
         for i in outletArray {
             i.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(i)
         }
+         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addToCollection))
         
         NSLayoutConstraint.activate([
             resturantLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 20),
@@ -86,22 +81,18 @@ class DetailVenueVC:UIViewController {
               
         ])
     }
-    private func addSubviews() {
-        view.addSubview(resturantLabel)
-        view.addSubview(venueImageView)
-        view.addSubview(typeOfVenueLabel)
-        view.addSubview(tipLabel)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addToCollection))
-    }
+ 
     
     @objc private func addToCollection() {
+      
         
+        try? FourSquarePersistenceManager.manager.save(newCollection: currentVenue)
     }
     
     private func addDetailsToSubviews() {
-        resturantLabel.text = holdTitle
-        venueImageView.image = holdImage
-        typeOfVenueLabel.text = holdTypeOfResturant
-        tipLabel.text = tip
+        resturantLabel.text = currentVenue.venueName
+        venueImageView.image = UIImage(data: currentVenue.image)
+        typeOfVenueLabel.text = currentVenue.venueType
+        tipLabel.text = currentVenue.tip
     }
 }

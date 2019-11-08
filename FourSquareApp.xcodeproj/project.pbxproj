@@ -10,9 +10,12 @@
 		6951061B23737CEA007AB772 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061A23737CE9007AB772 /* ListTableViewCell.swift */; };
 		6951061D23748433007AB772 /* DetailVenueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061C23748433007AB772 /* DetailVenueVC.swift */; };
 		69510620237484F3007AB772 /* OutletExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061F237484F3007AB772 /* OutletExtensions.swift */; };
-		695106222374CB3C007AB772 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106212374CB3C007AB772 /* CollectionVC.swift */; };
+		695106222374CB3C007AB772 /* VenueCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106212374CB3C007AB772 /* VenueCollectionVC.swift */; };
 		695106262374D736007AB772 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106242374D736007AB772 /* PersistenceHelper.swift */; };
-		695106272374D736007AB772 /* CardPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106252374D736007AB772 /* CardPersistenceManager.swift */; };
+		695106272374D736007AB772 /* IndividualVenuePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106252374D736007AB772 /* IndividualVenuePersistence.swift */; };
+		695106292375B91F007AB772 /* VenueCollectionPersistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106282375B91F007AB772 /* VenueCollectionPersistenceModel.swift */; };
+		695106692375FBBB007AB772 /* CreateVenueCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */; };
+		6951066B2375FC05007AB772 /* VenueCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951066A2375FC05007AB772 /* VenueCollection.swift */; };
 		696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */; };
 		696D5D7A2371EB0F00C020CD /* mapPicutreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D792371EB0F00C020CD /* mapPicutreModel.swift */; };
 		6975A4DC2370BA42000BB014 /* testFourSquareAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = 6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */; };
@@ -25,8 +28,8 @@
 		69FAAD892370AEDC007919AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69FAAD872370AEDC007919AC /* LaunchScreen.storyboard */; };
 		69FAAD942370AEDC007919AC /* FourSquareAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAAD932370AEDC007919AC /* FourSquareAppTests.swift */; };
 		69FAAD9F2370AEDD007919AC /* FourSquareAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAAD9E2370AEDD007919AC /* FourSquareAppUITests.swift */; };
-		69FAADAD2370AFD5007919AC /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADAC2370AFD5007919AC /* FirstVC.swift */; };
-		69FAADB02370AFEA007919AC /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADAF2370AFEA007919AC /* SecondVC.swift */; };
+		69FAADAD2370AFD5007919AC /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADAC2370AFD5007919AC /* MapVC.swift */; };
+		69FAADB02370AFEA007919AC /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADAF2370AFEA007919AC /* ListVC.swift */; };
 		69FAADB32370B57A007919AC /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADB22370B57A007919AC /* MapModel.swift */; };
 		69FAADC52370B619007919AC /* MapAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADC12370B619007919AC /* MapAPIClient.swift */; };
 		69FAADC62370B619007919AC /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FAADC22370B619007919AC /* NetworkHelper.swift */; };
@@ -56,9 +59,12 @@
 		6951061A23737CE9007AB772 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		6951061C23748433007AB772 /* DetailVenueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVenueVC.swift; sourceTree = "<group>"; };
 		6951061F237484F3007AB772 /* OutletExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletExtensions.swift; sourceTree = "<group>"; };
-		695106212374CB3C007AB772 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		695106212374CB3C007AB772 /* VenueCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionVC.swift; sourceTree = "<group>"; };
 		695106242374D736007AB772 /* PersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
-		695106252374D736007AB772 /* CardPersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPersistenceManager.swift; sourceTree = "<group>"; };
+		695106252374D736007AB772 /* IndividualVenuePersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualVenuePersistence.swift; sourceTree = "<group>"; };
+		695106282375B91F007AB772 /* VenueCollectionPersistenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionPersistenceModel.swift; sourceTree = "<group>"; };
+		695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVenueCollectionModel.swift; sourceTree = "<group>"; };
+		6951066A2375FC05007AB772 /* VenueCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollection.swift; sourceTree = "<group>"; };
 		696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPictureAPIClient.swift; sourceTree = "<group>"; };
 		696D5D792371EB0F00C020CD /* mapPicutreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapPicutreModel.swift; sourceTree = "<group>"; };
 		6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testFourSquareAPI.json; sourceTree = "<group>"; };
@@ -76,8 +82,8 @@
 		69FAAD9A2370AEDD007919AC /* FourSquareAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FourSquareAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69FAAD9E2370AEDD007919AC /* FourSquareAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourSquareAppUITests.swift; sourceTree = "<group>"; };
 		69FAADA02370AEDD007919AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69FAADAC2370AFD5007919AC /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
-		69FAADAF2370AFEA007919AC /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		69FAADAC2370AFD5007919AC /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		69FAADAF2370AFEA007919AC /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		69FAADB22370B57A007919AC /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		69FAADC12370B619007919AC /* MapAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAPIClient.swift; sourceTree = "<group>"; };
 		69FAADC22370B619007919AC /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -123,7 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				695106242374D736007AB772 /* PersistenceHelper.swift */,
-				695106252374D736007AB772 /* CardPersistenceManager.swift */,
+				695106252374D736007AB772 /* IndividualVenuePersistence.swift */,
+				6951066A2375FC05007AB772 /* VenueCollection.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -198,10 +205,10 @@
 		69FAADAE2370AFDC007919AC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				69FAADAC2370AFD5007919AC /* FirstVC.swift */,
-				69FAADAF2370AFEA007919AC /* SecondVC.swift */,
+				69FAADAC2370AFD5007919AC /* MapVC.swift */,
+				69FAADAF2370AFEA007919AC /* ListVC.swift */,
 				6951061C23748433007AB772 /* DetailVenueVC.swift */,
-				695106212374CB3C007AB772 /* CollectionVC.swift */,
+				695106212374CB3C007AB772 /* VenueCollectionVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -212,6 +219,8 @@
 				69FAADB22370B57A007919AC /* MapModel.swift */,
 				6975A4DF2370C019000BB014 /* ZipCodeHelper.swift */,
 				696D5D792371EB0F00C020CD /* mapPicutreModel.swift */,
+				695106282375B91F007AB772 /* VenueCollectionPersistenceModel.swift */,
+				695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,16 +378,19 @@
 			files = (
 				6975A4E02370C019000BB014 /* ZipCodeHelper.swift in Sources */,
 				6951061B23737CEA007AB772 /* ListTableViewCell.swift in Sources */,
+				695106292375B91F007AB772 /* VenueCollectionPersistenceModel.swift in Sources */,
 				69FAADC62370B619007919AC /* NetworkHelper.swift in Sources */,
 				69FAADC82370B619007919AC /* ImageHelper.swift in Sources */,
 				696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */,
+				6951066B2375FC05007AB772 /* VenueCollection.swift in Sources */,
+				695106692375FBBB007AB772 /* CreateVenueCollectionModel.swift in Sources */,
 				696D5D7A2371EB0F00C020CD /* mapPicutreModel.swift in Sources */,
 				69FAADC72370B619007919AC /* AppError.swift in Sources */,
-				69FAADAD2370AFD5007919AC /* FirstVC.swift in Sources */,
+				69FAADAD2370AFD5007919AC /* MapVC.swift in Sources */,
 				69510620237484F3007AB772 /* OutletExtensions.swift in Sources */,
-				695106272374D736007AB772 /* CardPersistenceManager.swift in Sources */,
-				69FAADB02370AFEA007919AC /* SecondVC.swift in Sources */,
-				695106222374CB3C007AB772 /* CollectionVC.swift in Sources */,
+				695106272374D736007AB772 /* IndividualVenuePersistence.swift in Sources */,
+				69FAADB02370AFEA007919AC /* ListVC.swift in Sources */,
+				695106222374CB3C007AB772 /* VenueCollectionVC.swift in Sources */,
 				69FAAD7D2370AEDB007919AC /* AppDelegate.swift in Sources */,
 				695106262374D736007AB772 /* PersistenceHelper.swift in Sources */,
 				69FAADB32370B57A007919AC /* MapModel.swift in Sources */,

@@ -57,16 +57,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     private func createMainTabBarController() -> UITabBarController {
-        let navController = UINavigationController(rootViewController: LibraryViewController())
+        let navController = UINavigationController(rootViewController: MapViewController())
         
-        let collectionVC = 
+        let navController2 = UINavigationController(rootViewController: ListTableViewController())
+        
+        let collectionVC =
         navController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
         
        
        
         let tabVC = UITabBarController()
         
-        tabVC.setViewControllers([navController], animated: false)
+        tabVC.setViewControllers([navController,navController2], animated: false)
         return tabVC
     }
 

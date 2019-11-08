@@ -14,13 +14,15 @@ enum RegisterCell:String {
     case listTableViewCell
 }
 
-class VenueTableViewController:UIViewController {
+class ListTableViewController:UIViewController {
   
     var venueTableViewData = [Venue]() {
         didSet {
             listTableView.reloadData()
         }
     }
+    
+    var listImageArray = [UIImage]()
         
     lazy var listTableView:UITableView = {
         let tv = UITableView()
@@ -39,11 +41,11 @@ return tv
         createConstraints()
         listTableView.dataSource = self
         listTableView.delegate = self
-         listTableView.reloadData()
+         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-     
+     listTableView.reloadData()
     }
     
 
@@ -59,37 +61,30 @@ return tv
         ])
     }
 }
-extension VenueTableViewController:UITableViewDataSource,UITableViewDelegate {
+extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return venueTableViewData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let venue = venueTableViewData[indexPath.row]
+        let image = listImageArray[indexPath.row]
         guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCell.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
         
         cell.nameLabel.text = venue.name
-        MapPictureAPIClient.manager.getFourSquarePictureData(venueID: venue.id) { (results) in
-            switch results {
-                
-            case .success(let data):
-                ImageHelper.shared.getImage(urlStr: data[0].returnPictureURL()) { (results) in
-                    switch results {
-                        
-                    case .success(let image):
-                        cell.photoImage.image = image
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+        cell.photoImage.image = image
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: venueTableViewData[indexPath.row].name, venueType: venueTableViewData[indexPath.row].returnCategory(searchString: "Unknown Category"), tip:""  )
+        
+       let detailVC = DetailVenueVC()
+        detailVC.currentVenue = currentVenue
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

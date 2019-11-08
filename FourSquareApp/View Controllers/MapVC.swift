@@ -15,7 +15,7 @@ enum RegisterCells:String {
     case listTableViewCell
 }
 
-class LibraryViewController: UIViewController {
+class MapViewController: UIViewController {
     
     //MARK: - Outlets
     lazy var searchBarOne:UISearchBar = {
@@ -139,8 +139,9 @@ class LibraryViewController: UIViewController {
     }
     
     @objc private func showTableView() {
-        let tableview = VenueTableViewController()
+        let tableview = ListTableViewController()
         tableview.venueTableViewData = venueData
+        tableview.listImageArray = imageArray
         navigationController?.pushViewController(tableview, animated: true)
     }
     
@@ -262,8 +263,12 @@ class LibraryViewController: UIViewController {
                                     print("test Load PHoto function")
                                 case .success(let imageData):
                                     // print("got image")
-                                self.imageArray.append(imageData)
+                                
+                                    DispatchQueue.main.async {
+                                        
+                                       self.imageArray.append(imageData)
                                     print("test Load PHoto function")
+                                }
                                 }
                             }
                         } else {
@@ -276,7 +281,7 @@ class LibraryViewController: UIViewController {
     }
 }
     
-extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSource {
+extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return venueData.count
     }
@@ -284,11 +289,11 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
+        let venue = venueData[indexPath.item]
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
         cell.fourSquareImageView.image = imageArray[indexPath.item]
-        
+        cell.venueNameLabel.text = venue.name
               
         
         return cell
@@ -307,7 +312,7 @@ extension LibraryViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
 }
 //
-extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
+extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     
     
     
@@ -317,13 +322,10 @@ extension LibraryViewController: CLLocationManagerDelegate,MKMapViewDelegate,UIS
             let currentVenueTag = Int(annotation!)!
             
             let detailVC = DetailVenueVC()
-           
+          //  let venueType = venueData[currentVenueTag].categories?[0].shortName ?? "\(searchStringQuery.capitalized) Resturant"
+            let currentVenue = SavedVenues(image: imageArray[currentVenueTag].pngData()!, venueName: venueData[currentVenueTag].name, venueType: venueData[currentVenueTag].returnCategory(searchString: searchStringQuery), tip: "")
           
-            
-            detailVC.holdImage = imageArray[currentVenueTag]
-            
-            detailVC.holdTitle = venueData[currentVenueTag].name
-            detailVC.holdTypeOfResturant = "\(searchStringQuery.capitalized) Resturant"
+            detailVC.currentVenue = currentVenue
             
             navigationController?.pushViewController(detailVC, animated: true)
             }
