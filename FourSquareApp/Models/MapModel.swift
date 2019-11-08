@@ -1,6 +1,13 @@
 import Foundation
 
 // MARK: - Foursquare
+enum RegisterCells:String {
+    case mapCollectionViewCell
+    case listTableViewCell
+    case venueCollectionViewCell
+    case tableViewVenueCollectionCell
+}
+
 struct Foursquare: Codable {
     let meta: Meta
     let response: Response?

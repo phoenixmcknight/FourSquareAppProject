@@ -9,14 +9,19 @@
 import Foundation
 import UIKit
 
-enum RegisterCell:String {
-    case mapCollectionViewCell
-    case listTableViewCell
+enum PresentTableView {
+    case collectionVC
+    case mapVC
 }
-
 class ListTableViewController:UIViewController {
   
     var venueTableViewData = [Venue]() {
+        didSet {
+            listTableView.reloadData()
+        }
+    }
+    
+    var collectionTableViewData = [SavedVenues]() {
         didSet {
             listTableView.reloadData()
         }
@@ -27,14 +32,14 @@ class ListTableViewController:UIViewController {
     lazy var listTableView:UITableView = {
         let tv = UITableView()
       
-        tv.register(ListTableViewCell.self, forCellReuseIdentifier: RegisterCell.listTableViewCell.rawValue)
+        tv.register(ListTableViewCell.self, forCellReuseIdentifier: RegisterCells.listTableViewCell.rawValue)
     
         
         
 return tv
     }()
     
-    
+    var present:PresentTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,10 +74,20 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let venue = venueTableViewData[indexPath.row]
         let image = listImageArray[indexPath.row]
-        guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCell.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
+        let savedVenues = collectionTableViewData[indexPath.row]
+        guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCells.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
+        switch present {
+            
+        case .collectionVC:
+            cell.nameLabel.text = savedVenues.venueName
+            cell.photoImage.image = UIImage(data: savedVenues.image)
+        case .mapVC:
+            cell.nameLabel.text = venue.name
+            cell.photoImage.image = image
+        case .none:
+            return UITableViewCell()
+        }
         
-        cell.nameLabel.text = venue.name
-        cell.photoImage.image = image
         return cell
     }
 

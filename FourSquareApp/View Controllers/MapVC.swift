@@ -10,10 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-enum RegisterCells:String {
-    case mapCollectionViewCell
-    case listTableViewCell
-}
+
 
 class MapViewController: UIViewController {
     
@@ -142,6 +139,7 @@ class MapViewController: UIViewController {
         let tableview = ListTableViewController()
         tableview.venueTableViewData = venueData
         tableview.listImageArray = imageArray
+        tableview.present = .mapVC
         navigationController?.pushViewController(tableview, animated: true)
     }
     
