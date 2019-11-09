@@ -36,8 +36,8 @@ class DetailVenueVC:UIViewController {
         return vIv
     }()
     
-    var currentVenue:SavedVenues!
-
+   var currentVenue:SavedVenues!
+//var currentVenue:Venue!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,20 +63,19 @@ class DetailVenueVC:UIViewController {
             resturantLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 20),
             resturantLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
               resturantLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant:  -10),
-              resturantLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.05),
+              resturantLabel.heightAnchor.constraint(equalToConstant: 50),
               venueImageView.topAnchor.constraint(equalTo: resturantLabel.bottomAnchor),
               venueImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
               venueImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
               
-              venueImageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.8),
               typeOfVenueLabel.topAnchor.constraint(equalTo: venueImageView.bottomAnchor),
                typeOfVenueLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
                 typeOfVenueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
-                typeOfVenueLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.05),
+                typeOfVenueLabel.heightAnchor.constraint(equalToConstant: 50),
                 tipLabel.topAnchor.constraint(equalTo: typeOfVenueLabel.bottomAnchor),
                 tipLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
                 tipLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
-            tipLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.05),
+            tipLabel.heightAnchor.constraint(equalToConstant: 50),
             tipLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
               
         ])
@@ -85,8 +84,12 @@ class DetailVenueVC:UIViewController {
     
     @objc private func addToCollection() {
       
+        let venueCollection = CollectionVC()
         
-        try? FourSquarePersistenceManager.manager.save(newCollection: currentVenue)
+        venueCollection.currentVenue = currentVenue
+        
+        navigationController?.pushViewController(venueCollection, animated: true)
+        
     }
     
     private func addDetailsToSubviews() {

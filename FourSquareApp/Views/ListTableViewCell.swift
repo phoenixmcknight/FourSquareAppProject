@@ -29,6 +29,9 @@ class ListTableViewCell: UITableViewCell {
         return nl
     }()
     
+    var changeColorOfBorderCellFunction: (()->()) = {}
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
        

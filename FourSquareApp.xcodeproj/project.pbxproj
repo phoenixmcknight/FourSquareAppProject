@@ -17,6 +17,8 @@
 		695106692375FBBB007AB772 /* CreateVenueCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */; };
 		6951066B2375FC05007AB772 /* VenueCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951066A2375FC05007AB772 /* VenueCollection.swift */; };
 		6951066F23760B9B007AB772 /* VenueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951066E23760B9B007AB772 /* VenueCollectionViewCell.swift */; };
+		6951067123761A0C007AB772 /* cellFormating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951067023761A0C007AB772 /* cellFormating.swift */; };
+		6951067323772666007AB772 /* CollectionViewTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951067223772666007AB772 /* CollectionViewTabBarVC.swift */; };
 		696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */; };
 		696D5D7A2371EB0F00C020CD /* mapPicutreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696D5D792371EB0F00C020CD /* mapPicutreModel.swift */; };
 		6975A4DC2370BA42000BB014 /* testFourSquareAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = 6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */; };
@@ -67,6 +69,8 @@
 		695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVenueCollectionModel.swift; sourceTree = "<group>"; };
 		6951066A2375FC05007AB772 /* VenueCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollection.swift; sourceTree = "<group>"; };
 		6951066E23760B9B007AB772 /* VenueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionViewCell.swift; sourceTree = "<group>"; };
+		6951067023761A0C007AB772 /* cellFormating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellFormating.swift; sourceTree = "<group>"; };
+		6951067223772666007AB772 /* CollectionViewTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTabBarVC.swift; sourceTree = "<group>"; };
 		696D5D772371EAFA00C020CD /* MapPictureAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPictureAPIClient.swift; sourceTree = "<group>"; };
 		696D5D792371EB0F00C020CD /* mapPicutreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapPicutreModel.swift; sourceTree = "<group>"; };
 		6975A4DB2370BA42000BB014 /* testFourSquareAPI.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testFourSquareAPI.json; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				69FAADAF2370AFEA007919AC /* ListVC.swift */,
 				6951061C23748433007AB772 /* DetailVenueVC.swift */,
 				695106212374CB3C007AB772 /* VenueCollectionVC.swift */,
+				6951067223772666007AB772 /* CollectionViewTabBarVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 		69FAADB12370B572007919AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6951067023761A0C007AB772 /* cellFormating.swift */,
 				69FAADB22370B57A007919AC /* MapModel.swift */,
 				6975A4DF2370C019000BB014 /* ZipCodeHelper.swift */,
 				696D5D792371EB0F00C020CD /* mapPicutreModel.swift */,
@@ -382,6 +388,7 @@
 				6975A4E02370C019000BB014 /* ZipCodeHelper.swift in Sources */,
 				6951061B23737CEA007AB772 /* ListTableViewCell.swift in Sources */,
 				695106292375B91F007AB772 /* VenueCollectionPersistenceModel.swift in Sources */,
+				6951067323772666007AB772 /* CollectionViewTabBarVC.swift in Sources */,
 				69FAADC62370B619007919AC /* NetworkHelper.swift in Sources */,
 				69FAADC82370B619007919AC /* ImageHelper.swift in Sources */,
 				696D5D782371EAFA00C020CD /* MapPictureAPIClient.swift in Sources */,
@@ -394,6 +401,7 @@
 				69510620237484F3007AB772 /* OutletExtensions.swift in Sources */,
 				695106272374D736007AB772 /* IndividualVenuePersistence.swift in Sources */,
 				69FAADB02370AFEA007919AC /* ListVC.swift in Sources */,
+				6951067123761A0C007AB772 /* cellFormating.swift in Sources */,
 				695106222374CB3C007AB772 /* VenueCollectionVC.swift in Sources */,
 				69FAAD7D2370AEDB007919AC /* AppDelegate.swift in Sources */,
 				695106262374D736007AB772 /* PersistenceHelper.swift in Sources */,

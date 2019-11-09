@@ -64,11 +64,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
        
         navController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
         
-      navController2.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "folder.badge.plus"), tag: 1)
+   //   navController2.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "folder.badge.plus"), tag: 1)
        
         let tabVC = UITabBarController()
         
-        tabVC.setViewControllers([navController,navController2], animated: false)
+        tabVC.setViewControllers([navController], animated: false)
         return tabVC
     }
 

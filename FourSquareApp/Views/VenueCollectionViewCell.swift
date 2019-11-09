@@ -21,6 +21,8 @@ class VenueCollectionViewCell: UICollectionViewCell {
         return nl
     }()
     
+    var changeColorOfBorderCellFunction: (()->()) = {}
+
     
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -30,12 +32,13 @@ class VenueCollectionViewCell: UICollectionViewCell {
     private func configureConstraints() {
         contentView.addSubview(collectionImage)
         contentView.addSubview(nameLabel)
+        
         collectionImage.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             collectionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            collectionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             nameLabel.topAnchor.constraint(equalTo: collectionImage.bottomAnchor),
              nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
               nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

@@ -29,6 +29,12 @@ struct VenueCollectionPersistenceManager {
             print(error)
         }
     }
+   func replaceAllFunction(newCollection:[CreateVenueCollection]) throws {
+        do {
+            try persistenceHelper.replace(elements: newCollection)
+            
+        }
+    }
 
     private let persistenceHelper = PersistenceHelper<CreateVenueCollection>(fileName: "venueCollection.plist")
 

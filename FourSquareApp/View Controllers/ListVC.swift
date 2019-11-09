@@ -17,6 +17,7 @@ class ListTableViewController:UIViewController {
   
     var venueTableViewData = [Venue]() {
         didSet {
+            print("print data")
             listTableView.reloadData()
         }
     }
@@ -51,6 +52,7 @@ return tv
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
      listTableView.reloadData()
+        print("print data")
     }
     
 
@@ -68,20 +70,30 @@ return tv
 }
 extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return venueTableViewData.count
+        switch present {
+        case .mapVC:
+            return venueTableViewData.count
+        case .collectionVC:
+            return collectionTableViewData.count
+        case .none:
+            return 0
+        }
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let venue = venueTableViewData[indexPath.row]
-        let image = listImageArray[indexPath.row]
-        let savedVenues = collectionTableViewData[indexPath.row]
+       
+       
         guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCells.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
         switch present {
             
         case .collectionVC:
+             let savedVenues = collectionTableViewData[indexPath.row]
             cell.nameLabel.text = savedVenues.venueName
             cell.photoImage.image = UIImage(data: savedVenues.image)
         case .mapVC:
+            let venue = venueTableViewData[indexPath.row]
+            let image = listImageArray[indexPath.row]
             cell.nameLabel.text = venue.name
             cell.photoImage.image = image
         case .none:
@@ -96,7 +108,17 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: venueTableViewData[indexPath.row].name, venueType: venueTableViewData[indexPath.row].returnCategory(searchString: "Unknown Category"), tip:""  )
+        var currentVenue:SavedVenues!
+        switch present {
+        case.mapVC:
+             currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: venueTableViewData[indexPath.row].name, venueType: venueTableViewData[indexPath.row].returnCategory(searchString: "Unknown Category"), tip:""  )
+            
+        case .collectionVC:
+            currentVenue = SavedVenues(image: collectionTableViewData[indexPath.row].image, venueName: collectionTableViewData[indexPath.row].venueName, venueType: collectionTableViewData[indexPath.row].venueType, tip:collectionTableViewData[indexPath.row].tip  )
+        case .none:
+            print("error")
+        }
+        
         
        let detailVC = DetailVenueVC()
         detailVC.currentVenue = currentVenue

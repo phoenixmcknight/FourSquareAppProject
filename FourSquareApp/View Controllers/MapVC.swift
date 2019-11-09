@@ -320,10 +320,11 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             let currentVenueTag = Int(annotation!)!
             
             let detailVC = DetailVenueVC()
-          //  let venueType = venueData[currentVenueTag].categories?[0].shortName ?? "\(searchStringQuery.capitalized) Resturant"
-            let currentVenue = SavedVenues(image: imageArray[currentVenueTag].pngData()!, venueName: venueData[currentVenueTag].name, venueType: venueData[currentVenueTag].returnCategory(searchString: searchStringQuery), tip: "")
           
-            detailVC.currentVenue = currentVenue
+           let selectedVenue = SavedVenues(image: imageArray[currentVenueTag].pngData()!, venueName: venueData[currentVenueTag].name, venueType: venueData[currentVenueTag].returnCategory(searchString: searchStringQuery), tip: "")
+//            let selectedVenue = Venue(id: "", name: venueData[currentVenueTag].name, location: venueData[currentVenueTag].location, categories: nil, venuePage: nil, picture: imageArray[currentVenueTag].pngData()!, tip: "", currentCategory: venueData[currentVenueTag].returnCategory(searchString: searchStringQuery))
+            
+            detailVC.currentVenue = selectedVenue
             
             navigationController?.pushViewController(detailVC, animated: true)
             }

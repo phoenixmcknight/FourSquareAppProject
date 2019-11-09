@@ -1,0 +1,48 @@
+//
+//  cellFormating.swift
+//  Unit4Project1
+//
+//  Created by Phoenix McKnight on 10/4/19.
+//  Copyright © 2019 Phoenix McKnight. All rights reserved.
+//
+
+import Foundation
+import UIKit
+struct CustomLayer{
+    static let shared = CustomLayer()
+    func createCustomlayer(layer:CALayer, shadowOpacity: Float){
+        layer.borderWidth = 2.0
+        layer.borderColor = UIColor.black.cgColor
+       // layer.masksToBounds = true
+       layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2.5)
+       layer.shadowRadius = 5.0
+        layer.shadowOpacity = shadowOpacity
+        layer.masksToBounds = false
+        //layer.cornerRadius = 20
+    }
+    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor,newView:UIView) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0, 1]
+        gradientLayer.frame = newView.bounds
+
+        newView.layer.insertSublayer(gradientLayer, at: 0)
+       
+        
+        
+        let cgColorsTo:[UIColor] = [colorTop,colorBottom]
+        
+        let gradientChangeColor = CABasicAnimation(keyPath: "locations")
+        gradientChangeColor.duration = 5
+        gradientChangeColor.toValue = cgColorsTo
+        gradientChangeColor.fillMode = CAMediaTimingFillMode.both
+        gradientChangeColor.isRemovedOnCompletion = false
+        gradientChangeColor.autoreverses = true
+        gradientChangeColor.repeatCount = .infinity
+        gradientLayer.add(gradientChangeColor, forKey: nil)
+    }
+}
+

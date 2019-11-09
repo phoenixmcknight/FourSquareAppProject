@@ -25,7 +25,7 @@ extension UICollectionViewFlowLayout {
     public convenience init(placeHolder:String) {
     self.init()
         self.scrollDirection = .vertical
-    self.itemSize = CGSize(width: 250, height:250)
+    self.itemSize = CGSize(width: 150, height:150)
         self.minimumInteritemSpacing = 20
         self.minimumLineSpacing = 20
         self.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)

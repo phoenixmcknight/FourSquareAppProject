@@ -13,5 +13,5 @@ struct SavedVenues:Codable {
     let image:Data
     let venueName:String
     let venueType:String
-    let tip:String
+    var tip:String
 }
