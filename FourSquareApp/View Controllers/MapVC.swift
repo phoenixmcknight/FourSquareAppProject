@@ -18,22 +18,22 @@ class MapViewController: UIViewController {
     lazy var searchBarOne:UISearchBar = {
         let sbo = UISearchBar()
         sbo.tag = 0
-        sbo.placeholder = "Enter Type of Venue Here"
-        sbo.backgroundColor = .lightGray
-        sbo.barTintColor = .clear
+        sbo.placeholder = "Search Venues"
+        sbo.searchBarStyle = .minimal
+        sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
         return sbo
     }()
     lazy var searchBarTwo:UISearchBar = {
         let sbo = UISearchBar()
         sbo.tag = 1
         sbo.placeholder = "Enter Location Here"
-        sbo.backgroundColor = .lightGray
-        sbo.barTintColor = .clear
+        sbo.searchBarStyle = .minimal
+sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
+        
         return sbo
     }()
     lazy var map:MKMapView = {
         let map = MKMapView()
-        
         return map
     }()
     
@@ -41,66 +41,74 @@ class MapViewController: UIViewController {
         let ai = UIActivityIndicatorView()
         ai.hidesWhenStopped = true
         ai.style = .large
-        ai.startAnimating()
         return ai
         
     }()
     
+    lazy var mapCollectionView:UICollectionView = {
+           var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+           let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
+           layout.scrollDirection = .horizontal
+           layout.itemSize = CGSize(width: 125, height: 125)
+           colletionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue)
+           
+           
+           colletionView.backgroundColor = .clear
+           layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+           layout.minimumInteritemSpacing = 10
+           
+           return colletionView
+       }()
+    
+    lazy var annotationTapGesture:UITapGestureRecognizer = {
+        let atg = UITapGestureRecognizer()
+        
+        atg.addTarget(self, action: #selector(annotationCalloutClicked))
+        return atg
+    }()
+    
+     lazy var outletArray = [self.searchBarOne,self.searchBarTwo,self.map,self.activityIndic,self.mapCollectionView]
+    
     var venueData = [Venue]() {
         didSet {
+             imageArray = []
             loadImageData(venue: self.venueData)
-
-            var count = 0
+            
+           // var count = 0
             for i in self.venueData {
                 let annotation = MKPointAnnotation()
                 annotation.title = i.name
                 if let data = i.location {
                     annotation.coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.lng)
                     
-                    annotation.subtitle = String(count)
+                    annotation.subtitle = i.id
+                 //   count += 1
                     self.map.addAnnotation(annotation)
-                    count += 1
+                    
                 }
             }
         }
-        
     }
     
     var imageArray:[UIImage] = [] {
         didSet {
-            if self.imageArray.count == venueData.count {
-            mapCollectionView.reloadData()
-            }
+           
+            guard self.imageArray.count == venueData.count else {return}
+                mapCollectionView.reloadData()
+            
         }
     }
-    
-    lazy var mapCollectionView:UICollectionView = {
-        var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-        let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 125, height: 125)
-        colletionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue)
-        
-        
-        colletionView.backgroundColor = .clear
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        layout.minimumInteritemSpacing = 10
-        
-        return colletionView
-    }()
-    
     private let locationManager = CLLocationManager()
     
     let searchRadius: CLLocationDistance = 1000
     
-    var latLong:(Double,Double) = (0,0) {
+    var coordinate:CLLocationCoordinate2D? = CLLocationCoordinate2D() {
         didSet {
-            let coordinateRegion = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: self.latLong.0, longitude: self.latLong.1), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
+            let coordinateRegion = MKCoordinateRegion(center: self.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
             map.setRegion(coordinateRegion, animated: true)
+            guard searchStringQuery != "" else {return}
             loadVenueData(query: searchStringQuery)
-            print(self.latLong)
         }
-        
     }
     
     var searchStringLatLong:String? = nil {
@@ -109,55 +117,51 @@ class MapViewController: UIViewController {
             loadLatLongData(cityNameOrZipCode: search)
         }
     }
-    var searchStringQuery:String = "pizza" {
+    var searchStringQuery:String = "" {
         didSet  {
             guard self.searchStringQuery != "" else {return}
             loadVenueData(query: self.searchStringQuery)
         }
     }
-    
+    var selectedVenue:SavedVenues! {
+        didSet {
+            print("got venue")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
-        
-        locationManager.delegate = self
-        map.delegate = self
-        mapCollectionView.delegate = self
-        mapCollectionView.dataSource = self
-        searchBarOne.delegate = self
-        searchBarTwo.delegate = self
-        
+        setDelegates()
         locationAuthorization()
-        //map.userTrackingMode = .follow
+        map.userTrackingMode = .follow
         configureOutletConstraints()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
+        viewGradientLayer()
         
+    }
+    private func setDelegates() {
+        locationManager.delegate = self
+              map.delegate = self
+              mapCollectionView.delegate = self
+              mapCollectionView.dataSource = self
+              searchBarOne.delegate = self
+              searchBarTwo.delegate = self
     }
     
     @objc private func showTableView() {
         let tableview = ListTableViewController()
         tableview.venueTableViewData = venueData
         tableview.listImageArray = imageArray
-        tableview.present = .mapVC
+        tableview.precedingVC = .mapVC
         navigationController?.pushViewController(tableview, animated: true)
     }
     
     
     private func configureOutletConstraints() {
-        
-        view.addSubview(searchBarOne)
-        view.addSubview(searchBarTwo)
-        view.addSubview(map)
-        view.addSubview(mapCollectionView)
-        view.addSubview(activityIndic)
-        searchBarOne.translatesAutoresizingMaskIntoConstraints = false
-        searchBarTwo.translatesAutoresizingMaskIntoConstraints = false
-        map.translatesAutoresizingMaskIntoConstraints = false
-        mapCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        activityIndic.translatesAutoresizingMaskIntoConstraints = false
-        
+        for outlet in outletArray {
+            view.addSubview(outlet)
+            outlet.translatesAutoresizingMaskIntoConstraints = false
+        }
         NSLayoutConstraint.activate([
             searchBarOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
             searchBarOne.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 20),
@@ -183,6 +187,11 @@ class MapViewController: UIViewController {
             
         ])
     }
+    private func viewGradientLayer() {
+      
+        CustomLayer.shared.setGradientBackground(colorTop: .black, colorBottom: .lightGray, newView: view)
+       
+    }
     
     private func locationAuthorization() {
         let status = CLLocationManager.authorizationStatus()
@@ -193,8 +202,15 @@ class MapViewController: UIViewController {
             locationManager.requestLocation()
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            if latLong != (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double) {
-                latLong = (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double)
+
+            coordinate = locationManager.location?.coordinate
+          
+            if let lastLocation = self.locationManager.location {
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
+                    guard error == nil else {return}
+                    self.searchBarTwo.placeholder =  placemark?[0].locality
+                }
             }
             genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
             
@@ -204,34 +220,37 @@ class MapViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
-    //capture semantics explicit
+    
     private func loadLatLongData(cityNameOrZipCode:String) {
-        ZipCodeHelper.getLatLong(fromZipCode: cityNameOrZipCode)  { [weak self] (results) in
+        ZipCodeHelper.getLatLong(fromZipCode: cityNameOrZipCode) { [weak self] (results) in
             switch results {
                 
-            case .success(let lat, let long):
-                self?.latLong.0 = lat
-                self?.latLong.1 = long
+            case .success(let coordinateData):
                 
-                print("good input")
-            case .failure(_):
-                print("bad input")
+                self?.coordinate = coordinateData
+                
+            case .failure(let error):
+                print(error)
             }
         }
     }
+
     private func loadVenueData(query:String) {
-        MapAPIClient.client.getMapData(query: query, latLong: "\(latLong.0),\(latLong.1)") { (result) in
+        guard let lat = coordinate?.latitude, let long = coordinate?.longitude else {return}
+        
+        MapAPIClient.client.getMapData(query: query, latLong: "\(lat),\(long)") { (result) in
             switch result {
                 
             case .success(let data):
                 self.venueData = data
+
                 self.activityIndic.stopAnimating()
             case .failure(let error):
                 print(error)
             }
         }
     }
-   
+    
     private func genericAlertFunction(title:String,message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
@@ -248,37 +267,44 @@ class MapViewController: UIViewController {
                     self.imageArray.append(UIImage(systemName: "photo")!)
                 case .success(let item):
                     // print("got something from pictureAPI")
-                        if item.count > 0 {
-                            ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) {   (results) in
+                    if item.count > 0 {
+                        ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) {   (results) in
+                            
+                            
+                            print(item[0].returnPictureURL())
+                            // print("got something")
+                            switch results {
+                            case .failure(let error):
+                                print("picture error \(error)")
+                                self.imageArray.append(UIImage(systemName: "photo")!)
+                                print("test Load PHoto function")
+                            case .success(let imageData):
+                                // print("got image")
                                 
-                                
-                                print(item[0].returnPictureURL())
-                                // print("got something")
-                                switch results {
-                                case .failure(let error):
-                                    print("picture error \(error)")
-                                    self.imageArray.append(UIImage(systemName: "photo")!)
+                                DispatchQueue.main.async {
+                                    
+                                    self.imageArray.append(imageData)
                                     print("test Load PHoto function")
-                                case .success(let imageData):
-                                    // print("got image")
-                                
-                                    DispatchQueue.main.async {
-                                        
-                                       self.imageArray.append(imageData)
-                                    print("test Load PHoto function")
-                                }
                                 }
                             }
-                        } else {
-                            self.imageArray.append(UIImage(systemName: "photo")!)
-                            print("test Load PHoto function")
                         }
+                    } else {
+                        self.imageArray.append(UIImage(systemName: "photo")!)
+                        print("test Load PHoto function")
+                    }
                 }
             }
         }
     }
-}
-    
+    @objc private func annotationCalloutClicked() {
+                    let detailVC = DetailVenueVC()
+                    detailVC.precedingVC = .mapVC
+           detailVC.currentVenue = selectedVenue
+        navigationController?.pushViewController(detailVC, animated: true)
+                }
+    }
+
+
 extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return venueData.count
@@ -287,55 +313,53 @@ extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let venue = venueData[indexPath.item]
+        //let venue = venueData[indexPath.item]
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
         cell.fourSquareImageView.image = imageArray[indexPath.item]
-        cell.venueNameLabel.text = venue.name
-              
+        //cell.venueNameLabel.text = venue.name
+        
         
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-        map.showAnnotations(map.annotations.filter({$0.title == venueData[indexPath.item].name}), animated: true)
-    
         
+        let currentAnnotation = map.annotations.filter({$0.subtitle == venueData[indexPath.item].id})
         
-        
+        let region = MKCoordinateRegion(center: currentAnnotation[0].coordinate, latitudinalMeters: 0, longitudinalMeters: 0)
+
+        map.showAnnotations(currentAnnotation, animated: true)
+        map.setRegion(region, animated: true)
     }
-    
-    
 }
 //
 extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     
-    
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        view.isHighlighted = true
-        if let annotation = view.annotation?.subtitle {
-            let currentVenueTag = Int(annotation!)!
-            
-            let detailVC = DetailVenueVC()
-          
-           let selectedVenue = SavedVenues(image: imageArray[currentVenueTag].pngData()!, venueName: venueData[currentVenueTag].name, venueType: venueData[currentVenueTag].returnCategory(searchString: searchStringQuery), tip: "")
-//            let selectedVenue = Venue(id: "", name: venueData[currentVenueTag].name, location: venueData[currentVenueTag].location, categories: nil, venuePage: nil, picture: imageArray[currentVenueTag].pngData()!, tip: "", currentCategory: venueData[currentVenueTag].returnCategory(searchString: searchStringQuery))
-            
-            detailVC.currentVenue = selectedVenue
-            
-            navigationController?.pushViewController(detailVC, animated: true)
-            }
+        guard let subtitle = view.annotation?.subtitle else {return}
+      
+                view.detailCalloutAccessoryView = UIButton(type: .infoLight)
+        view.detailCalloutAccessoryView?.addGestureRecognizer(annotationTapGesture)
+           view.canShowCallout = true
+        view.isOpaque = true
+        if let index = venueData.firstIndex(where: {$0.id == subtitle} ) {
+
+             selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(searchString: searchStringQuery), tip: "")
+
+        }
+
         
     }
     
+   
+   
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       var count = 0
-        count += 1
-        // print("New Location: \(locations)")
-        print(count)
+       
+        print("New Location: \(locations)")
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -343,16 +367,17 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         switch status {
         case .authorizedAlways,.authorizedWhenInUse:
             locationManager.requestLocation()
-            latLong = (locationManager.location?.coordinate.latitude,locationManager.location?.coordinate.longitude) as! (Double, Double)
-             genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
-        case .denied:
-          genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
-          print(CLAuthorizationStatus.denied)
+            coordinate = locationManager.location!.coordinate
             
-            default:
+            genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
+        case .denied:
+            genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
+            print(CLAuthorizationStatus.denied)
+            
+        default:
             break
-            }
         }
+    }
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -362,51 +387,68 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         switch searchBar.tag {
         case 0:
             searchBarOne.showsCancelButton = true
+            searchBarOne.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .search, state: .normal)
         case 1:
             searchBarTwo.showsCancelButton = true
+            searchBarTwo.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .search, state: .normal)
         default:
             break
         }
-       
+        
         return true
     }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-          switch searchBar.tag {
-              case 0:
-                  searchBarOne.showsCancelButton = false
-                  searchBarOne.resignFirstResponder()
-              case 1:
-                  searchBarTwo.showsCancelButton = false
-                  searchBarTwo.resignFirstResponder()
-          default:
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        switch searchBar.tag {
+        case 0:
+           searchBarOne.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
+        case 1:
+            searchBarTwo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
+        default:
             break
-                  
-              }
+        }
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        switch searchBar.tag {
+        case 0:
+            searchBarOne.showsCancelButton = false
+            searchBarOne.resignFirstResponder()
+            
+        case 1:
+            searchBarTwo.showsCancelButton = false
+            searchBarTwo.resignFirstResponder()
+            
+        default:
+            break
+            
+        }
         
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
- let annotations = self.map.annotations
+        let annotations = self.map.annotations
         activityIndic.startAnimating()
         switch searchBar.tag {
         case 0:
-
-                                     self.map.removeAnnotations(annotations)
+            
+            self.map.removeAnnotations(annotations)
             guard let search = searchBarOne.text else {return}
             guard search != "" else {return}
             searchStringQuery = search.capitalized
-            searchBar.resignFirstResponder()
+            searchBarOne.placeholder = searchBarOne.text?.capitalized
 
+            searchBar.resignFirstResponder()
+            
         case 1:
             searchStringLatLong = searchBarTwo.text
+            searchBarTwo.placeholder = searchBarTwo.text?.capitalized
             self.map.removeAnnotations(annotations)
             resignFirstResponder()
         default:
             break
         }
-       
-            }
-        }
-    
-    
+        
+    }
+}
+
+
 
 

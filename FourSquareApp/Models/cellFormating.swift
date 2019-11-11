@@ -44,5 +44,18 @@ struct CustomLayer{
         gradientChangeColor.repeatCount = .infinity
         gradientLayer.add(gradientChangeColor, forKey: nil)
     }
+    func setGradientBackgroundArray(colorTop: UIColor, colorBottom: UIColor,newView:[UIView]) {
+        for i in newView {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0, 1]
+        gradientLayer.frame = i.bounds
+
+        i.layer.insertSublayer(gradientLayer, at: 0)
+        }
+    }
+
 }
 

@@ -59,16 +59,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func createMainTabBarController() -> UITabBarController {
         let navController = UINavigationController(rootViewController: MapViewController())
         
-        let navController2 = UINavigationController(rootViewController: CollectionVC())
+        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
         
        
         navController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
         
-   //   navController2.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "folder.badge.plus"), tag: 1)
+      navController2.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "folder.badge.plus"), tag: 1)
        
         let tabVC = UITabBarController()
         
-        tabVC.setViewControllers([navController], animated: false)
+        tabVC.setViewControllers([navController,navController2], animated: false)
         return tabVC
     }
 

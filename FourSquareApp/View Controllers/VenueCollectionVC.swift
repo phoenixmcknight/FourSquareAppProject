@@ -140,7 +140,7 @@ extension CollectionVC:UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         let listVC = ListTableViewController()
-        listVC.present = .collectionVC
+        listVC.precedingVC = .collectionVC
         guard !tipTextField.text!.isEmpty || tipTextField.text != nil else {return}
         currentVenue.tip = tipTextField.text!
         savedCollection[indexPath.item].addSavedVenue(venue: currentVenue)

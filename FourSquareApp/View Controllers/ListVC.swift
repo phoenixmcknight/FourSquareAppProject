@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum PresentTableView {
+enum PrecedingVC {
     case collectionVC
     case mapVC
 }
@@ -29,7 +29,9 @@ class ListTableViewController:UIViewController {
     }
     
     var listImageArray = [UIImage]()
-        
+    
+    var currentIndex:Int? = nil
+    
     lazy var listTableView:UITableView = {
         let tv = UITableView()
       
@@ -40,7 +42,7 @@ class ListTableViewController:UIViewController {
 return tv
     }()
     
-    var present:PresentTableView!
+    var precedingVC:PrecedingVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +55,11 @@ return tv
         super.viewDidAppear(animated)
      listTableView.reloadData()
         print("print data")
+        
     }
     
 
+   
     private func createConstraints() {
         
         listTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,10 +71,14 @@ return tv
                listTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
+    
+    private func backButtonPressed() {
+        
+    }
 }
 extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch present {
+        switch precedingVC {
         case .mapVC:
             return venueTableViewData.count
         case .collectionVC:
@@ -85,7 +93,7 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
        
        
         guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCells.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
-        switch present {
+        switch precedingVC {
             
         case .collectionVC:
              let savedVenues = collectionTableViewData[indexPath.row]
@@ -109,7 +117,7 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var currentVenue:SavedVenues!
-        switch present {
+        switch precedingVC {
         case.mapVC:
              currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: venueTableViewData[indexPath.row].name, venueType: venueTableViewData[indexPath.row].returnCategory(searchString: "Unknown Category"), tip:""  )
             
@@ -119,9 +127,24 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
             print("error")
         }
         
-        
+    
        let detailVC = DetailVenueVC()
         detailVC.currentVenue = currentVenue
+        detailVC.precedingVC = precedingVC
+        detailVC.delegate = self
         navigationController?.pushViewController(detailVC, animated: true)
     }
+}
+extension ListTableViewController:DetailVenueDeleteDelegate {
+    func deleteVenue(venueName: String) {
+        collectionTableViewData = collectionTableViewData.filter({$0.venueName != venueName})
+        var collectionViewCategories = try! VenueCollectionPersistenceManager.manager.getSavedCollection()
+        if let index = currentIndex {
+            collectionViewCategories[index].savedVenue = collectionTableViewData
+            try? VenueCollectionPersistenceManager.manager.replaceAllFunction(newCollection: collectionViewCategories)
+        }
+        
+    }
+    
+    
 }

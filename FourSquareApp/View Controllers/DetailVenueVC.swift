@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+protocol DetailVenueDeleteDelegate:AnyObject {
+    func deleteVenue(venueName:String)
+}
 class DetailVenueVC:UIViewController {
     lazy var resturantLabel:UILabel = {
         
@@ -35,21 +38,36 @@ class DetailVenueVC:UIViewController {
         vIv.tintColor = .black
         return vIv
     }()
-    
+    var precedingVC:PrecedingVC!
    var currentVenue:SavedVenues!
+    weak var delegate:DetailVenueDeleteDelegate?
 //var currentVenue:Venue!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     configureConstraints()
+        createBarButton()
         view.backgroundColor = .white
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addDetailsToSubviews()
+       
     }
- 
+    private func createBarButton() {
+        switch precedingVC {
+            
+        case .mapVC:
+             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addToCollection))
+        case .collectionVC:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteFromCollection))
+            
+        default:
+            break
+        }
+    }
     private func configureConstraints() {
         let outletArray = [resturantLabel,venueImageView,typeOfVenueLabel,tipLabel]
         
@@ -57,7 +75,7 @@ class DetailVenueVC:UIViewController {
             i.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(i)
         }
-         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addToCollection))
+        
         
         NSLayoutConstraint.activate([
             resturantLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 20),
@@ -91,6 +109,10 @@ class DetailVenueVC:UIViewController {
         navigationController?.pushViewController(venueCollection, animated: true)
         
     }
+    @objc private func deleteFromCollection() {
+        delegate?.deleteVenue(venueName: currentVenue.venueName)
+        navigationController?.popViewController(animated: true)
+    }
     
     private func addDetailsToSubviews() {
         resturantLabel.text = currentVenue.venueName
@@ -99,3 +121,7 @@ class DetailVenueVC:UIViewController {
         tipLabel.text = currentVenue.tip
     }
 }
+
+    
+    
+
