@@ -10,24 +10,24 @@ import Foundation
 import UIKit
 
 protocol DetailVenueDeleteDelegate:AnyObject {
-    func deleteVenue(venueName:String)
+    func deleteVenue(venueID:String)
 }
 class DetailVenueVC:UIViewController {
     lazy var resturantLabel:UILabel = {
         
-        let rl = UILabel(font: UIFont(name: "Courier-Bold", size: 24.0)!)
+        let rl = UILabel(font: UIFont(name: "Courier-Bold", size: 36.0)!)
         return rl
     }()
     
     lazy var typeOfVenueLabel:UILabel = {
            
-           let rl = UILabel(font: UIFont(name: "Courier-Bold", size: 14.0)!)
+           let rl = UILabel(font: UIFont(name: "Courier-Bold", size: 24.0)!)
            return rl
        }()
     
     lazy var tipLabel:UILabel = {
            
-           let rl = UILabel(font: UIFont(name: "Courier-Bold", size: 14.0)!)
+           let rl = UILabel(font: UIFont(name: "Courier-Bold", size: 24.0)!)
            return rl
        }()
     
@@ -41,13 +41,13 @@ class DetailVenueVC:UIViewController {
     var precedingVC:PrecedingVC!
    var currentVenue:SavedVenues!
     weak var delegate:DetailVenueDeleteDelegate?
-//var currentVenue:Venue!
+    lazy var checkBool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
     configureConstraints()
         createBarButton()
-        view.backgroundColor = .white
+        CustomLayer.shared.setGradientBackground(colorTop: .lightGray, colorBottom: .white, newView: view)
        
     }
     
@@ -101,17 +101,18 @@ class DetailVenueVC:UIViewController {
  
     
     @objc private func addToCollection() {
+    
       
+       
         let venueCollection = CollectionVC()
         
         venueCollection.currentVenue = currentVenue
         
-        navigationController?.pushViewController(venueCollection, animated: true)
+    navigationController?.pushViewController(venueCollection, animated: true)
         
     }
     @objc private func deleteFromCollection() {
-        delegate?.deleteVenue(venueName: currentVenue.venueName)
-        navigationController?.popViewController(animated: true)
+actionSheetWarning(alertTitle: "Delete From Collection?", saveOrDeleteMessage: "Delete")
     }
     
     private func addDetailsToSubviews() {
@@ -120,7 +121,24 @@ class DetailVenueVC:UIViewController {
         typeOfVenueLabel.text = currentVenue.venueType
         tipLabel.text = currentVenue.tip
     }
-}
+  private func actionSheetWarning(alertTitle:String,saveOrDeleteMessage:String)  {
+       
+        let alert = UIAlertController(title: alertTitle, message: "", preferredStyle: .actionSheet)
+        
+        let saveOrDelete = UIAlertAction(title: saveOrDeleteMessage, style: .default) { [weak self] (result) in
+            guard let id = self?.currentVenue.id else {return}
+           
+            self?.delegate?.deleteVenue(venueID: id)
+            self?.navigationController?.popViewController(animated: true)
+       
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(saveOrDelete)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+        }
+    }
+
 
     
     

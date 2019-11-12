@@ -12,7 +12,6 @@
 		69510620237484F3007AB772 /* OutletExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951061F237484F3007AB772 /* OutletExtensions.swift */; };
 		695106222374CB3C007AB772 /* VenueCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106212374CB3C007AB772 /* VenueCollectionVC.swift */; };
 		695106262374D736007AB772 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106242374D736007AB772 /* PersistenceHelper.swift */; };
-		695106272374D736007AB772 /* IndividualVenuePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106252374D736007AB772 /* IndividualVenuePersistence.swift */; };
 		695106292375B91F007AB772 /* VenueCollectionPersistenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106282375B91F007AB772 /* VenueCollectionPersistenceModel.swift */; };
 		695106692375FBBB007AB772 /* CreateVenueCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */; };
 		6951066B2375FC05007AB772 /* VenueCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951066A2375FC05007AB772 /* VenueCollection.swift */; };
@@ -64,7 +63,6 @@
 		6951061F237484F3007AB772 /* OutletExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutletExtensions.swift; sourceTree = "<group>"; };
 		695106212374CB3C007AB772 /* VenueCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionVC.swift; sourceTree = "<group>"; };
 		695106242374D736007AB772 /* PersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
-		695106252374D736007AB772 /* IndividualVenuePersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualVenuePersistence.swift; sourceTree = "<group>"; };
 		695106282375B91F007AB772 /* VenueCollectionPersistenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionPersistenceModel.swift; sourceTree = "<group>"; };
 		695106682375FBBB007AB772 /* CreateVenueCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVenueCollectionModel.swift; sourceTree = "<group>"; };
 		6951066A2375FC05007AB772 /* VenueCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollection.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				695106242374D736007AB772 /* PersistenceHelper.swift */,
-				695106252374D736007AB772 /* IndividualVenuePersistence.swift */,
 				6951066A2375FC05007AB772 /* VenueCollection.swift */,
 			);
 			path = Persistence;
@@ -399,7 +396,6 @@
 				6951066F23760B9B007AB772 /* VenueCollectionViewCell.swift in Sources */,
 				69FAADAD2370AFD5007919AC /* MapVC.swift in Sources */,
 				69510620237484F3007AB772 /* OutletExtensions.swift in Sources */,
-				695106272374D736007AB772 /* IndividualVenuePersistence.swift in Sources */,
 				69FAADB02370AFEA007919AC /* ListVC.swift in Sources */,
 				6951067123761A0C007AB772 /* cellFormating.swift in Sources */,
 				695106222374CB3C007AB772 /* VenueCollectionVC.swift in Sources */,

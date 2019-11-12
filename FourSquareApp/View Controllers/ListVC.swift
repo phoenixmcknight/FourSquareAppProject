@@ -14,33 +14,71 @@ enum PrecedingVC {
     case mapVC
 }
 class ListTableViewController:UIViewController {
-  
+    
     var venueTableViewData = [Venue]() {
         didSet {
-            print("print data")
+            navigationItem.title = "Venue List"
             listTableView.reloadData()
         }
     }
     
-    var collectionTableViewData = [SavedVenues]() {
+    var collectionTableViewData:[SavedVenues]! {
         didSet {
+            print(self.collectionTableViewData.count)
             listTableView.reloadData()
         }
     }
     
     var listImageArray = [UIImage]()
     
-    var currentIndex:Int? = nil
+    var currentIndex:Int? = nil 
+    
+    var searchString:String? = nil {
+        didSet {
+            listTableView.reloadData()
+        }
+    }
+    
+    var mapSearchResults:[Venue] {
+        guard let searchString = searchString else {
+            return venueTableViewData}
+      
+        guard searchString != "" else {
+            return venueTableViewData
+        }
+        return venueTableViewData.filter({$0.name.lowercased().contains(searchString.lowercased())})
+    }
+    
+    var collectionViewSearchResults:[SavedVenues] {
+        guard let searchString = searchString else {
+                   return collectionTableViewData}
+             
+               guard searchString != "" else {
+                   return collectionTableViewData
+               }
+               return collectionTableViewData.filter({$0.venueName.lowercased().contains(searchString.lowercased())})
+    }
+    
+    lazy var searchBarOne:UISearchBar = {
+                  let sbo = UISearchBar()
+                  sbo.tag = 0
+                  sbo.backgroundColor = .clear
+                  sbo.barTintColor = .clear
+           sbo.searchBarStyle = .minimal
+                  return sbo
+              }()
     
     lazy var listTableView:UITableView = {
         let tv = UITableView()
-      
+        
         tv.register(ListTableViewCell.self, forCellReuseIdentifier: RegisterCells.listTableViewCell.rawValue)
-    
+        tv.backgroundColor = .clear
         
         
-return tv
+        return tv
     }()
+    
+    lazy var lazyOutletArray = [self.searchBarOne,self.listTableView]
     
     var precedingVC:PrecedingVC!
     
@@ -49,58 +87,65 @@ return tv
         createConstraints()
         listTableView.dataSource = self
         listTableView.delegate = self
-         
+        searchBarOne.delegate = self
+        CustomLayer.shared.setGradientBackground(colorTop: .white, colorBottom: .lightGray, newView: view)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-     listTableView.reloadData()
-        print("print data")
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        listTableView.reloadData()        
     }
     
-
-   
+    
+    
     private func createConstraints() {
         
-        listTableView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(listTableView)
+        for outlet in lazyOutletArray {
+            outlet.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(outlet)
+        }
+        
         NSLayoutConstraint.activate([
-            listTableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-             listTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-              listTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-               listTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            searchBarOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBarOne.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBarOne.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            listTableView.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor),
+            listTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            listTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            listTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
     
-    private func backButtonPressed() {
-        
-    }
+   
 }
 extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch precedingVC {
         case .mapVC:
-            return venueTableViewData.count
+            return mapSearchResults.count
         case .collectionVC:
-            return collectionTableViewData.count
+            return collectionViewSearchResults.count
         case .none:
             return 0
         }
         
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-       
+        
+        
         guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCells.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
+       
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
+        
         switch precedingVC {
             
         case .collectionVC:
-             let savedVenues = collectionTableViewData[indexPath.row]
+            let savedVenues = collectionViewSearchResults[indexPath.row]
             cell.nameLabel.text = savedVenues.venueName
             cell.photoImage.image = UIImage(data: savedVenues.image)
         case .mapVC:
-            let venue = venueTableViewData[indexPath.row]
+            let venue = mapSearchResults[indexPath.row]
             let image = listImageArray[indexPath.row]
             cell.nameLabel.text = venue.name
             cell.photoImage.image = image
@@ -110,34 +155,40 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 100
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         var currentVenue:SavedVenues!
         switch precedingVC {
         case.mapVC:
-             currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: venueTableViewData[indexPath.row].name, venueType: venueTableViewData[indexPath.row].returnCategory(searchString: "Unknown Category"), tip:""  )
+            let selectedVenue = mapSearchResults[indexPath.row]
+            
+            currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: selectedVenue.name, venueType: selectedVenue.returnCategory(), tip:"",id: selectedVenue.id  )
             
         case .collectionVC:
-            currentVenue = SavedVenues(image: collectionTableViewData[indexPath.row].image, venueName: collectionTableViewData[indexPath.row].venueName, venueType: collectionTableViewData[indexPath.row].venueType, tip:collectionTableViewData[indexPath.row].tip  )
+            let selectedVenue = collectionViewSearchResults[indexPath.row]
+            
+            currentVenue = SavedVenues(image: selectedVenue.image, venueName: selectedVenue.venueName, venueType: selectedVenue.venueType, tip:selectedVenue.tip, id:selectedVenue.id  )
         case .none:
             print("error")
         }
         
-    
-       let detailVC = DetailVenueVC()
+        
+        let detailVC = DetailVenueVC()
         detailVC.currentVenue = currentVenue
         detailVC.precedingVC = precedingVC
         detailVC.delegate = self
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
 }
 extension ListTableViewController:DetailVenueDeleteDelegate {
-    func deleteVenue(venueName: String) {
-        collectionTableViewData = collectionTableViewData.filter({$0.venueName != venueName})
+    func deleteVenue(venueID: String) {
+        collectionTableViewData = collectionTableViewData.filter({$0.id != venueID})
         var collectionViewCategories = try! VenueCollectionPersistenceManager.manager.getSavedCollection()
         if let index = currentIndex {
             collectionViewCategories[index].savedVenue = collectionTableViewData
@@ -145,6 +196,11 @@ extension ListTableViewController:DetailVenueDeleteDelegate {
         }
         
     }
+   
     
-    
+}
+extension ListTableViewController:UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchString = searchText
+    }
 }

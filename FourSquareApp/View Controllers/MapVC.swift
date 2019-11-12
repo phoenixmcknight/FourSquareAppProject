@@ -21,6 +21,8 @@ class MapViewController: UIViewController {
         sbo.placeholder = "Search Venues"
         sbo.searchBarStyle = .minimal
         sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
+        sbo.searchTextField.textColor = .red
+        
         return sbo
     }()
     lazy var searchBarTwo:UISearchBar = {
@@ -29,7 +31,8 @@ class MapViewController: UIViewController {
         sbo.placeholder = "Enter Location Here"
         sbo.searchBarStyle = .minimal
 sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
-        
+        sbo.searchTextField.textColor = .red
+
         return sbo
     }()
     lazy var map:MKMapView = {
@@ -106,10 +109,12 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
         didSet {
             let coordinateRegion = MKCoordinateRegion(center: self.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 2 * searchRadius, longitudinalMeters: 2 * searchRadius)
             map.setRegion(coordinateRegion, animated: true)
-            guard searchStringQuery != "" else {return}
+            guard searchStringQuery != "" else {activityIndic.stopAnimating()
+                return}
             loadVenueData(query: searchStringQuery)
         }
     }
+    var currentLocation = CLLocationCoordinate2D()
     
     var searchStringLatLong:String? = nil {
         didSet {
@@ -132,12 +137,12 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
-        locationAuthorization()
+       
         map.userTrackingMode = .follow
         configureOutletConstraints()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
         viewGradientLayer()
-        
+         locationAuthorization()
     }
     private func setDelegates() {
         locationManager.delegate = self
@@ -192,6 +197,9 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
         CustomLayer.shared.setGradientBackground(colorTop: .black, colorBottom: .lightGray, newView: view)
        
     }
+
+
+   
     
     private func locationAuthorization() {
         let status = CLLocationManager.authorizationStatus()
@@ -203,19 +211,21 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-            coordinate = locationManager.location?.coordinate
-          
-            if let lastLocation = self.locationManager.location {
-                let geocoder = CLGeocoder()
-                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
-                    guard error == nil else {return}
-                    self.searchBarTwo.placeholder =  placemark?[0].locality
-                }
-            }
-            genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
+//            coordinate = locationManager.location?.coordinate
+//
+//            if let lastLocation = self.locationManager.location {
+//                let geocoder = CLGeocoder()
+//                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
+//                    guard error == nil else {return}
+//                    self.searchBarTwo.placeholder =  placemark?[0].locality
+//                    self.navigationItem.title = placemark?[0].locality
+//                }
+//            }
+            useUserLocationAlert()
+           
             
         case .denied:
-            genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
+            genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
         default:
             locationManager.requestWhenInUseAuthorization()
         }
@@ -236,6 +246,7 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     }
 
     private func loadVenueData(query:String) {
+        guard searchStringLatLong != "" else {return}
         guard let lat = coordinate?.latitude, let long = coordinate?.longitude else {return}
         
         MapAPIClient.client.getMapData(query: query, latLong: "\(lat),\(long)") { (result) in
@@ -252,12 +263,40 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     }
     
     private func genericAlertFunction(title:String,message:String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+       let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
         alert.addAction(cancel)
         present(alert,animated: true)
     }
     
+    private func useUserLocationAlert() {
+        let alert = UIAlertController(title: "Use Current Location?", message: "", preferredStyle: .actionSheet)
+        let yes = UIAlertAction(title: "Yes", style: .default) { [weak self] (result) in
+            
+            self?.coordinate = self?.locationManager.location?.coordinate
+            if let lastLocation = self?.locationManager.location {
+                           let geocoder = CLGeocoder()
+                           geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
+                               guard error == nil else {return}
+                            self?.searchBarTwo.placeholder =  placemark?[0].locality
+                            
+                            self?.navigationItem.title = placemark?[0].locality
+                           }
+                       }
+            self?.dismiss(animated: true) {
+                self?.genericAlertFunction(title: "Enter a Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
+            }
+        }
+        let no = UIAlertAction(title: "No", style: .destructive) { [weak self] (result)  in
+            self?.dismiss(animated: true) {
+                 self?.genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
+            }
+           
+        }
+        alert.addAction(yes)
+        alert.addAction(no)
+        present(alert,animated: true)
+    }
     private func loadImageData(venue:[Venue]) {
         for i in venue {
             MapPictureAPIClient.manager.getFourSquarePictureData(venueID:i.id ) { (results) in
@@ -313,11 +352,9 @@ extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //let venue = venueData[indexPath.item]
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
         cell.fourSquareImageView.image = imageArray[indexPath.item]
-        //cell.venueNameLabel.text = venue.name
         
         
         return cell
@@ -338,6 +375,8 @@ extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource 
 extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+    
         guard let subtitle = view.annotation?.subtitle else {return}
       
                 view.detailCalloutAccessoryView = UIButton(type: .infoLight)
@@ -346,8 +385,9 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         view.isOpaque = true
         if let index = venueData.firstIndex(where: {$0.id == subtitle} ) {
 
-             selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(searchString: searchStringQuery), tip: "")
-
+            selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(), tip: "", id: venueData[index].id)
+            
+           
         }
 
         
@@ -367,11 +407,11 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         switch status {
         case .authorizedAlways,.authorizedWhenInUse:
             locationManager.requestLocation()
-            coordinate = locationManager.location!.coordinate
+          useUserLocationAlert()
+            // coordinate = locationManager.location!.coordinate
             
-            genericAlertFunction(title: "Enter a Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
+           
         case .denied:
-            genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Eateries", message: "(I suggest Pizza)")
             print(CLAuthorizationStatus.denied)
             
         default:
@@ -383,6 +423,7 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+    
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         switch searchBar.tag {
         case 0:
@@ -411,6 +452,8 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         switch searchBar.tag {
         case 0:
             searchBarOne.showsCancelButton = false
+            searchStringQuery = ""
+            searchBar.placeholder = ""
             searchBarOne.resignFirstResponder()
             
         case 1:
@@ -425,10 +468,10 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let annotations = self.map.annotations
-        activityIndic.startAnimating()
+        
         switch searchBar.tag {
         case 0:
-            
+            activityIndic.startAnimating()
             self.map.removeAnnotations(annotations)
             guard let search = searchBarOne.text else {return}
             guard search != "" else {return}
@@ -438,8 +481,12 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             searchBar.resignFirstResponder()
             
         case 1:
-            searchStringLatLong = searchBarTwo.text
-            searchBarTwo.placeholder = searchBarTwo.text?.capitalized
+            activityIndic.startAnimating()
+            guard let search = searchBarTwo.text else {return}
+            navigationItem.title = search.capitalized
+
+            searchStringLatLong = search
+            searchBarTwo.placeholder = search.capitalized
             self.map.removeAnnotations(annotations)
             resignFirstResponder()
         default:

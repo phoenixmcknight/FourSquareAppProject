@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 struct CustomLayer{
+    
     static let shared = CustomLayer()
     func createCustomlayer(layer:CALayer, shadowOpacity: Float){
         layer.borderWidth = 2.0
@@ -30,20 +31,10 @@ struct CustomLayer{
         gradientLayer.frame = newView.bounds
 
         newView.layer.insertSublayer(gradientLayer, at: 0)
-       
         
-        
-        let cgColorsTo:[UIColor] = [colorTop,colorBottom]
-        
-        let gradientChangeColor = CABasicAnimation(keyPath: "locations")
-        gradientChangeColor.duration = 5
-        gradientChangeColor.toValue = cgColorsTo
-        gradientChangeColor.fillMode = CAMediaTimingFillMode.both
-        gradientChangeColor.isRemovedOnCompletion = false
-        gradientChangeColor.autoreverses = true
-        gradientChangeColor.repeatCount = .infinity
-        gradientLayer.add(gradientChangeColor, forKey: nil)
     }
+    
+    
     func setGradientBackgroundArray(colorTop: UIColor, colorBottom: UIColor,newView:[UIView]) {
         for i in newView {
         let gradientLayer = CAGradientLayer()
@@ -56,6 +47,6 @@ struct CustomLayer{
         i.layer.insertSublayer(gradientLayer, at: 0)
         }
     }
-
+    
+    
 }
-

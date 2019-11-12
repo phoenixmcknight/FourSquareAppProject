@@ -46,11 +46,9 @@ struct Venue: Codable {
     let categories: [Category]?
     //let delivery: Delivery?
     let venuePage: VenuePage?
-    let picture:Data?
-    var tip:String?
     let currentCategory:String?
-    func returnCategory(searchString:String) -> String {
-        return "\(categories?[0].shortName ?? searchString.capitalized) Resturant" 
+    func returnCategory() -> String {
+        return categories?[0].name ?? "Food Venue"
     }
 }
 
@@ -80,35 +78,6 @@ struct CategoryIcon: Codable {
 enum Suffix: String, Codable {
     case png = ".png"
 }
-
-// MARK: - Delivery
-//struct Delivery: Codable {
-//    let id: String
-//    let url: String
-//    let provider: Provider
-//}
-
-// MARK: - Provider
-//struct Provider: Codable {
-//    let name: String?
-//    let icon: ProviderIcon
-//}
-
-// MARK: - ProviderIcon
-//struct ProviderIcon: Codable {
-//    let iconPrefix: String
-//    let sizes: [Int]
-//    let name: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case iconPrefix = "prefix"
-//        case sizes, name
-//    }
-//}
-
-
-
-
 
 // MARK: - Location
 struct Location: Codable {

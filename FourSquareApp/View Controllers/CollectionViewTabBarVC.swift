@@ -15,6 +15,7 @@ class CollectionViewTabBarVC: UIViewController {
             didSet {
                 print("receivedData")
                 print(self.savedCollection.count)
+                venueCollectionView.reloadData()
             }
         }
         
@@ -24,15 +25,16 @@ class CollectionViewTabBarVC: UIViewController {
             let vcv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
             vcv.register(VenueCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.venueCollectionViewCell.rawValue)
             
-            vcv.backgroundColor = .white
+            vcv.backgroundColor = .clear
             return vcv
         }()
         
       lazy var searchBarOne:UISearchBar = {
                let sbo = UISearchBar()
                sbo.tag = 0
-               sbo.backgroundColor = .lightGray
+              sbo.backgroundColor = .clear
                sbo.barTintColor = .clear
+              sbo.searchBarStyle = .minimal
                return sbo
            }()
     
@@ -59,7 +61,8 @@ class CollectionViewTabBarVC: UIViewController {
             venueCollectionView.dataSource = self
             venueCollectionView.delegate = self
             searchBarOne.delegate = self
-            
+            gradientColorBackGrounds()
+            navigationItem.title = "Venue Collection"
         }
         
         
@@ -84,12 +87,12 @@ class CollectionViewTabBarVC: UIViewController {
                 searchBarOne.heightAnchor.constraint(equalToConstant: view.frame.height * 0.040),
                 
                 
-                venueCollectionView.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor,constant: 10),
+                venueCollectionView.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor,constant: 20),
                 
                 
-                venueCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
-                venueCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
-                venueCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -10)
+                venueCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                venueCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                venueCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
                 
             ])
         }
@@ -101,6 +104,9 @@ class CollectionViewTabBarVC: UIViewController {
             }
         
         }
+    private func gradientColorBackGrounds() {
+        CustomLayer.shared.setGradientBackground(colorTop: .darkGray, colorBottom: .white, newView: view)
+    }
     }
 
     extension CollectionViewTabBarVC:UICollectionViewDataSource,UICollectionViewDelegate {
@@ -126,6 +132,7 @@ class CollectionViewTabBarVC: UIViewController {
             listVC.precedingVC = .collectionVC
             listVC.currentIndex = indexPath.item
             listVC.collectionTableViewData = savedCollection[indexPath.item].savedVenue
+            listVC.navigationItem.title = "\(savedCollection[indexPath.item].name) Collection"
             navigationController?.pushViewController(listVC, animated: true)
         }
         

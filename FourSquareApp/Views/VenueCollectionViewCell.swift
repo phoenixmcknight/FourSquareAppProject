@@ -21,6 +21,14 @@ class VenueCollectionViewCell: UICollectionViewCell {
         return nl
     }()
     
+    lazy var plusImageView:UIImageView = {
+       let plus = UIImageView()
+        plus.contentMode = .scaleAspectFit
+        return plus
+    }()
+    
+    lazy var outletArray = [self.collectionImage,self.nameLabel]
+    
     var changeColorOfBorderCellFunction: (()->()) = {}
 
     
@@ -30,15 +38,21 @@ class VenueCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureConstraints() {
-        contentView.addSubview(collectionImage)
-        contentView.addSubview(nameLabel)
-        
-        collectionImage.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        for outlet in outletArray {
+            outlet.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(outlet)
+        }
+        plusImageView.translatesAutoresizingMaskIntoConstraints = false
+        collectionImage.addSubview(plusImageView)
+       
         NSLayoutConstraint.activate([
             collectionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             collectionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            plusImageView.centerXAnchor.constraint(equalTo: collectionImage.centerXAnchor),
+            plusImageView.centerYAnchor.constraint(equalTo: collectionImage.centerYAnchor),
+            plusImageView.heightAnchor.constraint(equalToConstant: collectionImage.frame.height / 2),
+            plusImageView.widthAnchor.constraint(equalToConstant: collectionImage.frame.width / 2),
             nameLabel.topAnchor.constraint(equalTo: collectionImage.bottomAnchor),
              nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
               nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
