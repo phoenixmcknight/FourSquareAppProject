@@ -15,4 +15,7 @@ struct SavedVenues:Codable {
     let venueType:String
     var tip:String
     let id:String
+    let address:String
+    let lat:Double?
+    let long:Double?
 }

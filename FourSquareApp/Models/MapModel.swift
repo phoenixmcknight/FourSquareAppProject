@@ -92,6 +92,18 @@ struct Location: Codable {
     let state: String?
     let country: String?
     let formattedAddress: [String]
+    
+    func returnFormattedAddress() -> String {
+       
+  return      """
+        
+        \(address ?? "Address Not Available")(\(crossStreet ?? "Cross Street Not Available"))
+        \(city ?? "City Not Available"),\(state ?? "State Not Available") \(postalCode ?? "Postal Code Not Available")
+        \(country ?? "Country Not Available")
+        
+        """
+       
+    }
 }
 
 

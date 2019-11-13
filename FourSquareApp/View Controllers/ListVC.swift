@@ -167,12 +167,12 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
         case.mapVC:
             let selectedVenue = mapSearchResults[indexPath.row]
             
-            currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: selectedVenue.name, venueType: selectedVenue.returnCategory(), tip:"",id: selectedVenue.id  )
+            currentVenue = SavedVenues(image: listImageArray[indexPath.row].pngData()!, venueName: selectedVenue.name, venueType: selectedVenue.returnCategory(), tip:"",id: selectedVenue.id,address:selectedVenue.location?.returnFormattedAddress() ?? "Location Data Unavailable",lat: selectedVenue.location?.lat,long: selectedVenue.location?.lng)
             
         case .collectionVC:
             let selectedVenue = collectionViewSearchResults[indexPath.row]
             
-            currentVenue = SavedVenues(image: selectedVenue.image, venueName: selectedVenue.venueName, venueType: selectedVenue.venueType, tip:selectedVenue.tip, id:selectedVenue.id  )
+            currentVenue = SavedVenues(image: selectedVenue.image, venueName: selectedVenue.venueName, venueType: selectedVenue.venueType, tip:selectedVenue.tip, id:selectedVenue.id,address: selectedVenue.address,lat: selectedVenue.lat,long: selectedVenue.long  )
         case .none:
             print("error")
         }

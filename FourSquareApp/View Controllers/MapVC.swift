@@ -124,7 +124,8 @@ class MapViewController: UIViewController {
     }
     var searchStringQuery:String = "" {
         didSet  {
-            guard self.searchStringQuery != "" else {return}
+            guard self.searchStringQuery != "" && searchStringLatLong != "" && searchBarTwo.placeholder != "" else {return}
+            
             loadVenueData(query: self.searchStringQuery)
         }
     }
@@ -211,16 +212,7 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             
-            //            coordinate = locationManager.location?.coordinate
-            //
-            //            if let lastLocation = self.locationManager.location {
-            //                let geocoder = CLGeocoder()
-            //                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
-            //                    guard error == nil else {return}
-            //                    self.searchBarTwo.placeholder =  placemark?[0].locality
-            //                    self.navigationItem.title = placemark?[0].locality
-            //                }
-            //            }
+           
             useUserLocationAlert()
             
             
@@ -281,6 +273,7 @@ class MapViewController: UIViewController {
                     self?.searchBarTwo.placeholder =  placemark?[0].locality
                     
                     self?.navigationItem.title = placemark?[0].locality
+                    
                 }
             }
             self?.dismiss(animated: true) {
@@ -383,12 +376,13 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         view.detailCalloutAccessoryView?.addGestureRecognizer(annotationTapGesture)
         view.canShowCallout = true
         view.isOpaque = true
-        if let index = venueData.firstIndex(where: {$0.id == subtitle} ) {
+        guard let index = venueData.firstIndex(where: {$0.id == subtitle} )  else {return}
             
-            selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(), tip: "", id: venueData[index].id)
+        
+        selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(), tip: "", id: venueData[index].id,address: venueData[index].location?.returnFormattedAddress() ?? "Location Data Unavailable",lat: venueData[index].location?.lat,long: venueData[index].location?.lng)
             
             
-        }
+        
         
         
     }

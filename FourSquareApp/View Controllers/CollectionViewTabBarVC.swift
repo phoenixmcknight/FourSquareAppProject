@@ -94,11 +94,7 @@ class CollectionViewTabBarVC: UIViewController {
         
             presentVenuePhotoVC()
         
-//            let newCollection = CreateVenueCollection(name: collectionViewNameTextField.text!, image: (collectionViewImage?.pngData())!,savedVenue:[] )
-//
-//        try? VenueCollectionPersistenceManager.manager.save(newCollection: newCollection)
-//        collectionViewImage = UIImage(systemName: "photo")
-//        loadData()
+
         }
     
     private func presentVenuePhotoVC() {
@@ -117,7 +113,8 @@ class CollectionViewTabBarVC: UIViewController {
               
               try? VenueCollectionPersistenceManager.manager.save(newCollection: newCollection)
             self?.collectionViewImage = UIImage(systemName: "photo")
-            self?.loadData()
+            self?.savedCollection.append(newCollection)
+        //    venueCollectionView.reloadData()
         }
 //        let useDefaultImage = UIAlertAction(title: "Use Default Image", style: .cancel, handler: nil)
         alert.addAction(customPicture)
@@ -220,12 +217,7 @@ class CollectionViewTabBarVC: UIViewController {
         }
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
            
-//            let listVC = ListTableViewController()
-//            listVC.precedingVC = .collectionVC
-//            listVC.currentIndex = indexPath.item
-//            listVC.collectionTableViewData = savedCollection[indexPath.item].savedVenue
-//            listVC.navigationItem.title = "\(savedCollection[indexPath.item].name) Collection"
-//            navigationController?.pushViewController(listVC, animated: true)
+
             deleteOrLookAtCollectionAlert(indexPath: indexPath.item)
         }
         
@@ -255,7 +247,8 @@ extension CollectionViewTabBarVC:VenuePhotoCollectionDelegate {
           
           try? VenueCollectionPersistenceManager.manager.save(newCollection: newCollection)
           collectionViewImage = UIImage(systemName: "photo")
-          loadData()
+        savedCollection.append(newCollection)
+        //venueCollectionView.reloadData()
     }
     
     
