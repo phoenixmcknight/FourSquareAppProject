@@ -173,9 +173,9 @@ class CollectionViewTabBarVC: UIViewController {
     }
     
     private func addsubViewsToView() {
-        for view in viewArray {
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(view)
+        for aview in viewArray {
+            aview.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(aview)
         }
     }
     

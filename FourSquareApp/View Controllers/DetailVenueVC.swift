@@ -73,14 +73,21 @@ class DetailVenueVC:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubviewsToView()
         configureResturantConstraints()
         configureVenueImageViewConstraints()
         configureTextViewConstraints()
         configureTypeOfVenueLabel()
         configureTipLabelConstraints()
-        addSubviewsToView()
         genericAlert(title: "Click On the Address For Directions To \(currentVenue.venueName)", message: "")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

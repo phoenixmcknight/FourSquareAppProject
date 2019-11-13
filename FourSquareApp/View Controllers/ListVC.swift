@@ -109,9 +109,9 @@ class ListTableViewController:UIViewController {
     }
     //MARK:Add Subviews to View
     private func addViewsToSubview() {
-        for outlet in viewArray {
-            outlet.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(outlet)
+        for aview in viewArray {
+            aview.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(aview)
         }
         CustomLayer.shared.setGradientBackground(colorTop: .white, colorBottom: .lightGray, newView: view)
     }

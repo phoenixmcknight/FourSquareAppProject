@@ -72,7 +72,7 @@ class ListTableViewCell: UITableViewCell {
             nameLabel.leadingAnchor.constraint(equalTo: photoImage.trailingAnchor,constant: 10),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10),
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+           // nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
         ])
     }

@@ -161,9 +161,9 @@ class MapViewController: UIViewController {
     }
     //MARK:Add ViewsToSubviews
     private func addViewsToSubView() {
-        for view in viewArray {
-            view.addSubview(view)
-            view.translatesAutoresizingMaskIntoConstraints = false
+        for aView in viewArray {
+            view.addSubview(aView)
+            aView.translatesAutoresizingMaskIntoConstraints = false
         }
         view.addSubview(activityIndic)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
