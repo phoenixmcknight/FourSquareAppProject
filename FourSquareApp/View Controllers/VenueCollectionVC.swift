@@ -32,33 +32,21 @@ class CollectionVC:UIViewController {
         return ttf
     }()
     
-    lazy var collectionViewNameTextField:UITextField = {
-        let ttf = UITextField()
-        ttf.placeholder = "Enter a New Collection Title Here"
-        ttf.textAlignment = .center
-        ttf.textColor = .black
-        ttf.borderStyle = .roundedRect
-        
-        return ttf
-    }()
+  
     
-    lazy var outletArray = [self.tipTextField,self.collectionViewNameTextField,self.venueCollectionView]
+    lazy var outletArray = [self.tipTextField,self.venueCollectionView]
         
-    var currentVenue:SavedVenues! {
-        didSet {
-            print("got data")
-        }
-    }
+    var currentVenue:SavedVenues!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureConstraints()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(create))
+       
         venueCollectionView.dataSource = self
         venueCollectionView.delegate = self
        gradientColorBackGrounds()
-        navigationItem.title = " Venue : \(currentVenue.venueName)"
+        navigationItem.title = " Venue: \(currentVenue.venueName)"
         alreadySavedOrCreatedAlert(title: "Click on the '+' Symbol to Add a Venue", message: "")
     }
     
@@ -68,21 +56,7 @@ class CollectionVC:UIViewController {
         loadData()
         
     }
-    @objc private func create() {
-        guard collectionViewNameTextField.hasText else {
-            alreadySavedOrCreatedAlert(title: "⚠️ Warning ⚠️", message: "Invalid Text Field Entry")
-            return}
-        if savedCollection.contains(where: {$0.name == collectionViewNameTextField.text}) {
-        alreadySavedOrCreatedAlert(title:"⚠️ Warning ⚠️" , message: "A Collection With That Name Already Exists")
-                  return
-        } else {
-        let newCollection = CreateVenueCollection(name: collectionViewNameTextField.text!, image: currentVenue.image,savedVenue:[] )
-        
-        try? VenueCollectionPersistenceManager.manager.save(newCollection: newCollection)
-        
-        loadData()
-        }
-    }
+    
     
     private func gradientColorBackGrounds() {
         venueCollectionView.backgroundColor = .clear
@@ -95,13 +69,9 @@ class CollectionVC:UIViewController {
             view.addSubview(i)
         }
         NSLayoutConstraint.activate([
-            collectionViewNameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
-            collectionViewNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
-            collectionViewNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
             
-            collectionViewNameTextField.heightAnchor.constraint(equalToConstant: view.frame.height * 0.040),
             
-            tipTextField.topAnchor.constraint(equalTo: collectionViewNameTextField.bottomAnchor,constant: 20),
+            tipTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
             
             tipTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
             
@@ -183,7 +153,7 @@ extension CollectionVC:UICollectionViewDataSource,UICollectionViewDelegate {
              alreadySavedOrCreatedAlert(title: "⚠️ Warning ⚠️", message: "\(currentVenue.venueName) Venue has Already Been Saved To This Collection")
                  return
         }
-        actionSheetWarning(alertTitle: "This Will Save: \(currentVenue.venueName) to Your Collection", saveMessage: "Save", indexPath: indexPath.item)
+        actionSheetWarning(alertTitle: "This Will Save: \(currentVenue.venueName) to The Selected Collection", saveMessage: "Save", indexPath: indexPath.item)
     }
     }
 

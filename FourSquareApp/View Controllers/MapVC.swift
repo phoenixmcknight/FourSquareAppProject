@@ -30,9 +30,9 @@ class MapViewController: UIViewController {
         sbo.tag = 1
         sbo.placeholder = "Enter Location Here"
         sbo.searchBarStyle = .minimal
-sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
+        sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
         sbo.searchTextField.textColor = .red
-
+        
         return sbo
     }()
     lazy var map:MKMapView = {
@@ -49,19 +49,19 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     }()
     
     lazy var mapCollectionView:UICollectionView = {
-           var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-           let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
-           layout.scrollDirection = .horizontal
-           layout.itemSize = CGSize(width: 125, height: 125)
-           colletionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue)
-           
-           
-           colletionView.backgroundColor = .clear
-           layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-           layout.minimumInteritemSpacing = 10
-           
-           return colletionView
-       }()
+        var layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+        let colletionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout )
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 125, height: 125)
+        colletionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue)
+        
+        
+        colletionView.backgroundColor = .clear
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        layout.minimumInteritemSpacing = 10
+        
+        return colletionView
+    }()
     
     lazy var annotationTapGesture:UITapGestureRecognizer = {
         let atg = UITapGestureRecognizer()
@@ -70,14 +70,14 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
         return atg
     }()
     
-     lazy var outletArray = [self.searchBarOne,self.searchBarTwo,self.map,self.activityIndic,self.mapCollectionView]
+    lazy var outletArray = [self.searchBarOne,self.searchBarTwo,self.map,self.activityIndic,self.mapCollectionView]
     
     var venueData = [Venue]() {
         didSet {
-             imageArray = []
+            imageArray = []
             loadImageData(venue: self.venueData)
             
-           // var count = 0
+            // var count = 0
             for i in self.venueData {
                 let annotation = MKPointAnnotation()
                 annotation.title = i.name
@@ -85,7 +85,7 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
                     annotation.coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.lng)
                     
                     annotation.subtitle = i.id
-                 //   count += 1
+                    //   count += 1
                     self.map.addAnnotation(annotation)
                     
                 }
@@ -95,9 +95,9 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     
     var imageArray:[UIImage] = [] {
         didSet {
-           
+            
             guard self.imageArray.count == venueData.count else {return}
-                mapCollectionView.reloadData()
+            mapCollectionView.reloadData()
             
         }
     }
@@ -137,20 +137,20 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
-       
+        
         map.userTrackingMode = .follow
         configureOutletConstraints()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(showTableView))
         viewGradientLayer()
-         locationAuthorization()
+        locationAuthorization()
     }
     private func setDelegates() {
         locationManager.delegate = self
-              map.delegate = self
-              mapCollectionView.delegate = self
-              mapCollectionView.dataSource = self
-              searchBarOne.delegate = self
-              searchBarTwo.delegate = self
+        map.delegate = self
+        mapCollectionView.delegate = self
+        mapCollectionView.dataSource = self
+        searchBarOne.delegate = self
+        searchBarTwo.delegate = self
     }
     
     @objc private func showTableView() {
@@ -193,13 +193,13 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
         ])
     }
     private func viewGradientLayer() {
-      
+        
         CustomLayer.shared.setGradientBackground(colorTop: .black, colorBottom: .lightGray, newView: view)
-       
+        
     }
-
-
-   
+    
+    
+    
     
     private func locationAuthorization() {
         let status = CLLocationManager.authorizationStatus()
@@ -210,19 +210,19 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
             locationManager.requestLocation()
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-
-//            coordinate = locationManager.location?.coordinate
-//
-//            if let lastLocation = self.locationManager.location {
-//                let geocoder = CLGeocoder()
-//                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
-//                    guard error == nil else {return}
-//                    self.searchBarTwo.placeholder =  placemark?[0].locality
-//                    self.navigationItem.title = placemark?[0].locality
-//                }
-//            }
+            
+            //            coordinate = locationManager.location?.coordinate
+            //
+            //            if let lastLocation = self.locationManager.location {
+            //                let geocoder = CLGeocoder()
+            //                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
+            //                    guard error == nil else {return}
+            //                    self.searchBarTwo.placeholder =  placemark?[0].locality
+            //                    self.navigationItem.title = placemark?[0].locality
+            //                }
+            //            }
             useUserLocationAlert()
-           
+            
             
         case .denied:
             genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
@@ -244,7 +244,7 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
             }
         }
     }
-
+    
     private func loadVenueData(query:String) {
         guard searchStringLatLong != "" else {return}
         guard let lat = coordinate?.latitude, let long = coordinate?.longitude else {return}
@@ -254,7 +254,7 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
                 
             case .success(let data):
                 self.venueData = data
-
+                
                 self.activityIndic.stopAnimating()
             case .failure(let error):
                 print(error)
@@ -264,7 +264,7 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
     
     private func genericAlertFunction(title:String,message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-       let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
         alert.addAction(cancel)
         present(alert,animated: true)
     }
@@ -275,23 +275,23 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
             
             self?.coordinate = self?.locationManager.location?.coordinate
             if let lastLocation = self?.locationManager.location {
-                           let geocoder = CLGeocoder()
-                           geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
-                               guard error == nil else {return}
-                            self?.searchBarTwo.placeholder =  placemark?[0].locality
-                            
-                            self?.navigationItem.title = placemark?[0].locality
-                           }
-                       }
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(lastLocation) { (placemark, error) in
+                    guard error == nil else {return}
+                    self?.searchBarTwo.placeholder =  placemark?[0].locality
+                    
+                    self?.navigationItem.title = placemark?[0].locality
+                }
+            }
             self?.dismiss(animated: true) {
                 self?.genericAlertFunction(title: "Enter a Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
             }
         }
         let no = UIAlertAction(title: "No", style: .destructive) { [weak self] (result)  in
             self?.dismiss(animated: true) {
-                 self?.genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
+                self?.genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
             }
-           
+            
         }
         alert.addAction(yes)
         alert.addAction(no)
@@ -336,12 +336,12 @@ sbo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state:
         }
     }
     @objc private func annotationCalloutClicked() {
-                    let detailVC = DetailVenueVC()
-                    detailVC.precedingVC = .mapVC
-           detailVC.currentVenue = selectedVenue
+        let detailVC = DetailVenueVC()
+        detailVC.precedingVC = .mapVC
+        detailVC.currentVenue = selectedVenue
         navigationController?.pushViewController(detailVC, animated: true)
-                }
     }
+}
 
 
 extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
@@ -366,7 +366,7 @@ extension MapViewController:UICollectionViewDelegate,UICollectionViewDataSource 
         let currentAnnotation = map.annotations.filter({$0.subtitle == venueData[indexPath.item].id})
         
         let region = MKCoordinateRegion(center: currentAnnotation[0].coordinate, latitudinalMeters: 0, longitudinalMeters: 0)
-
+        
         map.showAnnotations(currentAnnotation, animated: true)
         map.setRegion(region, animated: true)
     }
@@ -376,28 +376,28 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-    
+        
         guard let subtitle = view.annotation?.subtitle else {return}
-      
-                view.detailCalloutAccessoryView = UIButton(type: .infoLight)
+        
+        view.detailCalloutAccessoryView = UIButton(type: .infoLight)
         view.detailCalloutAccessoryView?.addGestureRecognizer(annotationTapGesture)
-           view.canShowCallout = true
+        view.canShowCallout = true
         view.isOpaque = true
         if let index = venueData.firstIndex(where: {$0.id == subtitle} ) {
-
+            
             selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(), tip: "", id: venueData[index].id)
             
-           
+            
         }
-
+        
         
     }
     
-   
-   
+    
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       
+        
         print("New Location: \(locations)")
         
     }
@@ -407,10 +407,10 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         switch status {
         case .authorizedAlways,.authorizedWhenInUse:
             locationManager.requestLocation()
-          useUserLocationAlert()
+            useUserLocationAlert()
             // coordinate = locationManager.location!.coordinate
             
-           
+            
         case .denied:
             print(CLAuthorizationStatus.denied)
             
@@ -441,7 +441,7 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         switch searchBar.tag {
         case 0:
-           searchBarOne.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
+            searchBarOne.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
         case 1:
             searchBarTwo.setImage(UIImage(systemName: "magnifyingglass.circle"), for: .search, state: .normal)
         default:
@@ -477,14 +477,14 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             guard search != "" else {return}
             searchStringQuery = search.capitalized
             searchBarOne.placeholder = searchBarOne.text?.capitalized
-
+            
             searchBar.resignFirstResponder()
             
         case 1:
             activityIndic.startAnimating()
             guard let search = searchBarTwo.text else {return}
             navigationItem.title = search.capitalized
-
+            
             searchStringLatLong = search
             searchBarTwo.placeholder = search.capitalized
             self.map.removeAnnotations(annotations)
