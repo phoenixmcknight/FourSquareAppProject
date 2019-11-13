@@ -248,6 +248,17 @@ extension CollectionViewTabBarVC:UISearchBarDelegate {
        
        
 
-
+extension CollectionViewTabBarVC:VenuePhotoCollectionDelegate {
+    func addPhoto(photo: UIImage) {
+    collectionViewImage = photo
+        let newCollection = CreateVenueCollection(name: collectionViewNameTextField.text!, image: (collectionViewImage?.pngData())!,savedVenue:[] )
+          
+          try? VenueCollectionPersistenceManager.manager.save(newCollection: newCollection)
+          collectionViewImage = UIImage(systemName: "photo")
+          loadData()
+    }
+    
+    
+}
 
 
