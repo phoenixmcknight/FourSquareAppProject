@@ -9,19 +9,30 @@
 import Foundation
 import UIKit
 
+//MARK: Protocols
+
 protocol VenuePhotoCollectionDelegate:AnyObject {
     func addPhoto(photo:UIImage)
 }
 
 class VenuePhotoCollectionVC:UIViewController {
 
+    //MARK: Variables
+    
 var pictureData = [Hit]() {
        didSet {
        savePhotosFromImageHelper()
        }
    }
+   weak var delegate:VenuePhotoCollectionDelegate?
    
-   //MARK: Variables - Label Outlets
+   var imageArray:[UIImage] = [] {
+       didSet {
+           guard self.imageArray.count == pictureData.count else {return}
+           venueCollectionView.reloadData()
+       }
+   }
+   //MARK: Views
     
     lazy var searchBarOne:UISearchBar = {
                   let sbo = UISearchBar()
@@ -47,38 +58,25 @@ var pictureData = [Hit]() {
               return vcv
           }()
    
-   lazy var placeHolderActivity:UIActivityIndicatorView = {
-       
-       let image = UIActivityIndicatorView()
-    image.hidesWhenStopped = true
-    image.style = .large
+   
     
-return image
-   }()
+    lazy var viewArray = [self.introLabel,self.searchBarOne,self.venueCollectionView]
     
-    lazy var outletArray = [self.introLabel,self.searchBarOne,self.venueCollectionView,self.placeHolderActivity]
     
-    weak var delegate:VenuePhotoCollectionDelegate?
-    
-    var imageArray:[UIImage] = [] {
-        didSet {
-            guard self.imageArray.count == pictureData.count else {return}
-            venueCollectionView.reloadData()
-        }
-    }
+    //MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureConstraints()
+        addSubviewsToView()
+        configureIntroLabelConstraints()
+        configureSearchBarConstraints()
+        configureVenueCollectionConstraints()
         setDelegates()
         CustomLayer.shared.setGradientBackground(colorTop: .white, colorBottom: .lightGray, newView: view)
     }
-    private func setDelegates() {
-        searchBarOne.delegate = self
-        venueCollectionView.delegate = self
-        venueCollectionView.dataSource = self
-    }
-    
+ 
+   
+    //MARK:Load Data
     private func loadData(searchTerm:String) {
            PictureAPIClient.shared.getPictures(searchTerm:searchTerm) {
                (results) in
@@ -108,36 +106,47 @@ return image
             }
         }
     }
-    private func configureConstraints() {
-              for outlet in outletArray {
-                  outlet.translatesAutoresizingMaskIntoConstraints = false
-                  view.addSubview(outlet)
-              }
-              
-              NSLayoutConstraint.activate([
-                
-                  introLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
-                  introLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
-                  introLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
-                  
-                  introLabel.heightAnchor.constraint(equalToConstant: view.frame.height * 0.060),
-                  
-                  searchBarOne.topAnchor.constraint(equalTo: introLabel.bottomAnchor,constant: 20),
-                  searchBarOne.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
-                  searchBarOne.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
-                  
-                  searchBarOne.heightAnchor.constraint(equalToConstant: view.frame.height * 0.040),
-                  
-                  
-                  venueCollectionView.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor,constant: 20),
-                  
-                  
-                  venueCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                  venueCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                  venueCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-                  
-              ])
-          }
+    private func addSubviewsToView() {
+        for view in viewArray {
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(view)
+        }
+    }
+    
+    //MARK: Constraints
+    
+    private func configureIntroLabelConstraints() {
+        NSLayoutConstraint.activate([
+        introLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
+        introLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
+        introLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
+        
+        introLabel.heightAnchor.constraint(equalToConstant: view.frame.height * 0.060)
+        ])
+    }
+    private func configureSearchBarConstraints() {
+        NSLayoutConstraint.activate([
+        searchBarOne.topAnchor.constraint(equalTo: introLabel.bottomAnchor,constant: 20),
+                        searchBarOne.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 10),
+                        searchBarOne.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
+                        
+                        searchBarOne.heightAnchor.constraint(equalToConstant: view.frame.height * 0.040)
+        ])
+    }
+    
+    private func configureVenueCollectionConstraints() {
+        NSLayoutConstraint.activate([
+        venueCollectionView.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor,constant: 20),
+        
+        
+        venueCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        venueCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        venueCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    //MARK: Alert
+    
     private func genericAlertFunction(title:String,message:String,indexPath:Int) {
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -149,7 +158,15 @@ return image
         alert.addAction(cancel)
         present(alert,animated: true)
     }
+   
+    //MARK:Set Delegates
+    private func setDelegates() {
+           searchBarOne.delegate = self
+           venueCollectionView.delegate = self
+           venueCollectionView.dataSource = self
+       }
 }
+
 extension VenuePhotoCollectionVC:UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
                searchBar.showsCancelButton = true

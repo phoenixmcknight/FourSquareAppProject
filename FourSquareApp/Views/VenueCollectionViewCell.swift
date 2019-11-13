@@ -57,7 +57,7 @@ class VenueCollectionViewCell: UICollectionViewCell {
             nameLabel.topAnchor.constraint(equalTo: collectionImage.bottomAnchor),
              nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
               nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-               nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+               nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor) 
             
         ])
     }

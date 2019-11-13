@@ -15,9 +15,10 @@ enum PrecedingVC {
 }
 class ListTableViewController:UIViewController {
     
+    //MARK: Variables
     var venueTableViewData = [Venue]() {
         didSet {
-            navigationItem.title = "Venue List"
+            
             listTableView.reloadData()
         }
     }
@@ -33,6 +34,8 @@ class ListTableViewController:UIViewController {
     
     var currentIndex:Int? = nil 
     
+    var precedingVC:PrecedingVC!
+    
     var searchString:String? = nil {
         didSet {
             listTableView.reloadData()
@@ -42,7 +45,7 @@ class ListTableViewController:UIViewController {
     var mapSearchResults:[Venue] {
         guard let searchString = searchString else {
             return venueTableViewData}
-      
+        
         guard searchString != "" else {
             return venueTableViewData
         }
@@ -51,22 +54,24 @@ class ListTableViewController:UIViewController {
     
     var collectionViewSearchResults:[SavedVenues] {
         guard let searchString = searchString else {
-                   return collectionTableViewData}
-             
-               guard searchString != "" else {
-                   return collectionTableViewData
-               }
-               return collectionTableViewData.filter({$0.venueName.lowercased().contains(searchString.lowercased())})
+            return collectionTableViewData}
+        
+        guard searchString != "" else {
+            return collectionTableViewData
+        }
+        return collectionTableViewData.filter({$0.venueName.lowercased().contains(searchString.lowercased())})
     }
     
+    //MARK: Views
+    
     lazy var searchBarOne:UISearchBar = {
-                  let sbo = UISearchBar()
-                  sbo.tag = 0
-                  sbo.backgroundColor = .clear
-                  sbo.barTintColor = .clear
-           sbo.searchBarStyle = .minimal
-                  return sbo
-              }()
+        let sbo = UISearchBar()
+        sbo.tag = 0
+        sbo.backgroundColor = .clear
+        sbo.barTintColor = .clear
+        sbo.searchBarStyle = .minimal
+        return sbo
+    }()
     
     lazy var listTableView:UITableView = {
         let tv = UITableView()
@@ -78,36 +83,51 @@ class ListTableViewController:UIViewController {
         return tv
     }()
     
-    lazy var lazyOutletArray = [self.searchBarOne,self.listTableView]
+    lazy var viewArray = [self.searchBarOne,self.listTableView]
     
-    var precedingVC:PrecedingVC!
     
+    
+    //MARK:LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        createConstraints()
-        listTableView.dataSource = self
-        listTableView.delegate = self
-        searchBarOne.delegate = self
-        CustomLayer.shared.setGradientBackground(colorTop: .white, colorBottom: .lightGray, newView: view)
+        addViewsToSubview()
+        configureSearchBarConstraints()
+        configureTableviewConstraints()
+        setDelegates()
+        navigationItem.title = "Venue List"
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         listTableView.reloadData()        
     }
-    
-    
-    
-    private func createConstraints() {
-        
-        for outlet in lazyOutletArray {
+    //MARK:Set Delegates
+    private func setDelegates() {
+        listTableView.dataSource = self
+        listTableView.delegate = self
+        searchBarOne.delegate = self
+    }
+    //MARK:Add Subviews to View
+    private func addViewsToSubview() {
+        for outlet in viewArray {
             outlet.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(outlet)
         }
-        
+        CustomLayer.shared.setGradientBackground(colorTop: .white, colorBottom: .lightGray, newView: view)
+    }
+    //MARK:Set Constraints
+    private func configureSearchBarConstraints() {
         NSLayoutConstraint.activate([
             searchBarOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBarOne.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBarOne.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchBarOne.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+    
+    
+    private func configureTableviewConstraints() {
+        NSLayoutConstraint.activate([
+            
             listTableView.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor),
             listTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             listTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -115,7 +135,7 @@ class ListTableViewController:UIViewController {
         ])
     }
     
-   
+    
 }
 extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -134,7 +154,7 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
         
         
         guard let cell = listTableView.dequeueReusableCell(withIdentifier: RegisterCells.listTableViewCell.rawValue, for: indexPath) as? ListTableViewCell else {return UITableViewCell()}
-       
+        
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
         
@@ -196,8 +216,6 @@ extension ListTableViewController:DetailVenueDeleteDelegate {
         }
         
     }
-   
-    
 }
 extension ListTableViewController:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
