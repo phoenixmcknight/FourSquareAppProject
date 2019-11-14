@@ -236,6 +236,10 @@ class MapViewController: UIViewController {
             
         case .denied:
             genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
+            UIView.animate(withDuration: 1.5, delay: 0.0, options: [.transitionCrossDissolve], animations: {
+            self.searchBarOne.alpha = 0.0
+            self.searchBarOne.isUserInteractionEnabled = false
+                          }, completion: nil)
         default:
             locationManager.requestWhenInUseAuthorization()
         }
@@ -380,7 +384,7 @@ MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
         
         let currentAnnotation = map.annotations.filter({$0.subtitle == venueData[indexPath.item].id})
         
-        let region = MKCoordinateRegion(center: currentAnnotation[0].coordinate, latitudinalMeters: 0, longitudinalMeters: 0)
+        let region = MKCoordinateRegion(center: currentAnnotation.first!.coordinate, latitudinalMeters: 0, longitudinalMeters: 0)
         
         map.showAnnotations(currentAnnotation, animated: true)
         map.setRegion(region, animated: true)
@@ -424,10 +428,13 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         case .authorizedAlways,.authorizedWhenInUse:
             locationManager.requestLocation()
             useUserLocationAlert()
-            // coordinate = locationManager.location!.coordinate
             
             
         case .denied:
+            if  searchBarTwo.text == nil || searchBarTwo.text == ""  {  UIView.animate(withDuration: 1.5, delay: 0.0, options: [.transitionCrossDissolve], animations: {
+                self.searchBarOne.alpha = 0.0
+                self.searchBarOne.isUserInteractionEnabled = false
+                              }, completion: nil)}
             print(CLAuthorizationStatus.denied)
             
         default:
