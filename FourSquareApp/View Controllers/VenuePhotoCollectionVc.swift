@@ -30,6 +30,8 @@ var pictureData = [Hit]() {
        didSet {
            guard self.imageArray.count == pictureData.count else {return}
            venueCollectionView.reloadData()
+        activityIndic.stopAnimating()
+
        }
    }
    //MARK: Views
@@ -58,7 +60,14 @@ var pictureData = [Hit]() {
               return vcv
           }()
    
-   
+   lazy var activityIndic:UIActivityIndicatorView = {
+       let ai = UIActivityIndicatorView()
+       ai.hidesWhenStopped = true
+       ai.style = .large
+       ai.center = view.center
+       return ai
+       
+   }()
     
     lazy var viewArray = [self.introLabel,self.searchBarOne,self.venueCollectionView]
     
@@ -111,6 +120,7 @@ var pictureData = [Hit]() {
             aview.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(aview)
         }
+        view.addSubview(activityIndic)
     }
     
     //MARK: Constraints
@@ -181,7 +191,7 @@ extension VenuePhotoCollectionVC:UISearchBarDelegate {
        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let search = searchBar.text  else {return}
         guard search != "" else {return}
-        
+        activityIndic.startAnimating()
         loadData(searchTerm: search)
            
        }

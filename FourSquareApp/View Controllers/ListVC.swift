@@ -25,7 +25,6 @@ class ListTableViewController:UIViewController {
     
     var collectionTableViewData:[SavedVenues]! {
         didSet {
-            print(self.collectionTableViewData.count)
             listTableView.reloadData()
         }
     }

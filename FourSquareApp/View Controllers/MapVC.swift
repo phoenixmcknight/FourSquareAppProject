@@ -102,7 +102,7 @@ class MapViewController: UIViewController {
         let ai = UIActivityIndicatorView()
         ai.hidesWhenStopped = true
         ai.style = .large
-       // ai.center = view.center
+        ai.center = view.center
         return ai
         
     }()

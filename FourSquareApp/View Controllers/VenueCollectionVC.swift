@@ -19,7 +19,6 @@ class CollectionVC:UIViewController {
     }
     
     var currentVenue:SavedVenues!
-    
     //MARK: Views
     lazy var venueCollectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout(placeHolder: "placeholder")
@@ -48,17 +47,22 @@ class CollectionVC:UIViewController {
         configureVenueCollectionConstraints()
         setDelegates()
         gradientColorBackGrounds()
-        alreadySavedOrCreatedAlert(title: "Click on the '+' Symbol to Add a Venue", message: "")
+        
+       
         navigationItem.title = " Venue: \(currentVenue.venueName)"
     }
-    
+     
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkCollectionViewCount()
+    }
     //MARK: Private Functions
     
     private func setDelegates() {
@@ -127,13 +131,18 @@ class CollectionVC:UIViewController {
             
             self?.currentVenue.tip = tip
             guard let venue = self?.currentVenue else {return}
-            self?.savedCollection[indexPath].addSavedVenue(venue: venue)
+           self?.savedCollection[indexPath].addSavedVenue(venue: venue)
             
             guard let collection = self?.savedCollection else {return}
             
             try? VenueCollectionPersistenceManager.manager.replaceAllFunction(newCollection:collection)
             
             listVC.collectionTableViewData = collection[indexPath].savedVenue
+            
+           
+            
+            self?.alreadySavedOrCreatedAlert(title: "Saved", message: "Saved \(self?.currentVenue.venueName ?? "Current Venue")")
+           
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(saveOrDelete)
@@ -145,6 +154,24 @@ class CollectionVC:UIViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+    }
+    private func checkCollectionViewCount() {
+           if savedCollection.count == 0 {
+               checkCollectionAlert(title: "Create A Collection First", message: "You Must Create A Collection Before You Add Venues")
+            
+            navigationController?.popViewController(animated: true)
+           } else {
+                alreadySavedOrCreatedAlert(title: "Click on the '+' Symbol to Add a Venue", message: "")
+       }
+       }
+    private func checkCollectionAlert(title:String,message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Dismiss", style: .cancel) { [weak self] (action) in
+            self?.navigationController?.popViewController(animated: true)
+        }
         alert.addAction(cancel)
         present(alert,animated: true)
     }
@@ -171,10 +198,11 @@ extension CollectionVC:UICollectionViewDataSource,UICollectionViewDelegate {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard !savedCollection[indexPath.item].savedVenue.contains(where: {$0.venueName == currentVenue.venueName}) else {
-            alreadySavedOrCreatedAlert(title: "⚠️ Warning ⚠️", message: "\(currentVenue.venueName) Venue has Already Been Saved To This Collection")
+            alreadySavedOrCreatedAlert(title: "⚠️ Warning ⚠️", message: "\(currentVenue.venueName) Venue Has Already Been Saved To This Collection")
             return
         }
         actionSheetWarning(alertTitle: "This Will Save: \(currentVenue.venueName) to The Selected Collection", saveMessage: "Save", indexPath: indexPath.item)
+
     }
 }
 

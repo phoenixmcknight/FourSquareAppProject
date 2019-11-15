@@ -41,7 +41,7 @@ class CollectionViewTabBarVC: UIViewController {
     
     lazy var collectionViewNameTextField:UITextField = {
         let ttf = UITextField()
-        ttf.placeholder = "Enter a Title For a New Collection Here"
+        ttf.placeholder = "Enter a Title For a New Collection"
         ttf.textAlignment = .center
         ttf.textColor = .black
         ttf.borderStyle = .roundedRect
@@ -216,7 +216,6 @@ class CollectionViewTabBarVC: UIViewController {
         guard let collection = try? VenueCollectionPersistenceManager.manager.getSavedCollection()  else {return}
         if collection.count > 0 {
             savedCollection = collection
-            print("sending data")
         }
         
     }
