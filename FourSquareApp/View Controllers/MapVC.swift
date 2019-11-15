@@ -294,7 +294,6 @@ class MapViewController: UIViewController {
                             case .failure(let error):
                                 print("picture error \(error)")
                                 self.imageArray.append(UIImage(systemName: "photo")!)
-                                print("test Load PHoto function")
                             case .success(let imageData):
                                 // print("got image")
                                 
@@ -504,10 +503,12 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             searchBar.resignFirstResponder()
             
         case 1:
-            UIView.transition(with: self.searchBarTwo, duration: 2.5, options: [.transitionCrossDissolve], animations: {
-                self.searchBarOne.alpha = 1.0
-            }, completion: nil)
-            
+            guard searchBarOne.alpha == 1.0 else {
+                UIView.animate(withDuration: 2.5, delay: 0.0, options: [.transitionCrossDissolve], animations: {
+                    self.searchBarOne.alpha = 1.0
+                }, completion: nil)
+                return
+            }
             searchBarOne.isUserInteractionEnabled = true
             activityIndic.startAnimating()
             guard let search = searchBarTwo.text else {return}
