@@ -45,5 +45,28 @@ class FourSquareAppTests: XCTestCase {
               print(mapData)
                 XCTAssertTrue(mapData.count > 0, "No map data was loaded")
          }
-
+    
+    
+    private func getPicData() -> Data? {
+                   let bundle = Bundle(for: type(of: self))
+                   guard let pathToData = bundle.path(forResource: "testPicture", ofType: ".json")  else {
+                       XCTFail("couldn't find Json")
+                       return nil
+                   }
+                   let url = URL(fileURLWithPath: pathToData)
+                   do {
+                       let data = try Data(contentsOf: url)
+                       return data
+                   } catch let error {
+                       fatalError("couldn't find data \(error)")
+                   }
+               }
+    func testPicture() {
+             
+                    let data = getPicData() ?? Data()
+        let picData = Picture.getPictureTestData(from: data) ?? []
+                 print(picData)
+                   XCTAssertTrue(picData.count > 0, "No picture data was loaded")
+            }
+       
 }

@@ -503,11 +503,10 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             searchBar.resignFirstResponder()
             
         case 1:
-            guard searchBarOne.alpha == 1.0 else {
+            if searchBarOne.alpha != 1.0 {
                 UIView.animate(withDuration: 2.5, delay: 0.0, options: [.transitionCrossDissolve], animations: {
                     self.searchBarOne.alpha = 1.0
                 }, completion: nil)
-                return
             }
             searchBarOne.isUserInteractionEnabled = true
             activityIndic.startAnimating()

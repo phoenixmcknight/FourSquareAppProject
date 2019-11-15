@@ -13,6 +13,17 @@ struct Picture: Codable {
     let totalHits: Int
     let hits: [Hit]
     let total: Int
+    
+    static func getPictureTestData(from data:Data) -> [Hit]? {
+           do {
+               let newPicArray = try JSONDecoder().decode(Picture.self, from: data)
+            return newPicArray.hits
+            
+           } catch let error {
+               print(error)
+               return nil
+           }
+       }
 }
 
 // MARK: - Hit
