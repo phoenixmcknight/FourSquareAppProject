@@ -1,10 +1,4 @@
-//
-//  cardAPIClient.swift
-//  unit4assessment
-//
-//  Created by Phoenix McKnight on 10/24/19.
-//  Copyright © 2019 David Rifkin. All rights reserved.
-//
+
 
 import Foundation
 

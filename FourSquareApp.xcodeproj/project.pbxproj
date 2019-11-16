@@ -185,7 +185,7 @@
 				69FAADCC2370B7ED007919AC /* Secrets */,
 				69FAADC02370B619007919AC /* Networking */,
 				69FAADB12370B572007919AC /* Models */,
-				69FAADAE2370AFDC007919AC /* View Controllers */,
+				69FAADAE2370AFDC007919AC /* ViewControllers */,
 				69FAAD7C2370AEDB007919AC /* AppDelegate.swift */,
 				69FAAD7E2370AEDB007919AC /* SceneDelegate.swift */,
 				69FAAD852370AEDC007919AC /* Assets.xcassets */,
@@ -215,7 +215,7 @@
 			path = FourSquareAppUITests;
 			sourceTree = "<group>";
 		};
-		69FAADAE2370AFDC007919AC /* View Controllers */ = {
+		69FAADAE2370AFDC007919AC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				69FAADAC2370AFD5007919AC /* MapVC.swift */,
@@ -225,7 +225,7 @@
 				6951067223772666007AB772 /* CollectionViewTabBarVC.swift */,
 				69F15B8E237B2AB8001F2A0E /* VenuePhotoCollectionVc.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		69FAADB12370B572007919AC /* Models */ = {

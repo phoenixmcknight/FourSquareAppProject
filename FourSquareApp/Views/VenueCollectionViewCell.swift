@@ -1,10 +1,4 @@
-//
-//  VenueCollectionViewCell.swift
-//  FourSquareApp
-//
-//  Created by Phoenix McKnight on 11/8/19.
-//  Copyright © 2019 Phoenix McKnight. All rights reserved.
-//
+
 
 import UIKit
 
@@ -22,7 +16,7 @@ class VenueCollectionViewCell: UICollectionViewCell {
     }()
     
     lazy var plusImageView:UIImageView = {
-       let plus = UIImageView()
+        let plus = UIImageView()
         plus.contentMode = .scaleAspectFit
         return plus
     }()
@@ -30,7 +24,6 @@ class VenueCollectionViewCell: UICollectionViewCell {
     lazy var outletArray = [self.collectionImage,self.nameLabel]
     
     var changeColorOfBorderCellFunction: (()->()) = {}
-
     
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -44,7 +37,7 @@ class VenueCollectionViewCell: UICollectionViewCell {
         }
         plusImageView.translatesAutoresizingMaskIntoConstraints = false
         collectionImage.addSubview(plusImageView)
-       
+        
         NSLayoutConstraint.activate([
             collectionImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             collectionImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -55,15 +48,13 @@ class VenueCollectionViewCell: UICollectionViewCell {
             plusImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height / 3),
             plusImageView.widthAnchor.constraint(equalToConstant: contentView.frame.width / 3),
             nameLabel.topAnchor.constraint(equalTo: collectionImage.bottomAnchor),
-             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-              nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-               nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor) 
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             
         ])
     }
-    
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
