@@ -276,10 +276,7 @@ extension CollectionViewTabBarVC:VenuePhotoCollectionDelegate {
         try? VenueCollectionPersistenceManager.manager.save(newCollection: newCollection)
         collectionViewImage = UIImage(systemName: "photo")
         savedCollection.append(newCollection)
-        //venueCollectionView.reloadData()
-    }
-    
-    
+    }   
 }
 
 

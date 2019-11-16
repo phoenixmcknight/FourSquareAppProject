@@ -1,10 +1,4 @@
-//
-//  CollectionVC.swift
-//  FourSquareApp
-//
-//  Created by Phoenix McKnight on 11/7/19.
-//  Copyright © 2019 Phoenix McKnight. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -12,11 +6,8 @@ import UIKit
 class CollectionVC:UIViewController {
     
     //MARK: Variables
-    var savedCollection = [CreateVenueCollection]() {
-        didSet {
-            venueCollectionView.reloadData()
-        }
-    }
+    var savedCollection = [CreateVenueCollection]()
+
     
     var currentVenue:SavedVenues!
     //MARK: Views
@@ -47,21 +38,21 @@ class CollectionVC:UIViewController {
         configureVenueCollectionConstraints()
         setDelegates()
         gradientColorBackGrounds()
-        
-       
         navigationItem.title = " Venue: \(currentVenue.venueName)"
+        alreadySavedOrCreatedAlert(title: "Click on the '+' Symbol to Add a Venue", message: "")
     }
-     
-   
-    
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
+        checkCollectionViewCount()
+       
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        checkCollectionViewCount()
+        
+        venueCollectionView.reloadData()
     }
     //MARK: Private Functions
     
@@ -143,6 +134,11 @@ class CollectionVC:UIViewController {
             
             self?.alreadySavedOrCreatedAlert(title: "Saved", message: "Saved \(self?.currentVenue.venueName ?? "Current Venue")")
            
+            self?.venueCollectionView.layoutIfNeeded()
+           
+            let selectedCell = self?.venueCollectionView.cellForItem(at: IndexPath(item: indexPath, section: 0)) as! VenueCollectionViewCell
+           
+                selectedCell.plusImageView.image = UIImage(named: "check")
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(saveOrDelete)
@@ -162,10 +158,9 @@ class CollectionVC:UIViewController {
                checkCollectionAlert(title: "Create A Collection First", message: "You Must Create A Collection Before You Add Venues")
             
             navigationController?.popViewController(animated: true)
-           } else {
-                alreadySavedOrCreatedAlert(title: "Click on the '+' Symbol to Add a Venue", message: "")
+           }
        }
-       }
+       
     private func checkCollectionAlert(title:String,message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -187,7 +182,9 @@ extension CollectionVC:UICollectionViewDataSource,UICollectionViewDelegate {
         let savedCell = savedCollection[indexPath.item]
         let cell = venueCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.venueCollectionViewCell.rawValue, for: indexPath) as! VenueCollectionViewCell
         cell.backgroundColor = .clear
+       
         cell.plusImageView.image = UIImage(named: "plusGreen")
+        
         cell.collectionImage.image = UIImage(data: savedCell.image)
         cell.nameLabel.text = savedCell.name
         
@@ -197,8 +194,11 @@ extension CollectionVC:UICollectionViewDataSource,UICollectionViewDelegate {
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard !savedCollection[indexPath.item].savedVenue.contains(where: {$0.venueName == currentVenue.venueName}) else {
+        guard !savedCollection[indexPath.item].savedVenue.contains(where: {$0.id == currentVenue.id}) else {
             alreadySavedOrCreatedAlert(title: "⚠️ Warning ⚠️", message: "\(currentVenue.venueName) Venue Has Already Been Saved To This Collection")
+            let selectedCell = venueCollectionView.cellForItem(at: IndexPath(item: indexPath.item, section: 0)) as! VenueCollectionViewCell
+           
+                selectedCell.plusImageView.image = UIImage(named: "testX2")
             return
         }
         actionSheetWarning(alertTitle: "This Will Save: \(currentVenue.venueName) to The Selected Collection", saveMessage: "Save", indexPath: indexPath.item)

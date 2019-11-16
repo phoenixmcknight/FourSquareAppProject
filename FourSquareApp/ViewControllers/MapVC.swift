@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
-
 class MapViewController: UIViewController {
     //MARK: Variables
     
@@ -37,6 +35,7 @@ class MapViewController: UIViewController {
         didSet {
             
             guard self.imageArray.count == venueData.count else {return}
+            navigationItem.rightBarButtonItem?.isEnabled = true
             mapCollectionView.reloadData()
             
         }
@@ -131,7 +130,6 @@ class MapViewController: UIViewController {
     
     lazy var viewArray = [self.searchBarOne,self.searchBarTwo,self.map,self.mapCollectionView]
     
-    
     //MARK:LifeCycle
     
     override func viewDidLoad() {
@@ -184,13 +182,13 @@ class MapViewController: UIViewController {
             searchBarOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
             searchBarOne.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 20),
             searchBarOne.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -20),
-
+            
             searchBarTwo.topAnchor.constraint(equalTo: searchBarOne.bottomAnchor,constant: 10),
             searchBarTwo.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 20),
             searchBarTwo.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -20)
         ])
     }
-  
+    
     private func configureMapConstraints() {
         NSLayoutConstraint.activate([
             map.topAnchor.constraint(equalTo: searchBarTwo.bottomAnchor,constant: 10),
@@ -214,10 +212,8 @@ class MapViewController: UIViewController {
     private func viewGradientLayer() {
         
         CustomLayer.shared.setGradientBackground(colorTop: .black, colorBottom: .lightGray, newView: view)
-        
     }
-    
-    
+   
     //MARK: Location Functions
     
     private func locationAuthorization() {
@@ -229,17 +225,15 @@ class MapViewController: UIViewController {
             locationManager.requestLocation()
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            
-            
+         
             useUserLocationAlert()
-            
-            
+         
         case .denied:
             genericAlertFunction(title: "Enter a Location and Type of Food to See Nearby Venues", message: "(I suggest Pizza)")
             UIView.animate(withDuration: 1.5, delay: 0.0, options: [.transitionCrossDissolve], animations: {
-            self.searchBarOne.alpha = 0.0
-            self.searchBarOne.isUserInteractionEnabled = false
-                          }, completion: nil)
+                self.searchBarOne.alpha = 0.0
+                self.searchBarOne.isUserInteractionEnabled = false
+            }, completion: nil)
         default:
             locationManager.requestWhenInUseAuthorization()
         }
@@ -278,6 +272,7 @@ class MapViewController: UIViewController {
     }
     
     private func loadImageData(venue:[Venue]) {
+        navigationItem.rightBarButtonItem?.isEnabled = false
         for i in venue {
             MapPictureAPIClient.manager.getFourSquarePictureData(venueID:i.id ) { (results) in
                 switch results {
@@ -289,24 +284,21 @@ class MapViewController: UIViewController {
                     if item.count > 0 {
                         ImageHelper.shared.getImage(urlStr: item[0].returnPictureURL()) {   (results) in
                             
-                            
                             switch results {
                             case .failure(let error):
                                 print("picture error \(error)")
                                 self.imageArray.append(UIImage(systemName: "photo")!)
                             case .success(let imageData):
-                                // print("got image")
                                 
                                 DispatchQueue.main.async {
-                                    
+     
                                     self.imageArray.append(imageData)
                                     print("test Load PHoto function")
                                 }
                             }
                         }
                     } else {
-                        self.imageArray.append(UIImage(systemName: "photo")!)
-                        print("test Load PHoto function")
+  self.imageArray.append(UIImage(systemName: "photo")!)
                     }
                 }
             }
@@ -334,7 +326,6 @@ class MapViewController: UIViewController {
                     self?.searchBarTwo.placeholder =  placemark?[0].locality
                     
                     self?.navigationItem.title = placemark?[0].locality
-                    
                 }
             }
             self?.dismiss(animated: true) {
@@ -350,16 +341,12 @@ class MapViewController: UIViewController {
                     self?.searchBarOne.isUserInteractionEnabled = false
                 }, completion: nil)
             }
-            
         }
         alert.addAction(yes)
         alert.addAction(no)
         present(alert,animated: true)
     }
-    
-    
 }
-
 
 extension
 MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
@@ -367,14 +354,12 @@ MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
         return venueData.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = mapCollectionView.dequeueReusableCell(withReuseIdentifier: RegisterCells.mapCollectionViewCell.rawValue, for: indexPath) as! MapCollectionViewCell
         
         cell.fourSquareImageView.image = imageArray[indexPath.item]
-        
-        
+   
         return cell
         
     }
@@ -389,7 +374,7 @@ MapViewController:UICollectionViewDelegate,UICollectionViewDataSource {
         map.setRegion(region, animated: true)
     }
 }
-//
+
 extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -403,22 +388,12 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
         view.isOpaque = true
         guard let index = venueData.firstIndex(where: {$0.id == subtitle} )  else {return}
         
-        
         selectedVenue = SavedVenues(image: imageArray[index].pngData()!, venueName: venueData[index].name, venueType: venueData[index].returnCategory(), tip: "", id: venueData[index].id,address: venueData[index].location?.returnFormattedAddress() ?? "Location Data Unavailable",lat: venueData[index].location?.lat,long: venueData[index].location?.lng)
-        
-        
-        
-        
-        
+       
     }
-    
-    
-    
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         print("New Location: \(locations)")
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -428,19 +403,17 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             locationManager.requestLocation()
             useUserLocationAlert()
             
-            
         case .denied:
             if  searchBarTwo.text == nil || searchBarTwo.text == ""  {  UIView.animate(withDuration: 1.5, delay: 0.0, options: [.transitionCrossDissolve], animations: {
                 self.searchBarOne.alpha = 0.0
                 self.searchBarOne.isUserInteractionEnabled = false
-                              }, completion: nil)}
+            }, completion: nil)}
             print(CLAuthorizationStatus.denied)
             
         default:
             break
         }
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
@@ -486,7 +459,6 @@ extension MapViewController: CLLocationManagerDelegate,MKMapViewDelegate,UISearc
             break
             
         }
-        
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let annotations = self.map.annotations

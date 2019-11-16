@@ -83,9 +83,7 @@ class ListTableViewController:UIViewController {
     }()
     
     lazy var viewArray = [self.searchBarOne,self.listTableView]
-    
-    
-    
+
     //MARK:LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +97,14 @@ class ListTableViewController:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         listTableView.reloadData()        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if collectionTableViewData?.count != nil  {
+            
+        navigationController?.popViewController(animated: false)
+   
+        }
     }
     //MARK:Set Delegates
     private func setDelegates() {
@@ -122,8 +128,7 @@ class ListTableViewController:UIViewController {
             searchBarOne.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
-    
+   
     private func configureTableviewConstraints() {
         NSLayoutConstraint.activate([
             
@@ -133,8 +138,6 @@ class ListTableViewController:UIViewController {
             listTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
-    
-    
 }
 extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,7 +149,6 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
         case .none:
             return 0
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -195,7 +197,6 @@ extension ListTableViewController:UITableViewDataSource,UITableViewDelegate {
         case .none:
             print("error")
         }
-        
         
         let detailVC = DetailVenueVC()
         detailVC.currentVenue = currentVenue

@@ -82,17 +82,9 @@ class DetailVenueVC:UIViewController {
         genericAlert(title: "Click On the Address For Directions To \(currentVenue.venueName)", message: "")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addDetailsToSubviews()
-        
     }
     
     //MARK:Add Subviews to Views
@@ -166,14 +158,10 @@ class DetailVenueVC:UIViewController {
     //MARK:@Objc Functions
     
     @objc private func addToCollection() {
-        
-        
-        
         let venueCollection = CollectionVC()
         
         venueCollection.currentVenue = currentVenue
-        
-        navigationController?.pushViewController(venueCollection, animated: true)
+     navigationController?.pushViewController(venueCollection, animated: true)
         
     }
     @objc private func deleteFromCollection() {
